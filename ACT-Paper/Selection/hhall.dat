@@ -1,0 +1,10 @@
+hydrogen-fluoride#hydrogen-fluoride|Train
+hydrogen-chloride#hydrogen-chloride|Train
+hydrogen-bromide#hydrogen-bromide|Train
+hydrogen-iodide#hydrogen-iodide|Train
+hydrogen-chloride#hydrogen-flyoride|Test
+hydrogen-bromide#hydrogen-chloride|Test
+hydrogen-bromide#hydrogen-fluoride|Test
+hydrogen-iodide#hydrogen-bromide|Test
+hydrogen-iodide#hydrogen-chloride|Test
+hydrogen-iodide#hydrogen-fluoride|Test
