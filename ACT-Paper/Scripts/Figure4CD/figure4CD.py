@@ -2,8 +2,8 @@
 
 import os, json
 
-myffs = { "OPLS": "alexandria nma -ff ../../../ForceField/OPLS2020-water-alcohol.xml -charges ../../../MolProps/OPLS2020-charges.xml -json ",
-          "model-C": "alexandria nma -ff ../../../ForceField/model-C.xml -charges ../../../MolProps/mp2-alcohol-HH.xml -json "
+myffs = { "OPLS": "alexandria nma -ff ../../../FF_ACT/OPLS2020-water-alcohol.xml -charges ../../../MolProps/OPLS2020-charges.xml -json ",
+          "model-C": "alexandria nma -ff ../../../FF_ACT/model-C.xml -charges ../../../MolProps/mp2-alcohol-HH.xml -json "
          }
 
 for ff in myffs:
