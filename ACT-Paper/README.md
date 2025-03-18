@@ -1,5 +1,8 @@
 # Data to reproduce results from the ACT paper
 
+See https://zenodo.org/records/15037854 for the official version of this data to go along with the paper.
+Updates may be published here.
+
 ## MolProps - molecule property files
 Here you find the results from quantum calculations for monomers and dimers at the MP2/aug-cc-pvtz sapt2+(ccd)dmp2/aug-cc-pvtz levels of theory respectively. The data is in XML format that can be read by the ACT or, for instance, by your own Python scripts.
 
