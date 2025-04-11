@@ -1,0 +1,13 @@
+Amber/22-nsc1-gcccuda-11.4-9.3.0-bare
+
+antechamber -i methylammonium-19-oep.log -fi gout -o methylammonium.prepi -fo prepi -c resp -nc 1
+antechamber -i ethylammonium-19-oep.log -fi gout -o ethylammonium.prepi -fo prepi -c resp -nc 1
+antechamber -i formate-19-oep.log -fi gout -o formate.prepi -fo prepi -c resp -nc -1
+antechamber -i ammonium-19-oep.log -fi gout -o ammonium.prepi -fo prepi -c resp -nc 1
+antechamber -i acetate-19-oep.log -fi gout -o acetate.prepi -fo prepi -c resp -nc -1
+
+antechamber -i methylammonium-19-oep.log -fi gout -o methylammonium.prepi -fo prepi -c bcc -nc 1
+antechamber -i ethylammonium-19-oep.log -fi gout -o ethylammonium.prepi -fo prepi -c bcc -nc 1
+antechamber -i formate-19-oep.log -fi gout -o formate.prepi -fo prepi -c bcc -nc -1
+antechamber -i ammonium-19-oep.log -fi gout -o ammonium.prepi -fo prepi -c bcc -nc 1
+antechamber -i acetate-19-oep.log -fi gout -o acetate.prepi -fo prepi -c bcc -nc -1
