@@ -37,7 +37,7 @@ def run_one(qtype: str, suffix: str = "") -> dict:
         print(f"Running command for {qtype}{suffix} - COUL")
         run_command(base_command + suffix_commands[suffix])
     elif qtype != "qACM" and suffix in suffix_commands2:
-        run_command(base_command + suffix_commands2[suffix]+ f"-charges ../AlexandriaFF/esp-paper-gaussian.xml -fc_elec 1  -ff ../ForceFields/GAFF2.xml -qtype {qtype} ")
+        run_command(base_command + suffix_commands2[suffix]+ f"-charges ../AlexandriaFF/esp-paper-gaussian.xml -fc_elec 1  -ff ../ForceFields/GAFF.xml -qtype {qtype} ")
 
     print(f"Reading log file {log_filename} for COUL")
     mydict = {"COUL": {}, "ALLELEC": {}}
@@ -56,7 +56,7 @@ def run_one(qtype: str, suffix: str = "") -> dict:
         print(f"Running command for {qtype}{suffix} - ALLELEC")
         run_command(base_command + suffix_commands[suffix].replace("-fc_elec", "-fc_allelec"))
     elif qtype != "qACM" and suffix in suffix_commands2:
-        run_command(base_command + suffix_commands2[suffix]+ f"-charges ../AlexandriaFF/esp-paper-gaussian.xml -fc_allelec 1  -ff ../ForceFields/GAFF2.xml -qtype {qtype} ")
+        run_command(base_command + suffix_commands2[suffix]+ f"-charges ../AlexandriaFF/esp-paper-gaussian.xml -fc_allelec 1  -ff ../ForceFields/GAFF.xml -qtype {qtype} ")
 
     print(f"Reading log file {log_filename} for ALLELEC")
     with open(log_filename, "r") as inf:
