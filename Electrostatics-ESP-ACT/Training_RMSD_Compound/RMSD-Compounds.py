@@ -31,14 +31,14 @@ def run_legacy(filenm: str) -> dict:
 if __name__ == "__main__":
     basefn = "train-Inter6.log"
     alldata = {}
-    for mydir in ["PC", "GC", "PC+GV", "PC+GVS"]:
+    for mydir in ["PC", "GC", "GC+PGV", "PC+GVS"]:
         alldata[mydir] = run_one("Elec/" + mydir + "/" + basefn)
     
     legacy_files = {
-        "qMulliken2": "legacy/Mulliken.log",
-        "qHirshfeld2": "legacy/Hirshfeld.log",
-         "qESP2": "legacy/ESP.log",
-         "qCM52": "legacy/CM5.log"
+        "qMulliken2": "Models/Mulliken.log",
+        "qHirshfeld2": "Models/Hirshfeld.log",
+         "qESP2": "Models/ESP.log",
+         "qCM52": "Models/CM5.log"
     }
     legacy_data = {key: run_legacy(path) for key, path in legacy_files.items()}
     
