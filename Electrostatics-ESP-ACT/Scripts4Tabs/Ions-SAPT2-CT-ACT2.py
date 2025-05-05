@@ -36,13 +36,13 @@ def dict_to_list_of_lists(data):
     return rows
 
 
-headers = ["Ions", "r$_{min}$", "SAPT", "PC", "Walz {\em et al.}", "GC+PGV", "PC+GVS"]
+headers = ["Ions", "r$_{min}$", "SAPT", "PC", "Walz {\\em et al.}", "GC+PGV", "PC+GVS"]
 
 
 table_string= tabulate(dict_to_list_of_lists(sapt2), headers, tablefmt="latex_raw")
 
 
-caption= "\\caption{Minimum energy distance (\AA) between ions and electrostatic energies from SAPT2+(CCD)$\delta$MP2 with the aug-cc-pVTZ basis set, for point charges (PC), the Walz {\em et al.} model with a Gaussian charge distribution~\cite{Walz2018a}, and the ACT models GC+PVG and PC+GVS consisting of a point charge and virtual site with a Gaussian charge (K$^+$ and halide ions only) and a Drude particle with a Gaussian charge (PC+GVS only). The RMSD and MSE were calculated with respect to the SAPT2+(CCD)$\delta$MP2 with the aug-cc-pVTZ basis set electrostatic energy. }"
+caption= "\\caption{Minimum energy distance (\\AA) between ions and electrostatic energies from SAPT2+(CCD)$\\delta$MP2 with the aug-cc-pVTZ basis set, for point charges (PC), the Walz {\\em et al.} model with a Gaussian charge distribution~\\cite{Walz2018a}, and the ACT models GC+PVG and PC+GVS consisting of a point charge and virtual site with a Gaussian charge (K$^+$ and halide ions only) and a Drude particle with a Gaussian charge (PC+GVS only). The RMSD and MSE were calculated with respect to the SAPT2+(CCD)$\\delta$MP2 with the aug-cc-pVTZ basis set electrostatic energy. }"
 
 
 label = "\\label{tab:sapt2_ions}"
