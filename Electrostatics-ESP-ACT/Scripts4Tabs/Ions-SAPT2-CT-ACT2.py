@@ -32,7 +32,7 @@ def mse(data, ref_key1, ref_key2):
 def dict_to_list_of_lists(data):
     rows = []
     for key, value in data.items():
-        rows.append([key, value.get("rmin", "N/A"),  f"{value.get('eelec-SAPT', 'N/A'):.1f}", f"{value.get('eelec-CT', 'N/A'):.1f}", f"{value.get('eelec-Walz2018a', 'N/A'):.1f}",  f"{value.get('eelec-ACT-G', 'N/A'):.1f}", f"{value.get('eelec-ACT-S', 'N/A'):.1f}"])
+        rows.append([key.replace("-",""), value.get("rmin", "N/A"),  f"{value.get('eelec-SAPT', 'N/A'):.1f}", f"{value.get('eelec-CT', 'N/A'):.1f}", f"{value.get('eelec-Walz2018a', 'N/A'):.1f}",  f"{value.get('eelec-ACT-G', 'N/A'):.1f}", f"{value.get('eelec-ACT-S', 'N/A'):.1f}"])
     return rows
 
 
