@@ -113,7 +113,7 @@ if __name__ == "__main__":
         filename = ( "electable-%d.tex" % T)
 
         ctext       = { 0: "  a Gaussian charge", 1: "  a 1S Slater charge", 2: "  two Gaussian charges", 3: "  a 1S and a 2S Slater charge" }
-        caption     = "Electrostatic energies at the experimental minimum energy distance~\cite{NISTa} based on the SAPT0~\cite{Sherill2013a} level of theory. Point charge (PC) energy follows from Coulomb's law. ESP indicates model consisting of a point charge, combined with "
+        caption     = "Electrostatic energies at the experimental minimum energy distance~\\cite{NISTa} based on the SAPT0~\\cite{Sherill2013a} level of theory. Point charge (PC) energy follows from Coulomb's law. ESP indicates model consisting of a point charge, combined with "
     
         abcd   = "ABCD"
         myesps = ""
