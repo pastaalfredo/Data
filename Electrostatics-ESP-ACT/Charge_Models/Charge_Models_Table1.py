@@ -9,8 +9,9 @@ def run_command(command):
 def run_one(qtype: str, suffix: str = "") -> dict:
     molprops = "../AlexandriaFF/merged6.xml" #sapt-0.015.xml"
     log_filename = f"{qtype}{suffix}.log"
-    base_command = f"alexandria train_ff -mp {molprops} -nooptimize -g {log_filename}"
-
+    base_command = f"alexandria train_ff -nooptimize -g {log_filename}"
+    mps = { "15": "../AlexandriaFF/merged8.xml",
+            "16": "../AlexandriaFF/merged8.xml" }
     suffix_commands = {
         "1": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/coul-p.xml -fc_elec 1",
         "2": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/coul-p.xml -fc_elec 1",
@@ -25,7 +26,9 @@ def run_one(qtype: str, suffix: str = "") -> dict:
         "11": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/all-gv.xml -fc_elec 1",
         "12": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/all-gv.xml -fc_elec 1",
         "13": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/all-pg.xml -fc_elec 1",
-        "14": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/all-pg.xml -fc_elec 1"
+        "14": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/all-pg.xml -fc_elec 1",
+        "15": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/esp-gv.xml -fc_elec 1",
+        "16": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/esp-gv.xml -fc_elec 1",
     }
 
     suffix_commands2 = {
@@ -35,9 +38,14 @@ def run_one(qtype: str, suffix: str = "") -> dict:
 
     if qtype == "qACM" and suffix in suffix_commands:
         print(f"Running command for {qtype}{suffix} - COUL")
-        run_command(base_command + suffix_commands[suffix])
+        mycmd = base_command + suffix_commands[suffix]
+        if suffix in mps:
+            mycmd += ( " -mp %s " % mps[suffix] )
+        else:
+            mycmd += ( " -mp %s " % molprops )
+        run_command(mycmd)
     elif qtype != "qACM" and suffix in suffix_commands2:
-        run_command(base_command + suffix_commands2[suffix]+ f"-charges ../AlexandriaFF/esp-paper-gaussian.xml -fc_elec 1  -ff ../ForceFields/GAFF.xml -qtype {qtype} ")
+        run_command(base_command + suffix_commands2[suffix]+ f"-charges ../AlexandriaFF/esp-paper-gaussian.xml -fc_elec 1  -ff ../ForceFields/GAFF.xml -qtype {qtype} -mp {molprops} ")
 
     print(f"Reading log file {log_filename} for COUL")
     mydict = {"COUL": {}, "ALLELEC": {}}
@@ -54,9 +62,14 @@ def run_one(qtype: str, suffix: str = "") -> dict:
 
     if qtype == "qACM" and suffix in suffix_commands:
         print(f"Running command for {qtype}{suffix} - ALLELEC")
-        run_command(base_command + suffix_commands[suffix].replace("-fc_elec", "-fc_allelec"))
+        mycmd = base_command + suffix_commands[suffix].replace("-fc_elec", "-fc_allelec")
+        if suffix in mps:
+            mycmd += ( " -mp %s " % mps[suffix] )
+        else:
+            mycmd += ( " -mp %s " % molprops )
+        run_command(mycmd)
     elif qtype != "qACM" and suffix in suffix_commands2:
-        run_command(base_command + suffix_commands2[suffix]+ f"-charges ../AlexandriaFF/esp-paper-gaussian.xml -fc_allelec 1  -ff ../ForceFields/GAFF.xml -qtype {qtype} ")
+        run_command(base_command + suffix_commands2[suffix]+ f"-charges ../AlexandriaFF/esp-paper-gaussian.xml -fc_allelec 1  -ff ../ForceFields/GAFF.xml -qtype {qtype} -mp {molprops}")
 
     print(f"Reading log file {log_filename} for ALLELEC")
     with open(log_filename, "r") as inf:
@@ -100,6 +113,7 @@ charge_models = [
     ("ACM", "4"), ("ACM", "5"), ("ACM", "6"),
     ("ACM", "7"), ("ACM", "8"), ("ACM", "9"),
     ("ACM", "10"), ("ACM", "11"), ("ACM", "12"), 
+    ("ACM", "15"), ("ACM", "16"),
     ("header", "Polarizable ACT model" ),
     ("ACM", "13"), ("ACM", "14")
 ]
@@ -150,6 +164,8 @@ with open("legacy.tex", "w") as outf:
         "ACM10": ("GC+PGV (Test)", ""),
         "ACM11": ("GC+PGV (Train)", "Elec+Induc"),
         "ACM12": ("GC+PGV (Test)", ""),
+        "ACM15": ("GC+PGV (Train)", "ESP"),
+        "ACM16": ("GC+PGV (Test)", ""),
         "ACM13": ("PC+GVS (Train)", "Elec,Induc"),
         "ACM14": ("PC+GVS (Test)", "")
     }
