@@ -30,3 +30,6 @@ if __name__ == "__main__":
             outf.write("@ yaxis label 'Potential (kJ/mol e)'\n")
             for p in pot:
                 outf.write("%10f  %10f\n" % ( p[0], p[1] ) )
+    pdf = "esp.pdf"
+    os.system("viewxvg -f pot2-PC.xvg pot2-Gaussian.xvg pot2-Slater.xvg  -label PC PC+GC PC+SC  -alfs 28 -lfs 28 -tickfs 24 -legend_x 0.5 -legend_y 0.5 -pdf %s -noshow -mk" % pdf)
+    print("Please check %s" % pdf)
