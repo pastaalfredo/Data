@@ -111,14 +111,15 @@ charge_models = [
     ("header", "Non-polarizable ACT models" ),
     ("ACM", "1"), ("ACM", "2"), ("ACM", "3"),
     ("ACM", "4"), ("ACM", "5"), ("ACM", "6"),
-    ("ACM", "7"), ("ACM", "8"), ("ACM", "9"),
-    ("ACM", "10"), ("ACM", "11"), ("ACM", "12"), 
+    ("ACM", "7"), ("ACM", "8"), 
     ("ACM", "15"), ("ACM", "16"),
+    ("ACM", "9"), ("ACM", "10"),
+    ("ACM", "11"), ("ACM", "12"), 
     ("header", "Polarizable ACT model" ),
     ("ACM", "13"), ("ACM", "14")
 ]
 
-nparams = { "1": 32, "3": 32, "5": 48, "7": 48, "9": 55, "11": 55, "13": 123 }
+nparams = { "1": 32, "3": 32, "5": 48, "7": 48, "9": 54, "11": 54, "13": 54, "15": 123 }
 
 for qt, suffix in charge_models:
     if qt == "header":
