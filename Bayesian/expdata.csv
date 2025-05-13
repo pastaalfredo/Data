@@ -1,0 +1,2 @@
+#compound,T,dhvap,volume,RDF-rXX,RDF-gXX,HB-distance,HB-angle,rho,dielectric,diffusion,isobaric-heat-capacity,thermal-expansion,isothermal-compressibility,dhvap-ref,volume-ref,RDF-rXX-ref,RDF-gXX-ref,HB-distance-ref,HB-angle-ref,rho-ref,dielectric-ref,diffusion-ref,isobaric-heat-capacity-ref,thermal-expansion-ref,isothermal-compressibility-ref
+water,298.15,44.01,30.006,2.971,2.140,1.925,14.671,0.997,78.4,2.30e-5,75.3,2.56e-4,4.52e-10,Haynes2016crc,Haynes2016crc,Skinner2013a,Skinner2013a,Modig2003a,Modig2003a,Haynes2016crc,CRC,Mills1973a,CRC,Haynes2016crc,Haynes2016crc
