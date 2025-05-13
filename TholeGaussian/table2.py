@@ -41,7 +41,7 @@ tex = "ions.tex"
 with open(tex, "w") as outf:
     outf.write("""\\begin{table}[ht]
 \\centering
-\\caption{Electrostatic energy for ion pairs close to the minimum energy distance computed using point charges (PC) and for electrostatics as computed using symmetry-adapted perturbation theory at the SAPT2+(CCD)$\\delta$MP2 level of theory~\\cite{Parker2014a} with the aug-cc-pvtz basis set~\\cite{Dunning2000a}, computed using the Psi4 suite of programs~\\cite{Psi4}. Details for computing $a$, $\\zeta$ and $\\zeta'$ are given in the running text.}
+\\caption{Electrostatic energy for ion pairs close to the minimum energy distance computed using point charges (PC) and for electrostatics as computed using symmetry-adapted perturbation theory at the SAPT2+3(CCD)$\\delta$MP2 level of theory~\\cite{Parker2014a} with the aug-cc-pvtz basis set~\\cite{Dunning2000a}, computed using the Psi4 suite of programs~\\cite{Psi4}. Details for computing $a$, $\\zeta$ and $\\zeta'$ are given in the running text.}
 \\begin{tabular}{lcccccc}
 \\hline
  & r  & E$_{PC}$ & E$_{SAPT}$ &  $a$ & $\\zeta$ & $\\zeta'$\\\\
