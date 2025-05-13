@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -1.2613410000000001e-05,
+        "Disp20": -1.242644e-05,
+        "Disp21": -3.5949e-07,
+        "Disp22 (S) (CCD)": -1.07568e-06,
+        "Disp22 (SDQ)": -8.8065e-07,
+        "Disp22 (T)": -1.19403e-06,
+        "Disp22 (T) (CCD)": -1.29988e-06,
+        "Dispersion": -1.682142e-05,
+        "Electrostatics": -0.10586012295000001,
+        "Elst10,r": -0.10584428283,
+        "Elst12,r": -2.70981e-05,
+        "Est. Disp22 (T)": -1.3671799999999999e-06,
+        "Est. Disp22 (T) (CCD)": -1.48838e-06,
+        "Exch-Disp20": 3.6883e-07,
+        "Exch-Ind20,r": 0.00010476813,
+        "Exch-Ind22": 1.179719e-05,
+        "Exch10": 3.418505e-05,
+        "Exch10(S^2)": 3.418473e-05,
+        "Exch11(S^2)": -1.7039e-07,
+        "Exch12(S^2)": 1.0869389999999999e-05,
+        "Exchange": 4.488404e-05,
+        "Ind20,r": -0.00227618436,
+        "Ind22": -0.00025630489,
+        "Induction": -0.00330204507,
+        "InteractionEnergy": -0.10914544723,
+        "delta HF,r (2)": -0.00045460828,
+        "delta MP2,r (2)": -0.00043360948
+    },
+    "index": "0224",
+    "jobtype": "SP",
+    "logFile": "0224.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.016708428965
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        1.983291571035
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#chloride"
+}

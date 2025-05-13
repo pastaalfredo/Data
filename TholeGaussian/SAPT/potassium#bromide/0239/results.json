@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -5.25505e-06,
+        "Disp20": -7.054170000000001e-06,
+        "Disp21": 1.73396e-06,
+        "Disp22 (S) (CCD)": -1.6903999999999998e-07,
+        "Disp22 (SDQ)": -7.431e-08,
+        "Disp22 (T)": -8.3752e-07,
+        "Disp22 (T) (CCD)": -8.306700000000001e-07,
+        "Dispersion": -6.41775e-06,
+        "Electrostatics": -0.06304086466,
+        "Elst10,r": -0.06303976515,
+        "Elst12,r": -1.29934e-06,
+        "Est. Disp22 (T)": -8.549299999999999e-07,
+        "Est. Disp22 (T) (CCD)": -8.4794e-07,
+        "Exch-Disp20": 4.15e-09,
+        "Exch-Ind20,r": 2.6241e-07,
+        "Exch-Ind22": 1.845e-08,
+        "Exch10": 6.304e-08,
+        "Exch10(S^2)": 6.304e-08,
+        "Exch11(S^2)": -2.9e-10,
+        "Exch12(S^2)": 2.817e-08,
+        "Exchange": 9.092000000000001e-08,
+        "Ind20,r": -0.00034228123999999996,
+        "Ind22": -2.4068940000000002e-05,
+        "Induction": -0.00019613904,
+        "InteractionEnergy": -0.06324353146,
+        "delta HF,r (2)": 0.00018048884,
+        "delta MP2,r (2)": -1.070954e-05
+    },
+    "index": "0239",
+    "jobtype": "SP",
+    "logFile": "0239.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -5.636926367725
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        2.783073632275
+                    ],
+                    "elem": "Br"
+                }
+            ],
+            "charge": -1,
+            "compound": "bromide",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#bromide"
+}

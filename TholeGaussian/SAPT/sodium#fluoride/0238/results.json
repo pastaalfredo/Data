@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -6.0689e-07,
+        "Disp20": -5.5872e-07,
+        "Disp21": -5.567e-08,
+        "Disp22 (S) (CCD)": -9.008000000000001e-08,
+        "Disp22 (SDQ)": -8.973e-08,
+        "Disp22 (T)": -7.582e-08,
+        "Disp22 (T) (CCD)": -7.753e-08,
+        "Dispersion": -7.9104e-07,
+        "Electrostatics": -0.07899210050000001,
+        "Elst10,r": -0.07898862669000001,
+        "Elst12,r": -4.34203e-05,
+        "Est. Disp22 (T)": -7.91e-08,
+        "Est. Disp22 (T) (CCD)": -8.089e-08,
+        "Exch-Disp20": 7.1e-10,
+        "Exch-Ind20,r": 1.7825999999999998e-07,
+        "Exch-Ind22": 4.933e-08,
+        "Exch10": 6.535e-08,
+        "Exch10(S^2)": 6.535e-08,
+        "Exch11(S^2)": -2.4999999999999996e-10,
+        "Exch12(S^2)": 1.2144e-07,
+        "Exchange": 1.8654e-07,
+        "Ind20,r": -0.00017073688,
+        "Ind22": -4.725032e-05,
+        "Induction": -0.00027681143000000003,
+        "InteractionEnergy": -0.07930946326999999,
+        "delta HF,r (2)": -9.562680000000001e-06,
+        "delta MP2,r (2)": -4.9503390000000004e-05
+    },
+    "index": "0238",
+    "jobtype": "SP",
+    "logFile": "0238.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.031551357894
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        3.668448642106
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#fluoride"
+}

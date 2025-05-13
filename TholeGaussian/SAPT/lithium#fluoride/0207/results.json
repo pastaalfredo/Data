@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -0.0007331475400000001,
+        "Disp20": -0.00068690622,
+        "Disp21": -5.647147e-05,
+        "Disp22 (S) (CCD)": -7.109321e-05,
+        "Disp22 (SDQ)": -7.141185999999999e-05,
+        "Disp22 (T)": -5.651038e-05,
+        "Disp22 (T) (CCD)": -5.547387e-05,
+        "Dispersion": -0.00092922879,
+        "Electrostatics": -0.27498356722,
+        "Elst10,r": -0.27567454381,
+        "Elst12,r": 0.00251440488,
+        "Est. Disp22 (T)": -7.171793e-05,
+        "Est. Disp22 (T) (CCD)": -7.040248e-05,
+        "Exch-Disp20": 0.00010634006,
+        "Exch-Ind20,r": 0.01995290971,
+        "Exch-Ind22": 0.00500977684,
+        "Exch10": 0.020319347619999997,
+        "Exch10(S^2)": 0.02021385531,
+        "Exch11(S^2)": -0.00018302919,
+        "Exch12(S^2)": 0.0053469092299999995,
+        "Exchange": 0.02548322766,
+        "Ind20,r": -0.037805213719999994,
+        "Ind22": -0.00949213357,
+        "Induction": -0.02376407494,
+        "InteractionEnergy": -0.27237462856,
+        "delta HF,r (2)": -0.00200435896,
+        "delta MP2,r (2)": 0.00040960558
+    },
+    "index": "0207",
+    "jobtype": "SP",
+    "logFile": "0207.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -1.387575990687
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        0.512424009313
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#fluoride"
+}

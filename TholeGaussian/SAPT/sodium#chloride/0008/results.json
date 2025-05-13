@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -0.00131588646,
+        "Disp20": -0.00132025919,
+        "Disp21": -1.712144e-05,
+        "Disp22 (S) (CCD)": -6.999775e-05,
+        "Disp22 (SDQ)": -4.5527239999999996e-05,
+        "Disp22 (T)": -9.884113e-05,
+        "Disp22 (T) (CCD)": -0.00010836246,
+        "Dispersion": -0.0011775723,
+        "Electrostatics": -0.22711689787,
+        "Elst10,r": -0.22693855630999998,
+        "Elst12,r": -0.00010200781,
+        "Est. Disp22 (T)": -0.00012169341,
+        "Est. Disp22 (T) (CCD)": -0.00013341609,
+        "Exch-Disp20": 0.00040065911,
+        "Exch-Ind20,r": 0.06940095709,
+        "Exch-Ind22": 0.00596407056,
+        "Exch10": 0.04046612358,
+        "Exch10(S^2)": 0.04006335473,
+        "Exch11(S^2)": -0.00065566853,
+        "Exch12(S^2)": 0.00226532892,
+        "Exchange": 0.04207578396,
+        "Ind20,r": -0.09374797754,
+        "Ind22": -0.0080563666,
+        "Induction": -0.0190506758,
+        "InteractionEnergy": -0.20521359338,
+        "delta HF,r (2)": 0.00545709487,
+        "delta MP2,r (2)": 0.00185204959
+    },
+    "index": "0008",
+    "jobtype": "SP",
+    "logFile": "0008.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -1.448020045903
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        0.951979954097
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#chloride"
+}

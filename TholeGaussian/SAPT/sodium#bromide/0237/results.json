@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -1.36074e-06,
+        "Disp20": -1.40708e-06,
+        "Disp21": 3.186e-08,
+        "Disp22 (S) (CCD)": -1.0553e-07,
+        "Disp22 (SDQ)": -7.779e-08,
+        "Disp22 (T)": -1.4253e-07,
+        "Disp22 (T) (CCD)": -1.5248e-07,
+        "Dispersion": -1.70016e-06,
+        "Electrostatics": -0.07328590570999999,
+        "Elst10,r": -0.07328120285999999,
+        "Elst12,r": -6.961959999999999e-06,
+        "Est. Disp22 (T)": -1.4975e-07,
+        "Est. Disp22 (T) (CCD)": -1.602e-07,
+        "Exch-Disp20": 3.1200000000000004e-09,
+        "Exch-Ind20,r": 1.1301600000000002e-06,
+        "Exch-Ind22": 9.798e-08,
+        "Exch10": 3.059e-07,
+        "Exch10(S^2)": 3.059e-07,
+        "Exch11(S^2)": -1.12e-09,
+        "Exch12(S^2)": 1.1552e-07,
+        "Exchange": 4.203e-07,
+        "Ind20,r": -0.0006134571199999999,
+        "Ind22": -5.31864e-05,
+        "Induction": -0.0008336821199999999,
+        "InteractionEnergy": -0.07412312826999999,
+        "delta HF,r (2)": -8.406769e-05,
+        "delta MP2,r (2)": -8.427732e-05
+    },
+    "index": "0237",
+    "jobtype": "SP",
+    "logFile": "0237.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -5.591217567526
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        1.628782432474
+                    ],
+                    "elem": "Br"
+                }
+            ],
+            "charge": -1,
+            "compound": "bromide",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#bromide"
+}

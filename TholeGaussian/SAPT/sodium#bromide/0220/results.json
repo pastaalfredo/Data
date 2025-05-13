@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -3.773608e-05,
+        "Disp20": -3.690922e-05,
+        "Disp21": -1.1988400000000001e-06,
+        "Disp22 (S) (CCD)": -3.1168e-06,
+        "Disp22 (SDQ)": -2.44916e-06,
+        "Disp22 (T)": -3.29847e-06,
+        "Disp22 (T) (CCD)": -3.61022e-06,
+        "Dispersion": -5.084242e-05,
+        "Electrostatics": -0.11815117644,
+        "Elst10,r": -0.11812283383000001,
+        "Elst12,r": -4.22164e-05,
+        "Est. Disp22 (T)": -3.8231e-06,
+        "Est. Disp22 (T) (CCD)": -4.18444e-06,
+        "Exch-Disp20": 2.50432e-06,
+        "Exch-Ind20,r": 0.0006568902100000001,
+        "Exch-Ind22": 6.707969e-05,
+        "Exch10": 0.00022091243,
+        "Exch10(S^2)": 0.00022089948000000002,
+        "Exch11(S^2)": -1.34078e-06,
+        "Exch12(S^2)": 4.178342e-05,
+        "Exchange": 0.00026135507,
+        "Ind20,r": -0.00542382749,
+        "Ind22": -0.0005538653000000001,
+        "Induction": -0.00680408581,
+        "InteractionEnergy": -0.12475900735,
+        "delta HF,r (2)": -0.00101531981,
+        "delta MP2,r (2)": -0.00054373648
+    },
+    "index": "0220",
+    "jobtype": "SP",
+    "logFile": "0220.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.469342756581
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        1.010657243418
+                    ],
+                    "elem": "Br"
+                }
+            ],
+            "charge": -1,
+            "compound": "bromide",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#bromide"
+}

@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -9.7374e-07,
+        "Disp20": -9.1206e-07,
+        "Disp21": -7.946e-08,
+        "Disp22 (S) (CCD)": -1.4727e-07,
+        "Disp22 (SDQ)": -1.6235e-07,
+        "Disp22 (T)": -9.521e-08,
+        "Disp22 (T) (CCD)": -9.432e-08,
+        "Dispersion": -1.2915800000000001e-06,
+        "Electrostatics": -0.10098464409,
+        "Elst10,r": -0.10098682571999999,
+        "Elst12,r": -7.475801999999999e-05,
+        "Est. Disp22 (T)": -1.0716e-07,
+        "Est. Disp22 (T) (CCD)": -1.0616e-07,
+        "Exch-Disp20": 1.255e-08,
+        "Exch-Ind20,r": 2.3822000000000002e-06,
+        "Exch-Ind22": 7.7804e-07,
+        "Exch10": 9.5804e-07,
+        "Exch10(S^2)": 9.5804e-07,
+        "Exch11(S^2)": -2.2000000000000003e-09,
+        "Exch12(S^2)": 1.59238e-06,
+        "Exchange": 2.5482199999999997e-06,
+        "Ind20,r": -0.00050748959,
+        "Ind22": -0.0001657498,
+        "Induction": -0.00104085503,
+        "InteractionEnergy": -0.10210118502,
+        "delta HF,r (2)": -8.470024e-05,
+        "delta MP2,r (2)": -0.00028615551
+    },
+    "index": "0233",
+    "jobtype": "SP",
+    "logFile": "0233.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.826788521683
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        1.413211478317
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#fluoride"
+}

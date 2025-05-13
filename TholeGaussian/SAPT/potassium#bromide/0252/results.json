@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -1.15314e-06,
+        "Disp20": -1.56243e-06,
+        "Disp21": 3.9743e-07,
+        "Disp22 (S) (CCD)": -3.498e-08,
+        "Disp22 (SDQ)": -1.474e-08,
+        "Disp22 (T)": -1.8798e-07,
+        "Disp22 (T) (CCD)": -1.8553999999999998e-07,
+        "Dispersion": -1.38489e-06,
+        "Electrostatics": -0.04930254838,
+        "Elst10,r": -0.04930245673999999,
+        "Elst12,r": 1.3415000000000002e-07,
+        "Est. Disp22 (T)": -1.9001e-07,
+        "Est. Disp22 (T) (CCD)": -1.8754e-07,
+        "Exch-Disp20": 3e-11,
+        "Exch-Ind20,r": 1.35e-09,
+        "Exch-Ind22": 9e-11,
+        "Exch10": 4.9e-10,
+        "Exch10(S^2)": 4.9e-10,
+        "Exch11(S^2)": 0.0,
+        "Exch12(S^2)": 3.1e-10,
+        "Exchange": 8.1e-10,
+        "Ind20,r": -0.00012517411,
+        "Ind22": -8.45844e-06,
+        "Induction": -1.3551560000000001e-05,
+        "InteractionEnergy": -0.04931725826,
+        "delta HF,r (2)": 0.00012125755,
+        "delta MP2,r (2)": -1.18729e-06
+    },
+    "index": "0252",
+    "jobtype": "SP",
+    "logFile": "0252.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -7.203483101749
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        3.556516898251
+                    ],
+                    "elem": "Br"
+                }
+            ],
+            "charge": -1,
+            "compound": "bromide",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#bromide"
+}

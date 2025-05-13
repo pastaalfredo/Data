@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -1.42034e-06,
+        "Disp20": -1.92274e-06,
+        "Disp21": 4.8753e-07,
+        "Disp22 (S) (CCD)": -4.3220000000000006e-08,
+        "Disp22 (SDQ)": -1.816e-08,
+        "Disp22 (T)": -2.3117e-07,
+        "Disp22 (T) (CCD)": -2.2828e-07,
+        "Dispersion": -1.7074499999999998e-06,
+        "Electrostatics": -0.05101176484,
+        "Elst10,r": -0.051011623299999996,
+        "Elst12,r": 6.939e-08,
+        "Est. Disp22 (T)": -2.3376000000000002e-07,
+        "Est. Disp22 (T) (CCD)": -2.3083e-07,
+        "Exch-Disp20": 7e-11,
+        "Exch-Ind20,r": 3.53e-09,
+        "Exch-Ind22": 2.4e-10,
+        "Exch10": 1.12e-09,
+        "Exch10(S^2)": 1.12e-09,
+        "Exch11(S^2)": -0.0,
+        "Exch12(S^2)": 6.400000000000001e-10,
+        "Exchange": 1.7600000000000001e-09,
+        "Ind20,r": -0.00014368988,
+        "Ind22": -9.73195e-06,
+        "Induction": -2.7313919999999998e-05,
+        "InteractionEnergy": -0.05104057357,
+        "delta HF,r (2)": 0.00012761079,
+        "delta MP2,r (2)": -1.51981e-06
+    },
+    "index": "0250",
+    "jobtype": "SP",
+    "logFile": "0250.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -6.962474373437
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        3.437525626562
+                    ],
+                    "elem": "Br"
+                }
+            ],
+            "charge": -1,
+            "compound": "bromide",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#bromide"
+}

@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -8.0125e-07,
+        "Disp20": -8.2208e-07,
+        "Disp21": 9.109999999999999e-09,
+        "Disp22 (S) (CCD)": -5.798e-08,
+        "Disp22 (SDQ)": -4.16e-08,
+        "Disp22 (T)": -8.539e-08,
+        "Disp22 (T) (CCD)": -9.186e-08,
+        "Dispersion": -9.808e-07,
+        "Electrostatics": -0.07055931521,
+        "Elst10,r": -0.07055472502,
+        "Elst12,r": -8.01425e-06,
+        "Est. Disp22 (T)": -8.992e-08,
+        "Est. Disp22 (T) (CCD)": -9.674e-08,
+        "Exch-Disp20": 8.500000000000001e-10,
+        "Exch-Ind20,r": 2.7396e-07,
+        "Exch-Ind22": 2.522e-08,
+        "Exch10": 8.091e-08,
+        "Exch10(S^2)": 8.091e-08,
+        "Exch11(S^2)": -3e-10,
+        "Exch12(S^2)": 4.491e-08,
+        "Exchange": 1.2552e-07,
+        "Ind20,r": -0.00036224998,
+        "Ind22": -3.3342129999999996e-05,
+        "Induction": -0.00046477781,
+        "InteractionEnergy": -0.07102837282,
+        "delta HF,r (2)": -2.5133969999999998e-05,
+        "delta MP2,r (2)": -4.437703e-05
+    },
+    "index": "0240",
+    "jobtype": "SP",
+    "logFile": "0240.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -4.525062643448
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        2.974937356552
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#chloride"
+}

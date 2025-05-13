@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -0.00025001836,
+        "Disp20": -0.00024282397,
+        "Disp21": -1.2316999999999999e-05,
+        "Disp22 (S) (CCD)": -9.116350000000001e-06,
+        "Disp22 (SDQ)": -4.17518e-06,
+        "Disp22 (T)": -1.505001e-05,
+        "Disp22 (T) (CCD)": -1.692678e-05,
+        "Dispersion": -0.00030143369,
+        "Electrostatics": -0.19033183652,
+        "Elst10,r": -0.1904714282,
+        "Elst12,r": 0.00024521387,
+        "Est. Disp22 (T)": -1.908633e-05,
+        "Est. Disp22 (T) (CCD)": -2.146643e-05,
+        "Exch-Disp20": 4.903303e-05,
+        "Exch-Ind20,r": 0.00829468695,
+        "Exch-Ind22": 0.0007705208099999999,
+        "Exch10": 0.00558553219,
+        "Exch10(S^2)": 0.00557765319,
+        "Exch11(S^2)": -4.427987e-05,
+        "Exch12(S^2)": 0.00057380632,
+        "Exchange": 0.00611505864,
+        "Ind20,r": -0.02730023061,
+        "Ind22": -0.00253600841,
+        "Induction": -0.021730482210000002,
+        "InteractionEnergy": -0.2061474207,
+        "delta HF,r (2)": -0.0011414545,
+        "delta MP2,r (2)": 0.00010778886
+    },
+    "index": "0212",
+    "jobtype": "SP",
+    "logFile": "0212.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -2.29878204488
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        0.46121795512
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#chloride"
+}

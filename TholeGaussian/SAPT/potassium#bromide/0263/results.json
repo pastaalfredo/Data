@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -4.1195000000000003e-07,
+        "Disp20": -5.600499999999999e-07,
+        "Disp21": 1.4417999999999998e-07,
+        "Disp22 (S) (CCD)": -1.242e-08,
+        "Disp22 (SDQ)": -5.38e-09,
+        "Disp22 (T)": -6.75e-08,
+        "Disp22 (T) (CCD)": -6.65e-08,
+        "Dispersion": -4.9339e-07,
+        "Electrostatics": -0.04163311398,
+        "Elst10,r": -0.041633108380000006,
+        "Elst12,r": 2.1377000000000001e-07,
+        "Est. Disp22 (T)": -6.818999999999999e-08,
+        "Est. Disp22 (T) (CCD)": -6.717e-08,
+        "Exch-Disp20": 0.0,
+        "Exch-Ind20,r": 1.5e-10,
+        "Exch-Ind22": 1.0000000000000001e-11,
+        "Exch10": 3e-11,
+        "Exch10(S^2)": 3e-11,
+        "Exch11(S^2)": 0.0,
+        "Exch12(S^2)": 4.0000000000000004e-11,
+        "Exchange": 7e-11,
+        "Ind20,r": -6.332443e-05,
+        "Ind22": -4.26037e-06,
+        "Induction": 2.808625e-05,
+        "InteractionEnergy": -0.04160530169,
+        "delta HF,r (2)": 9.617699000000001e-05,
+        "delta MP2,r (2)": -5.0797e-07
+    },
+    "index": "0263",
+    "jobtype": "SP",
+    "logFile": "0263.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -8.529031107461
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        4.210968892539
+                    ],
+                    "elem": "Br"
+                }
+            ],
+            "charge": -1,
+            "compound": "bromide",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#bromide"
+}

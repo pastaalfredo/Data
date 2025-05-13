@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -6.9989e-07,
+        "Disp20": -7.1903e-07,
+        "Disp21": 8.87e-09,
+        "Disp22 (S) (CCD)": -5.0219999999999996e-08,
+        "Disp22 (SDQ)": -3.572e-08,
+        "Disp22 (T)": -7.505e-08,
+        "Disp22 (T) (CCD)": -8.069e-08,
+        "Dispersion": -8.5399e-07,
+        "Electrostatics": -0.06908572214,
+        "Elst10,r": -0.06908141510999999,
+        "Elst12,r": -7.54161e-06,
+        "Est. Disp22 (T)": -7.871e-08,
+        "Est. Disp22 (T) (CCD)": -8.463e-08,
+        "Exch-Disp20": 6.1e-10,
+        "Exch-Ind20,r": 1.958e-07,
+        "Exch-Ind22": 1.786e-08,
+        "Exch10": 5.7899999999999996e-08,
+        "Exch10(S^2)": 5.7899999999999996e-08,
+        "Exch11(S^2)": -2.2000000000000002e-10,
+        "Exch12(S^2)": 3.176e-08,
+        "Exchange": 8.944e-08,
+        "Ind20,r": -0.00033061257,
+        "Ind22": -3.0164139999999997e-05,
+        "Induction": -0.00041888016999999997,
+        "InteractionEnergy": -0.06950860175,
+        "delta HF,r (2)": -2.060383e-05,
+        "delta MP2,r (2)": -3.773347e-05
+    },
+    "index": "0241",
+    "jobtype": "SP",
+    "logFile": "0241.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -4.621597313174
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        3.038402686825
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#chloride"
+}

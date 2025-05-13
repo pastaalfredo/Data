@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -7.1697e-07,
+        "Disp20": -7.473999999999999e-07,
+        "Disp21": 1.564e-08,
+        "Disp22 (S) (CCD)": -3.163e-08,
+        "Disp22 (SDQ)": -1.505e-08,
+        "Disp22 (T)": -5.925e-08,
+        "Disp22 (T) (CCD)": -6.465e-08,
+        "Dispersion": -8.714900000000001e-07,
+        "Electrostatics": -0.08294486953,
+        "Elst10,r": -0.08294011994,
+        "Elst12,r": -1.046809e-05,
+        "Est. Disp22 (T)": -6.426e-08,
+        "Est. Disp22 (T) (CCD)": -7.011000000000001e-08,
+        "Exch-Disp20": 5.62e-09,
+        "Exch-Ind20,r": 1.32046e-06,
+        "Exch-Ind22": 1.2953e-07,
+        "Exch10": 4.7237e-07,
+        "Exch10(S^2)": 4.7237e-07,
+        "Exch11(S^2)": -9.1e-10,
+        "Exch12(S^2)": 2.2918e-07,
+        "Exchange": 7.0064e-07,
+        "Ind20,r": -0.0007323051099999999,
+        "Ind22": -7.183238e-05,
+        "Induction": -0.00112191687,
+        "InteractionEnergy": -0.08407267681000001,
+        "delta HF,r (2)": -0.00012885177000000002,
+        "delta MP2,r (2)": -0.00019043705999999998
+    },
+    "index": "0238",
+    "jobtype": "SP",
+    "logFile": "0238.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -5.313851248673
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        1.066148751327
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#chloride"
+}

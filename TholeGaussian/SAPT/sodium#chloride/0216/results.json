@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -9.547915e-05,
+        "Disp20": -9.205989e-05,
+        "Disp21": -4.67873e-06,
+        "Disp22 (S) (CCD)": -7.46472e-06,
+        "Disp22 (SDQ)": -5.96031e-06,
+        "Disp22 (T)": -8.42123e-06,
+        "Disp22 (T) (CCD)": -9.295090000000001e-06,
+        "Dispersion": -0.00012044953,
+        "Electrostatics": -0.14165648035,
+        "Elst10,r": -0.14160790761,
+        "Elst12,r": -8.574408999999999e-05,
+        "Est. Disp22 (T)": -9.75182e-06,
+        "Est. Disp22 (T) (CCD)": -1.076375e-05,
+        "Exch-Disp20": 1.022801e-05,
+        "Exch-Ind20,r": 0.0022385500999999998,
+        "Exch-Ind22": 0.00027492744000000004,
+        "Exch10": 0.0008779341000000001,
+        "Exch10(S^2)": 0.0008777273,
+        "Exch11(S^2)": -6.1610299999999995e-06,
+        "Exch12(S^2)": 0.00016785591,
+        "Exchange": 0.0010396289800000001,
+        "Ind20,r": -0.00924648749,
+        "Ind22": -0.001135607,
+        "Induction": -0.00888630739,
+        "InteractionEnergy": -0.14966188168,
+        "delta HF,r (2)": -0.00065360269,
+        "delta MP2,r (2)": -0.00038215971999999997
+    },
+    "index": "0216",
+    "jobtype": "SP",
+    "logFile": "0216.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -2.256497904866
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        1.483502095134
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#chloride"
+}

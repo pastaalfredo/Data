@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -1.498887e-05,
+        "Disp20": -1.481675e-05,
+        "Disp21": -4.756e-07,
+        "Disp22 (S) (CCD)": -8.8599e-07,
+        "Disp22 (SDQ)": -6.0837e-07,
+        "Disp22 (T)": -1.039e-06,
+        "Disp22 (T) (CCD)": -1.14466e-06,
+        "Dispersion": -1.9809420000000002e-05,
+        "Electrostatics": -0.12719557047000002,
+        "Elst10,r": -0.12718058875,
+        "Elst12,r": -2.861639e-05,
+        "Est. Disp22 (T)": -1.30888e-06,
+        "Est. Disp22 (T) (CCD)": -1.442e-06,
+        "Exch-Disp20": 1.45395e-06,
+        "Exch-Ind20,r": 0.00028008605,
+        "Exch-Ind22": 3.052183e-05,
+        "Exch10": 0.0001252564,
+        "Exch10(S^2)": 0.00012525253,
+        "Exch11(S^2)": -4.5506e-07,
+        "Exch12(S^2)": 3.1578679999999995e-05,
+        "Exchange": 0.00015638002000000002,
+        "Ind20,r": -0.00493641508,
+        "Ind22": -0.00053793623,
+        "Induction": -0.00747515821,
+        "InteractionEnergy": -0.13454800633,
+        "delta HF,r (2)": -0.0013578138900000002,
+        "delta MP2,r (2)": -0.000957761
+    },
+    "index": "0222",
+    "jobtype": "SP",
+    "logFile": "0222.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.464830908225
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        0.695169091775
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#chloride"
+}

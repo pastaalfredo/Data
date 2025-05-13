@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -6.94997e-06,
+        "Disp20": -9.15365e-06,
+        "Disp21": 2.0448300000000003e-06,
+        "Disp22 (S) (CCD)": -2.0584e-07,
+        "Disp22 (SDQ)": -3.726e-08,
+        "Disp22 (T)": -1.1122899999999999e-06,
+        "Disp22 (T) (CCD)": -1.1102099999999998e-06,
+        "Dispersion": -8.518130000000001e-06,
+        "Electrostatics": -0.06872837731,
+        "Elst10,r": -0.06872678527,
+        "Elst12,r": -2.9312100000000003e-06,
+        "Est. Disp22 (T)": -1.1431499999999998e-06,
+        "Est. Disp22 (T) (CCD)": -1.14101e-06,
+        "Exch-Disp20": 9.229999999999999e-09,
+        "Exch-Ind20,r": 5.5215e-07,
+        "Exch-Ind22": 3.963e-08,
+        "Exch10": 1.4169000000000002e-07,
+        "Exch10(S^2)": 1.4169000000000002e-07,
+        "Exch11(S^2)": -5.899999999999999e-10,
+        "Exch12(S^2)": 7.981e-08,
+        "Exchange": 2.2090999999999998e-07,
+        "Ind20,r": -0.00036147671999999995,
+        "Ind22": -2.5941729999999998e-05,
+        "Induction": -0.00042028116,
+        "InteractionEnergy": -0.06915829701,
+        "delta HF,r (2)": -1.204378e-05,
+        "delta MP2,r (2)": -2.164339e-05
+    },
+    "index": "0236",
+    "jobtype": "SP",
+    "logFile": "0236.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.641970042429
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        4.058029957571
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#chloride"
+}

@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -1.71498e-06,
+        "Disp20": -2.28094e-06,
+        "Disp21": 5.3049e-07,
+        "Disp22 (S) (CCD)": -4.4499999999999995e-08,
+        "Disp22 (SDQ)": -1.42e-09,
+        "Disp22 (T)": -2.8245e-07,
+        "Disp22 (T) (CCD)": -2.8047e-07,
+        "Dispersion": -2.05785e-06,
+        "Electrostatics": -0.05489571289,
+        "Elst10,r": -0.05489568406,
+        "Elst12,r": 5.74e-08,
+        "Est. Disp22 (T)": -2.8576e-07,
+        "Est. Disp22 (T) (CCD)": -2.8376e-07,
+        "Exch-Disp20": 1.5e-10,
+        "Exch-Ind20,r": 7.849999999999999e-09,
+        "Exch-Ind22": 5.2e-10,
+        "Exch10": 2.46e-09,
+        "Exch10(S^2)": 2.46e-09,
+        "Exch11(S^2)": -1.0000000000000001e-11,
+        "Exch12(S^2)": 1.43e-09,
+        "Exchange": 3.88e-09,
+        "Ind20,r": -0.00014216702,
+        "Ind22": -9.35281e-06,
+        "Induction": -0.00015537964000000002,
+        "InteractionEnergy": -0.05505306035,
+        "delta HF,r (2)": -6.506e-08,
+        "delta MP2,r (2)": -3.81796e-06
+    },
+    "index": "0247",
+    "jobtype": "SP",
+    "logFile": "0247.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -4.559557299872
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        5.080442700128
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#chloride"
+}

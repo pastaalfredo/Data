@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -0.00023211083,
+        "Disp20": -0.00021067396,
+        "Disp21": -2.3695810000000002e-05,
+        "Disp22 (S) (CCD)": -3.785982e-05,
+        "Disp22 (SDQ)": -4.009964e-05,
+        "Disp22 (T)": -2.490533e-05,
+        "Disp22 (T) (CCD)": -2.518669e-05,
+        "Dispersion": -0.00027624021,
+        "Electrostatics": -0.19377876753999998,
+        "Elst10,r": -0.19368680873,
+        "Elst12,r": -0.00028185065,
+        "Est. Disp22 (T)": -2.991586e-05,
+        "Est. Disp22 (T) (CCD)": -3.025383e-05,
+        "Exch-Disp20": 3.67958e-05,
+        "Exch-Ind20,r": 0.0063576972,
+        "Exch-Ind22": 0.0026161836,
+        "Exch10": 0.0033509234700000003,
+        "Exch10(S^2)": 0.00334791349,
+        "Exch11(S^2)": -3.1435070000000005e-05,
+        "Exch12(S^2)": 0.00177107685,
+        "Exchange": 0.00509056524,
+        "Ind20,r": -0.0134866759,
+        "Ind22": -0.00554974847,
+        "Induction": -0.008521865679999999,
+        "InteractionEnergy": -0.19767809409,
+        "delta HF,r (2)": 0.00049939382,
+        "delta MP2,r (2)": 0.00102657848
+    },
+    "index": "0211",
+    "jobtype": "SP",
+    "logFile": "0211.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -1.239768764273
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        1.500231235727
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#fluoride"
+}

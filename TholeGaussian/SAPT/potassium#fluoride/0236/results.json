@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -3.7094799999999997e-06,
+        "Disp20": -4.32598e-06,
+        "Disp21": 4.4326e-07,
+        "Disp22 (S) (CCD)": -3.8818e-07,
+        "Disp22 (SDQ)": -3.2227e-07,
+        "Disp22 (T)": -6.6522e-07,
+        "Disp22 (T) (CCD)": -6.406e-07,
+        "Dispersion": -4.82021e-06,
+        "Electrostatics": -0.07329682455,
+        "Elst10,r": -0.07329640316,
+        "Elst12,r": -8.5826e-06,
+        "Est. Disp22 (T)": -6.828799999999999e-07,
+        "Est. Disp22 (T) (CCD)": -6.576000000000001e-07,
+        "Exch-Disp20": 3.45e-09,
+        "Exch-Ind20,r": 1.8347000000000001e-07,
+        "Exch-Ind22": 2.662e-08,
+        "Exch10": 5.683e-08,
+        "Exch10(S^2)": 5.683e-08,
+        "Exch11(S^2)": -3.2000000000000003e-10,
+        "Exch12(S^2)": 1.2875e-07,
+        "Exchange": 1.8525e-07,
+        "Ind20,r": -0.00018459255,
+        "Ind22": -2.678206e-05,
+        "Induction": -0.00024017312,
+        "InteractionEnergy": -0.07354979464,
+        "delta HF,r (2)": -5.4860000000000005e-06,
+        "delta MP2,r (2)": -2.35918e-05
+    },
+    "index": "0236",
+    "jobtype": "SP",
+    "logFile": "0236.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -2.366519639558
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        4.853480360441
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#fluoride"
+}

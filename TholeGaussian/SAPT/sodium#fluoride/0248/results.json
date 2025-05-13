@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -1.7533e-07,
+        "Disp20": -1.6214e-07,
+        "Disp21": -1.536e-08,
+        "Disp22 (S) (CCD)": -2.269e-08,
+        "Disp22 (SDQ)": -2.141e-08,
+        "Disp22 (T)": -2.1610000000000003e-08,
+        "Disp22 (T) (CCD)": -2.234e-08,
+        "Dispersion": -2.2222e-07,
+        "Electrostatics": -0.06485672515999999,
+        "Elst10,r": -0.06485470725,
+        "Elst12,r": -1.880672e-05,
+        "Est. Disp22 (T)": -2.2310000000000003e-08,
+        "Est. Disp22 (T) (CCD)": -2.306e-08,
+        "Exch-Disp20": -1.0000000000000001e-11,
+        "Exch-Ind20,r": 1.59e-09,
+        "Exch-Ind22": 3.9000000000000005e-10,
+        "Exch10": 1.4e-10,
+        "Exch10(S^2)": 1.4e-10,
+        "Exch11(S^2)": -2.0000000000000002e-11,
+        "Exch12(S^2)": -1.4699999999999999e-09,
+        "Exchange": -1.35e-09,
+        "Ind20,r": -7.243076e-05,
+        "Ind22": -1.774943e-05,
+        "Induction": -0.00010351993,
+        "InteractionEnergy": -0.06497725748000001,
+        "delta HF,r (2)": -1.51387e-06,
+        "delta MP2,r (2)": -1.1829e-05
+    },
+    "index": "0248",
+    "jobtype": "SP",
+    "logFile": "0248.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.692158071703
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        4.467841928297
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#fluoride"
+}

@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -2.2780809999999998e-05,
+        "Disp20": -2.251635e-05,
+        "Disp21": -6.5531e-07,
+        "Disp22 (S) (CCD)": -1.23007e-06,
+        "Disp22 (SDQ)": -7.56e-07,
+        "Disp22 (T)": -1.43293e-06,
+        "Disp22 (T) (CCD)": -1.59474e-06,
+        "Dispersion": -3.0331830000000002e-05,
+        "Electrostatics": -0.1283906822,
+        "Elst10,r": -0.12836768238,
+        "Elst12,r": -2.960026e-05,
+        "Est. Disp22 (T)": -1.85192e-06,
+        "Est. Disp22 (T) (CCD)": -2.06104e-06,
+        "Exch-Disp20": 2.80689e-06,
+        "Exch-Ind20,r": 0.00054299412,
+        "Exch-Ind22": 5.132101e-05,
+        "Exch10": 0.00024220796,
+        "Exch10(S^2)": 0.00024219354000000001,
+        "Exch11(S^2)": -1.04856e-06,
+        "Exch12(S^2)": 4.164771e-05,
+        "Exchange": 0.00028280711,
+        "Ind20,r": -0.00720769824,
+        "Ind22": -0.0006812344999999999,
+        "Induction": -0.01026843993,
+        "InteractionEnergy": -0.13841362675,
+        "delta HF,r (2)": -0.00203372056,
+        "delta MP2,r (2)": -0.00094754801
+    },
+    "index": "0221",
+    "jobtype": "SP",
+    "logFile": "0221.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.783627674221
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        0.336372325779
+                    ],
+                    "elem": "Br"
+                }
+            ],
+            "charge": -1,
+            "compound": "bromide",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#bromide"
+}
