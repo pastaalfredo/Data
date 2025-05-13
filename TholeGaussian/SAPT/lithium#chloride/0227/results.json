@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -4.81178e-06,
+        "Disp20": -4.84469e-06,
+        "Disp21": -6.49e-08,
+        "Disp22 (S) (CCD)": -2.7342e-07,
+        "Disp22 (SDQ)": -1.8744000000000002e-07,
+        "Disp22 (T)": -3.5689e-07,
+        "Disp22 (T) (CCD)": -3.9214e-07,
+        "Dispersion": -6.25438e-06,
+        "Electrostatics": -0.10889710039,
+        "Elst10,r": -0.1088835533,
+        "Elst12,r": -2.3703620000000003e-05,
+        "Est. Disp22 (T)": -4.2519e-07,
+        "Est. Disp22 (T) (CCD)": -4.6718e-07,
+        "Exch-Disp20": 2.5922999999999997e-07,
+        "Exch-Ind20,r": 5.320986e-05,
+        "Exch-Ind22": 5.723650000000001e-06,
+        "Exch10": 2.137096e-05,
+        "Exch10(S^2)": 2.137085e-05,
+        "Exch11(S^2)": -6.558000000000001e-08,
+        "Exch12(S^2)": 6.8467e-06,
+        "Exchange": 2.815208e-05,
+        "Ind20,r": -0.0024866210799999997,
+        "Ind22": -0.0002674795,
+        "Induction": -0.0041332897600000005,
+        "InteractionEnergy": -0.11301869544,
+        "delta HF,r (2)": -0.00074348866,
+        "delta MP2,r (2)": -0.00069564172
+    },
+    "index": "0227",
+    "jobtype": "SP",
+    "logFile": "0227.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -4.047855339898
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        0.812144660102
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#chloride"
+}

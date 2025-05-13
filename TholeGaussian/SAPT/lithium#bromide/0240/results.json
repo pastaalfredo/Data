@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -5.8834e-07,
+        "Disp20": -6.2379e-07,
+        "Disp21": 2.546e-08,
+        "Disp22 (S) (CCD)": -2.555e-08,
+        "Disp22 (SDQ)": -1.113e-08,
+        "Disp22 (T)": -4.7599999999999996e-08,
+        "Disp22 (T) (CCD)": -5.19e-08,
+        "Dispersion": -7.1294e-07,
+        "Electrostatics": -0.07714056878,
+        "Elst10,r": -0.07713528576999999,
+        "Elst12,r": -7.3799e-06,
+        "Est. Disp22 (T)": -5.112e-08,
+        "Est. Disp22 (T) (CCD)": -5.574e-08,
+        "Exch-Disp20": 3.81e-09,
+        "Exch-Ind20,r": 9.7206e-07,
+        "Exch-Ind22": 8.472000000000001e-08,
+        "Exch10": 3.2858e-07,
+        "Exch10(S^2)": 3.2858e-07,
+        "Exch11(S^2)": -5.700000000000001e-10,
+        "Exch12(S^2)": 1.1613999999999999e-07,
+        "Exchange": 4.4414999999999996e-07,
+        "Ind20,r": -0.00076007543,
+        "Ind22": -6.624772e-05,
+        "Induction": -0.00120186791,
+        "InteractionEnergy": -0.07834480303,
+        "delta HF,r (2)": -0.0001626367,
+        "delta MP2,r (2)": -0.00021401264000000001
+    },
+    "index": "0240",
+    "jobtype": "SP",
+    "logFile": "0240.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -6.299923748824
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        0.560076251176
+                    ],
+                    "elem": "Br"
+                }
+            ],
+            "charge": -1,
+            "compound": "bromide",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#bromide"
+}

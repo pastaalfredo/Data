@@ -1,0 +1,1332 @@
+
+     Welcome to the Alexandria Chemistry Toolkit
+
+       Version 1-dev-20250328-cca01e0c5-unknown
+
+              Copyright (c) 2014-2025
+
+Mohammad M. Ghahremanpour, Paul J. van Maaren and David van der Spoel
+
+See https://github.com/AlexandriaChemistry/ACT for details.
+
+The Alexandria Chemistry Toolkit (ACT) is free software under the GNU Public License v 2.
+Read more at https://www.gnu.org/licenses/gpl-2.0.html.
+
+Parts of ACT are under the GNU Lesser Public License 2.1 as indicated
+in the individual files.
+
+Verbosity level 2 (Warning or more serious messages are printed).
+# This file was created Mon May 12 18:58:06 2025
+
+Option: -compress (bool), Value: false
+  Help: Compress output XML file
+Option: -optimize (bool), Value: true
+  Help: Do parameter optimization when true, or a single calculation otherwise.
+Option: -sensitivity (bool), Value: true
+  Help: Do a sensitivity analysis.
+Option: -removemol (bool), Value: false
+  Help: Remove a molecule from training set if shell minimization does not
+        converge.
+Option: -mindata (int), Value: 1
+  Help: Minimum number of data points to optimize force field parameters
+Option: -qsymm (bool), Value: false
+  Help: Symmetrize the charges on symmetric groups, e.g. CH3, NH2. The list of
+        groups to symmetrize is specified in the force field file.
+Option: -zetadiff (real), Value: 0
+  Help: Difference between core and shell zeta to count as unphysical
+Option: -lb (bool), Value: true
+  Help: Try to divide the computational load evenly over helpers.
+Option: -fit (string), Value: charge zeta chi eta delta_chi delta_eta vs3sa vs1a vs2a vs2fd_a vs3a vs3b vs3c vs3fd_b vs3out_a vs3out_b vs3out_c vs3outs_a vs3outs_c 
+  Help: Quoted list of parameters to fit,  e.g. 'alpha zeta'.
+Option: -fc_bound (real), Value: 1000
+  Help: Force constant in the penalty function for going outside the borders
+        given with the fitting options (see below).
+Option: -fc_unphysical (real), Value: 100
+  Help: Force constant in the penalty function for unphysical combinations of
+        parameters. In particular this parameter penalized that shell
+        zeta is larger the core zeta.
+Option: -fc_epot (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the
+        potential energy of the compound from the reference.
+Option: -fc_inter (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of interaction
+        energies of multimers from the reference.
+Option: -fc_elec (real), Value: 1
+  Help: Force constant in the penalty function for the deviation of the
+        electrostatic component of the interaction energies of
+        multimers from the reference.
+Option: -fc_allelec (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the sum of
+        all energy components involving electrostatics, that is
+        Coulomb, Induction, InductionCorrection, of the sum of SAPT
+        energy terms Electrostatics and Induction for multimers from
+        the reference.
+Option: -fc_exchind (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the sum of
+        the exchange energy and the components involving induction,
+        that is Exchange, Induction and InductionCorrection, of the sum
+        of SAPT energy terms Electrostatics and Induction for multimers
+        from the reference.
+Option: -fc_disp (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the
+        dispersion component of the interaction energies of multimers
+        from the reference.
+Option: -fc_exch (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the
+        exchange component of the interaction energies of multimers
+        from the reference.
+Option: -fc_induc (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the
+        induction component of the interaction energies of multimers
+        from the reference.
+Option: -fc_deltahf (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the DeltaHF
+        term that is part of the SAPT induction energy from the
+        reference. If this option is not present, but the DeltaHF term
+        from SAPT is present in the data, this will be added to the
+        second order induction, which means force field parameters
+        related to induction will be trained on the total induction.
+Option: -fc_force (real), Value: 0
+  Help: Force constant in the penalty function for the magnitude of the squared
+        force on the atoms. For optimized structures the force on the
+        atoms should be zero.
+Option: -fc_freq (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the
+        vibrational frequencies from the reference.
+Option: -fc_inten (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the
+        infrared spectrum intensities from the reference.
+Option: -fc_mu (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the
+        magnitude of the dipole components from the reference.
+Option: -fc_quad (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the
+        magnitude of the quadrupole components from the reference.
+Option: -fc_oct (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the
+        magnitude of the octupole components from the reference.
+Option: -fc_hexadec (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the
+        magnitude of the hexedecapole components from the reference.
+Option: -fc_esp (real), Value: 0
+  Help: Force constant in the penalty function for the deviation of the
+        magnitude of the electrostatic potential from the reference.
+Option: -fc_charge (real), Value: 10000
+  Help: Force constant in the penalty function for 'unchemical' charges as
+        determined by the bounds set in the force field file. This is
+        applied to charges that are determined using the Alexandria
+        Charge Model only.
+Option: -fc_cm5 (real), Value: 0
+  Help: Force constant in the penalty function for deviation from CM5 charges.
+Option: -fc_polar (real), Value: 10
+  Help: Force constant in the penalty function for deviation of the six
+        independent components of the molecular polarizability tensor
+        from the reference.
+Option: -ener_boltz_temp (real), Value: 0
+  Help: Apply Boltzmann weighting of energies when using either the
+        [TT]-fc_epot[tt] or [TT]-fc_einter[tt] flags. The weight will
+        be determined from the difference in reference energy at the
+        given data point and in the minimum.
+Option: -maxpot (int), Value: 100
+  Help: Fraction of ESP points to use when training on it. Number given in
+        percent.
+Option: -watoms (real), Value: 0
+  Help: Weight for the potential on the atoms in training on ESP. Should be 0
+        in most cases, except possibly when using Slater distributions.
+Option: -qtype (string), Value: 
+  Help: Charge type to use
+Option: -max_iter (int), Value: 40
+  Help: Max number of iterations for MCMC optimization. Also applies for the
+        mutation step in the HYBRID optimization algoroithm.
+Option: -temp (real), Value: 0.01
+  Help: 'Temperature' for the Monte Carlo simulation.
+Option: -tweight (bool), Value: true
+  Help: Weight the temperature in the MC/MC algorithm according to the square
+        root of the number of data points. This is in order to get a
+        lower probability of accepting a step in the wrong direction
+        for parameters of which there are few copies.
+Option: -anneal (real), Value: 0.5
+  Help: Use annealing in Monte Carlo simulation, starting from this fraction of
+        the simulation. Value should be between 0 and 1.
+Option: -anneal_globally (bool), Value: false
+  Help: Whether annealing restart during each mutation round or is global over
+        GA generations
+Option: -seed (int), Value: 1747069086
+  Help: Random number seed. If zero, a seed will be generated.
+Option: -step (real), Value: 0.02
+  Help: Step size for the MCMC parameter optimization. Is used as fraction of
+        the available range per parameter which depends on the
+        parameter type.
+Option: -checkpoint (bool), Value: false
+  Help: Turn on regular checkpointing, i.e. write out intermediate force field
+        files. Expensive.
+Option: -mcmc_evaltest (bool), Value: false
+  Help: Evaluate the parameters on the test set during MCMC.
+Option: -shellTolerance (real), Value: 0.0001
+  Help: Tolerance (RMS force) for minimizing shell positions
+Option: -shellMaxIter (int), Value: 10
+  Help: Max number of iterations for minimizing shell positions
+Option: -ga_evaltest (bool), Value: false
+  Help: Evaluate the paramters on the test set during GA.
+Option: -optimizer (enum), Value: HYBRID
+  Help: Optimization method (see above).
+Option: -pop_size (int), Value: 128
+  Help: Population size for the GA and HYBRID algorithms (must be even)
+        alternatively number of parallel MCMC calculations that will be
+        performed (can be any integer number > 0 in this case).
+Option: -n_elites (int), Value: 0
+  Help: Amount of top individuals to be moved, unchanged, to the next
+        generation.
+Option: -random_init (bool), Value: true
+  Help: Initialize the individuals randomly, within the given bounds.
+Option: -n_crossovers (int), Value: 5
+  Help: Order of the crossover operator. That is, amount of crossover points.
+Option: -sort (bool), Value: true
+  Help: Whether we sort the genomes in the population based on their fitness.
+        Will be automatically enabled if needed.
+Option: -prob_computer (enum), Value: BOLTZMANN
+  Help: Probability computation algorithm, see also the two flags below.
+Option: -ga_boltz_temp (real), Value: 0.5
+  Help: Initial temperature for Boltzmann probability computing in the genetic
+        algorithm (applies to both the GA and HYBRID optimizers).
+Option: -ga_boltz_anneal (real), Value: 0.2
+  Help: Starting from this fraction of the total number of generations, the
+        Boltzmann temperature will be linearly lowered until it reaches
+        0 at the last generation.
+Option: -pr_cross (real), Value: 0.5
+  Help: Probability of a crossover event.
+Option: -pr_mut (real), Value: 0.05
+  Help: Probability of a mutation to happen in the GA algorithm.
+Option: -percent (real), Value: 0.1
+  Help: When GA optimizer is selected, -percent denotes the maximum allowed
+        change in a parameter as a fraction of its allowed range.
+Option: -max_generations (int), Value: 20
+  Help: Maximum number of generations before terminating the Genetic Algorithm.
+Option: -max_test_generations (int), Value: -1
+  Help: Generation limit for the test fitness to improve in Genetic Algorithm.
+        -1 stands for disabled, otherwise if the test fitness does not
+        improve within this number of generations, the optimization
+        will stop to prevent over-fitting.
+Option: -log_volume (bool), Value: false
+  Help: Compute the (hyper)volume in logarithmic scale.
+Option: -vfp_vol_frac_limit (real), Value: -1
+  Help: Limit [0, 1] of the population_volume/total_volume to trigger the
+        VolumeFractionPenalizer. -1 stands for disabled.
+Option: -vfp_pop_frac (real), Value: 0.8
+  Help: Fraction [0, 1] of the worst genomes to randomize when
+        VolumeFractionPenalizer is triggered.
+Option: -cp_gen_interval (int), Value: 5
+  Help: Interval (in number of generations) between triggering the
+        CatastrophePenalizer.
+Option: -cp_pop_frac (real), Value: 0.2
+  Help: Fraction [0, 1] of the genomes to randomize when the
+        CatastrophePenalizer is triggered.
+Option: -v (int), Value: 2
+  Help: Verbosity level: 0 (Fatal), 1 (Error), 2 (Warning), 3 (Info), 4
+        (Verbose), 5 (Debug)
+Option: -esp_toler (real), Value: 30
+  Help: Tolerance (kJ/mol e) for marking ESP as an outlier in the log file
+Option: -dip_toler (real), Value: 0.5
+  Help: Tolerance (Debye) for marking dipole as an outlier in the log file
+Option: -quad_toler (real), Value: 5
+  Help: Tolerance (Buckingham) for marking quadrupole as an outlier in the log
+        file
+Option: -oct_toler (real), Value: 5
+  Help: Tolerance (Buckingham) for marking octupole as an outlier in the log
+        file
+Option: -hex_toler (real), Value: 5
+  Help: Tolerance (Buckingham) for marking hexapole as an outlier in the log
+        file
+Option: -alpha_toler (real), Value: 3
+  Help: Tolerance (A^3) for marking diagonal elements of the polarizability
+        tensor as an outlier in the log file
+Option: -isopol_toler (real), Value: 2
+  Help: Tolerance (A^3) for marking isotropic polarizability as an outlier in
+        the log file
+Option: -use_offset (bool), Value: false
+  Help: Fit regression analysis of results to y = ax+b instead of y = ax
+Option: -printSP (bool), Value: true
+  Help: Print information from all single point calculations in detail
+Option: -calc_frequencies (bool), Value: false
+  Help: Perform energy minimization and compute vibrational frequencies for
+        each molecule (after optimizing the force field if -optimize is
+        enabled). If turned on, this option will also generate
+        thermochemistry values based on the force field.
+Option: -diatomics (bool), Value: false
+  Help: Analyse diatomic compounds by plotting the reference energy minus the
+        ACT Coulomb terms as a function of distance in one xvg file per
+        compound.
+Option: -dump_outliers (real), Value: -1
+  Help: Dump XYZ files for outliers with deviation larger than this number
+        times the standard deviation of the energy (DeltaE0) or
+        interaction energy. If this number is less than zero, nothing
+        will be dumped.
+
+Files used:
+Option: -ff, Description: Generic XML data file, Properties: set,R, Filename(s) pg-na.xml
+Option: -sel, Description: Generic data file, Properties: set,R, Filename(s) molselect
+Option: -conv, Description: xvgr/xmgr file, Properties: set,W, Filename(s) param_conv
+Option: -chi2, Description: xvgr/xmgr file, Properties: set,W, Filename(s) chi_squared
+Option: -fitness, Description: Generic data file, Properties: W, Filename(s) ga_fitness
+Option: -o, Description: Generic XML data file, Properties: set,W, Filename(s) train_ff
+Option: -gpout, Description: Comma-separated-values file, Properties: W, Filename(s) genepool
+Option: -mp, Description: Generic XML data file, Properties: set,R, Filename(s) allmols
+Option: -g, Description: Log file, Properties: set,W, Filename(s) train_ff
+
+Found 9 Train and 0 Test compounds in ../all.dat
+
+Turning off the evaluate of test set since it is empty.
+There are 69 atom types in the input file pg-na.xml.
+
+On proc 0, found 69 particle types
+Force field information
+-----------------------------------------------
+Filename:    pg-na.xml
+CheckSum:    1575c6f4534d63a41432e61bdd294335
+TimeStamp:   2025-04-04 20:21:37
+Polarizable: False
+Interactions:
+  BONDS function MORSE_BONDS #entries 31
+  ANGLES function HARMONIC_ANGLES #entries 45
+  LINEAR_ANGLES function LINEAR_ANGLES #entries 0
+  PROPER_DIHEDRALS function FOURIER_DIHEDRALS #entries 43
+  IMPROPER_DIHEDRALS function HARMONIC_DIHEDRALS #entries 11
+  VANDERWAALS function WANG_BUCKINGHAM #entries 2484
+    option nexcl value 2
+    parameter epsilon combination rule HogervorstEpsilon
+    parameter gamma combination rule MasonGamma
+    parameter sigma combination rule InverseSquare
+  VDWCORRECTION function EXPONENTIAL #entries 0
+    option nexcl value 2
+    parameter aexp combination rule Kronecker
+    parameter bexp combination rule Arithmetic
+  COULOMB function COULOMB_GAUSSIAN #entries 2484
+    option epsilonr value 1
+    option nexcl value 2
+  POLARIZATION function POLARIZATION #entries 0
+  INDUCTIONCORRECTION function DOUBLEEXPONENTIAL #entries 0
+    option nexcl value 2
+    parameter a1dexp combination rule Geometric
+    parameter a2dexp combination rule Geometric
+    parameter bdexp combination rule Arithmetic
+  VSITE1 function VSITE1 #entries 7
+  VSITE3S function VSITE3S #entries 1
+  BONDCORRECTIONS function  #entries 196
+  ELECTRONEGATIVITYEQUALIZATION function  #entries 65
+-----------------------------------------------
+Warning: Ignoring training parameter 'vs2a' not present in force field.
+Warning: Ignoring training parameter 'vs2fd_a' not present in force field.
+Warning: Ignoring training parameter 'vs3a' not present in force field.
+Warning: Ignoring training parameter 'vs3b' not present in force field.
+Warning: Ignoring training parameter 'vs3c' not present in force field.
+Warning: Ignoring training parameter 'vs3fd_b' not present in force field.
+Warning: Ignoring training parameter 'vs3out_a' not present in force field.
+Warning: Ignoring training parameter 'vs3out_b' not present in force field.
+Warning: Ignoring training parameter 'vs3out_c' not present in force field.
+Warning: Ignoring training parameter 'vs3outs_a' not present in force field.
+Warning: Ignoring training parameter 'vs3outs_c' not present in force field.
+Warning - Missing parameter in force field: VSITE1 v1F-
+Warning - Missing parameter in force field: EXPONENTIAL F-~Li+
+Warning - Missing parameter in force field: EXPONENTIAL Li+~v1F-
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL F-~Li+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Li+~v1F-
+Warning - Missing parameter in force field: VSITE1 v1F-
+Warning - Missing parameter in force field: VSITE1 v1Na+
+Warning - Missing parameter in force field: VSITE1 v1F-
+Warning - Missing parameter in force field: EXPONENTIAL F-~Na+
+Warning - Missing parameter in force field: EXPONENTIAL Na+~v1F-
+Warning - Missing parameter in force field: EXPONENTIAL F-~v1Na+
+Warning - Missing parameter in force field: EXPONENTIAL v1F-~v1Na+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL F-~Na+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Na+~v1F-
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL F-~v1Na+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL v1F-~v1Na+
+Warning - Missing parameter in force field: VSITE1 v1Na+
+Warning - Missing parameter in force field: VSITE1 v1F-
+Warning - Missing parameter in force field: VSITE1 v1K+
+Warning - Missing parameter in force field: VSITE1 v1F-
+Warning - Missing parameter in force field: EXPONENTIAL F-~K+
+Warning - Missing parameter in force field: EXPONENTIAL K+~v1F-
+Warning - Missing parameter in force field: EXPONENTIAL F-~v1K+
+Warning - Missing parameter in force field: EXPONENTIAL v1F-~v1K+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL F-~K+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL K+~v1F-
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL F-~v1K+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL v1F-~v1K+
+Warning - Missing parameter in force field: VSITE1 v1K+
+Warning - Missing parameter in force field: VSITE1 v1F-
+Warning - Missing parameter in force field: VSITE1 v1Cl-
+Warning - Missing parameter in force field: EXPONENTIAL Cl-~Li+
+Warning - Missing parameter in force field: EXPONENTIAL Li+~v1Cl-
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Cl-~Li+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Li+~v1Cl-
+Warning - Missing parameter in force field: VSITE1 v1Cl-
+Warning - Missing parameter in force field: VSITE1 v1Na+
+Warning - Missing parameter in force field: VSITE1 v1Cl-
+Warning - Missing parameter in force field: EXPONENTIAL Cl-~Na+
+Warning - Missing parameter in force field: EXPONENTIAL Na+~v1Cl-
+Warning - Missing parameter in force field: EXPONENTIAL Cl-~v1Na+
+Warning - Missing parameter in force field: EXPONENTIAL v1Cl-~v1Na+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Cl-~Na+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Na+~v1Cl-
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Cl-~v1Na+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL v1Cl-~v1Na+
+Warning - Missing parameter in force field: VSITE1 v1Na+
+Warning - Missing parameter in force field: VSITE1 v1Cl-
+Warning - Missing parameter in force field: VSITE1 v1K+
+Warning - Missing parameter in force field: VSITE1 v1Cl-
+Warning - Missing parameter in force field: EXPONENTIAL Cl-~K+
+Warning - Missing parameter in force field: EXPONENTIAL K+~v1Cl-
+Warning - Missing parameter in force field: EXPONENTIAL Cl-~v1K+
+Warning - Missing parameter in force field: EXPONENTIAL v1Cl-~v1K+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Cl-~K+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL K+~v1Cl-
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Cl-~v1K+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL v1Cl-~v1K+
+Warning - Missing parameter in force field: VSITE1 v1K+
+Warning - Missing parameter in force field: VSITE1 v1Cl-
+Warning - Missing parameter in force field: VSITE1 v1Br-
+Warning - Missing parameter in force field: EXPONENTIAL Br-~Li+
+Warning - Missing parameter in force field: EXPONENTIAL Li+~v1Br-
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Br-~Li+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Li+~v1Br-
+Warning - Missing parameter in force field: VSITE1 v1Br-
+Warning - Missing parameter in force field: VSITE1 v1Na+
+Warning - Missing parameter in force field: VSITE1 v1Br-
+Warning - Missing parameter in force field: EXPONENTIAL Br-~Na+
+Warning - Missing parameter in force field: EXPONENTIAL Na+~v1Br-
+Warning - Missing parameter in force field: EXPONENTIAL Br-~v1Na+
+Warning - Missing parameter in force field: EXPONENTIAL v1Br-~v1Na+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Br-~Na+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Na+~v1Br-
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Br-~v1Na+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL v1Br-~v1Na+
+Warning - Missing parameter in force field: VSITE1 v1Na+
+Warning - Missing parameter in force field: VSITE1 v1Br-
+Warning - Missing parameter in force field: VSITE1 v1K+
+Warning - Missing parameter in force field: VSITE1 v1Br-
+Warning - Missing parameter in force field: EXPONENTIAL Br-~K+
+Warning - Missing parameter in force field: EXPONENTIAL K+~v1Br-
+Warning - Missing parameter in force field: EXPONENTIAL Br-~v1K+
+Warning - Missing parameter in force field: EXPONENTIAL v1Br-~v1K+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Br-~K+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL K+~v1Br-
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL Br-~v1K+
+Warning - Missing parameter in force field: DOUBLEEXPONENTIAL v1Br-~v1K+
+Warning - Missing parameter in force field: VSITE1 v1K+
+Warning - Missing parameter in force field: VSITE1 v1Br-
+There are 9 molecules left to optimize the parameters for.
+There are 10 parameters to train.
+Identifier             Parameter     Minimum     Maximum     Initial
+v1Br-_z                     zeta           6         100          23
+v1Cl-_z                     zeta           6         100          23
+v1F-_z                      zeta           6         100          23
+v1K+_z                      zeta           6         100          23
+v1Na+_z                     zeta           6         100          23
+v1Br-                charge         -10          -1
+v1Cl-                charge         -10          -1
+v1F-                 charge         -10          -1
+v1K+                 charge         -10          -1
+v1Na+                charge         -10          -1
+
+Total (hyper)volume of the parameter space is 4.33363e+14.
+Appending a CatastrophePenalizer to the list of penalizers...
+Appending a GenerationTerminator to the list of terminators...
+Done initializing master node
+
+Maximum number of fitness computations to be done for 20 generations:
+  - Train: 1027201
+  - Test: 2
+  - Ignore: 1
+Consider that in GA and HYBRID each penalty conveys an extra fitness computation per genome for the training set. The count above includes the Catastrophe penalizer but we cannot predict when the VolumePenalizer will kick in...
+
+
+Starting GA/HYBRID evolution
+Initializing individuals and computing initial fitness...
+MASTER's initial parameter vector chi2 components:
+Components of training function for Train set
+Electrostatics     556415.331  TW:        541  fc:          1  weighted:    1028.49  Train
+TOT                  1028.494  TW:          1  fc:          1  weighted:    1028.49  Train
+Starting 20 generations of force field training.
+
+Generation 1/20. Time: Mon May 12 18:58:14 2025, expect to finish at Mon May 12 18:59:11 2025. New best individual for train.
+Genome: [  10.4389  18.0682  39.1948  8.57291  13.2533  -1.8674 -6.33191  -8.5458 -5.42105 -6.65757 ]; fitness_[Train]:  186.132; probability_: 0.00781406
+
+Generation 2/20. Time: Mon May 12 18:58:21 2025, expect to finish at Mon May 12 18:59:33 2025. New best individual for train.
+Genome: [  8.29791  9.62693  14.2104  16.0434  19.6341 -3.98018 -5.19417 -7.20412 -8.57837 -3.05626 ]; fitness_[Train]:  40.3367; probability_: 0.0078038
+
+Generation 3/20. Time: Mon May 12 18:58:29 2025, expect to finish at Mon May 12 18:59:54 2025. New best individual for train.
+Genome: [  8.34478  9.58288  14.2104  16.0434  19.6786  -3.9366 -4.93829 -6.80719 -8.99082 -3.19497 ]; fitness_[Train]:  38.2752; probability_: 0.00817536
+
+Generation 4/20. Time: Mon May 12 18:58:36 2025, expect to finish at Mon May 12 18:59:56 2025. New best individual for train.
+Genome: [  8.34478  9.48208  13.9828  15.7502  19.6383  -3.9064 -4.54602  -6.1117 -8.90379 -3.26248 ]; fitness_[Train]:  32.8785; probability_: 0.00819064
+
+Generation 5/20. Time: Mon May 12 18:58:44 2025, expect to finish at Mon May 12 19:00:14 2025. New best individual for train.
+Genome: [   9.9739   10.226  13.3735  10.2532  23.0496  -9.3847  -6.7078 -4.79486 -2.24935 -4.41421 ]; fitness_[Train]:  20.8027; probability_: 0.00781283
+
+Generation 5: Forest fires wiped out 20 percent of the population.
+Seedlings will replace them.
+Components of training function for Train set
+Electrostatics      11254.275  TW:        541  fc:          1  weighted:    20.8027  Train
+TOT                    20.803  TW:          1  fc:          1  weighted:    20.8027  Train
+
+Generation 6/20. Time: Mon May 12 18:58:51 2025, expect to finish at Mon May 12 19:00:15 2025. New best individual for train.
+Genome: [  8.83813   9.7579  12.5193   10.034  27.8194 -4.94413 -5.27787  -3.3907 -2.48264 -7.47336 ]; fitness_[Train]:  15.7084; probability_: 0.00775728
+
+Generation 7/20. Time: Mon May 12 18:58:59 2025, expect to finish at Mon May 12 19:00:17 2025. New best individual for train.
+Genome: [   8.8019   9.7579  12.6373   10.034  27.5695  -4.8043 -5.12811 -3.51544 -2.51149 -7.45272 ]; fitness_[Train]:  15.0834; probability_: 0.00896477
+
+Generation 8/20. Time: Mon May 12 18:59:06 2025, expect to finish at Mon May 12 19:00:18 2025. New best individual for train.
+Genome: [  8.57317  9.67453  13.2871   12.099  17.3182 -4.33747 -5.08114 -4.24021 -4.18763 -2.36132 ]; fitness_[Train]:   12.377; probability_: 0.00912816
+
+Generation 9/20. Time: Mon May 12 18:59:14 2025, expect to finish at Mon May 12 19:00:20 2025. New best individual for train.
+Genome: [  8.57836  9.67453  13.0238  12.0665  17.3451 -4.37516 -4.94609 -3.82791 -4.26424 -2.39357 ]; fitness_[Train]:  10.9844; probability_: 0.00963559
+
+Generation 10/20. Time: Mon May 12 18:59:21 2025, expect to finish at Mon May 12 19:00:21 2025. New best individual for train.
+Genome: [  8.57836   9.6136  12.8631  12.0665  17.1985 -4.34538  -4.6961 -3.68078 -4.35633 -2.36853 ]; fitness_[Train]:   10.138; probability_: 0.0100153
+
+Generation 10: Earth was hit by a strong burst of gamma radiation wiping out 20 percent
+of the population. New mutants will take over.
+Components of training function for Train set
+Electrostatics       5484.650  TW:        541  fc:          1  weighted:     10.138  Train
+TOT                    10.138  TW:          1  fc:          1  weighted:     10.138  Train
+
+Generation 11/20. Time: Mon May 12 18:59:29 2025, expect to finish at Mon May 12 19:00:23 2025. New best individual for train.
+Genome: [  8.57836   9.6136  12.8631  12.0665  17.1985 -4.28714 -4.64941 -3.57017 -4.44387 -2.41552 ]; fitness_[Train]:  9.91564; probability_: 0.0104992
+
+Generation 13/20. Time: Mon May 12 18:59:44 2025, expect to finish at Mon May 12 19:00:26 2025. New best individual for train.
+Genome: [  7.83275  9.17535  11.9772  14.4572  21.0011 -2.60279 -3.34054 -2.51845 -8.81957 -4.75329 ]; fitness_[Train]:  9.59615; probability_: 0.0109674
+
+Generation 15: Strict reproduction laws in patriarchic countries lead to an inbreeding depression.
+To address the reduced fitness of the population 20% will be replaced.
+Components of training function for Train set
+Electrostatics       5209.408  TW:        541  fc:          1  weighted:    9.62922  Train
+TOT                     9.629  TW:          1  fc:          1  weighted:    9.62922  Train
+
+Generation 16/20. Time: Mon May 12 19:00:07 2025, expect to finish at Mon May 12 19:00:35 2025. New best individual for train.
+Genome: [  7.77917  9.19852  11.8825  14.4115  20.2223 -2.52246 -3.31656 -2.40429 -8.88822 -4.42505 ]; fitness_[Train]:  9.44593; probability_: 0.0141336
+
+Generation 17/20. Time: Mon May 12 19:00:15 2025, expect to finish at Mon May 12 19:00:36 2025. New best individual for train.
+Genome: [  7.76511  9.13477  11.8909  14.3858  20.1506 -2.48213 -3.21298 -2.38869 -8.88104 -4.40748 ]; fitness_[Train]:   8.9935; probability_: 0.0161745
+
+Generation 18/20. Time: Mon May 12 19:00:22 2025, expect to finish at Mon May 12 19:00:36 2025. New best individual for train.
+Genome: [  7.76511  9.04972  11.8909  14.3235  20.2474 -2.48147 -3.10841 -2.36846 -8.86638   -4.487 ]; fitness_[Train]:  8.35289; probability_: 0.0206017
+
+Generation 19/20. Time: Mon May 12 19:00:30 2025, expect to finish at Mon May 12 19:00:37 2025. New best individual for train.
+Genome: [  7.76511  8.92795   11.842  14.2473  20.3386 -2.47648 -2.94581 -2.33393 -8.73223 -4.55453 ]; fitness_[Train]:  7.70992; probability_: 0.0374721
+
+Generation 20/20. Time: Mon May 12 19:00:38 2025, expect to finish at Mon May 12 19:00:38 2025. New best individual for train.
+Genome: [  7.80382  8.87883  11.7866  14.1548  20.4367   -2.488 -2.84001 -2.24604 -8.80622 -4.70319 ]; fitness_[Train]:  7.09965; probability_:     -nan
+GenerationTerminator: evolution will be terminated as the maximum number of generations (20) has been reached.
+GA/HYBRID Evolution is done!
+Best (Train): .
+Genome: [  7.80382  8.87883  11.7866  14.1548  20.4367   -2.488 -2.84001 -2.24604 -8.80622 -4.70319 ]; fitness_[Train]:  7.09965; probability_:     -nan
+
+Here are the best parameters I found, together with some summary statistics of the last population:
+-----------------------------------------------------------------------------------------------------------------------------
+| CLASS     | NAME    | BEST (Train)   | MIN            | MAX            | MEAN           | STDEV          | MEDIAN         |
+-----------------------------------------------------------------------------------------------------------------------------
+| charge    | v1Br-   | -2.488         | -2.5642        | -2.41922       | -2.4792        | 0.0280652      | -2.47885       |
+-----------------------------------------------------------------------------------------------------------------------------
+| charge    | v1Cl-   | -2.84001       | -3.08825       | -2.81013       | -2.97234       | 0.0602163      | -2.95713       |
+-----------------------------------------------------------------------------------------------------------------------------
+| charge    | v1F-    | -2.24604       | -2.35831       | -2.22371       | -2.30751       | 0.0267962      | -2.30779       |
+-----------------------------------------------------------------------------------------------------------------------------
+| charge    | v1K+    | -8.80622       | -9.00534       | -8.67155       | -8.88256       | 0.0858965      | -8.87868       |
+-----------------------------------------------------------------------------------------------------------------------------
+| charge    | v1Na+   | -4.70319       | -4.73247       | -4.35687       | -4.53978       | 0.0928529      | -4.52688       |
+-----------------------------------------------------------------------------------------------------------------------------
+| zeta      | v1Br-_z | 7.80382        | 7.76022        | 7.84558        | 7.78405        | 0.0184709      | 7.78925        |
+-----------------------------------------------------------------------------------------------------------------------------
+| zeta      | v1Cl-_z | 8.87883        | 8.78443        | 9.02783        | 8.95309        | 0.0505093      | 8.92795        |
+-----------------------------------------------------------------------------------------------------------------------------
+| zeta      | v1F-_z  | 11.7866        | 11.728         | 11.8743        | 11.8381        | 0.0355437      | 11.842         |
+-----------------------------------------------------------------------------------------------------------------------------
+| zeta      | v1K+_z  | 14.1548        | 14.112         | 14.3537        | 14.2689        | 0.0617189      | 14.2473        |
+-----------------------------------------------------------------------------------------------------------------------------
+| zeta      | v1Na+_z | 20.4367        | 19.9394        | 20.621         | 20.2297        | 0.156072       | 20.2311        |
+-----------------------------------------------------------------------------------------------------------------------------
+
+Starting sensitivity analysis. chi2_0 = 7.09965 nParam = 10
+Sensitivity v1Br-_z-zeta Fit to parabola: a     58.021 b   -912.278 c     3592.9
+    p[0] 7.33382 chi2[0] 23.0691
+    p[1] 7.80382 chi2[1] 7.09965
+    p[2] 8.27382 chi2[2] 16.7638
+    pmin 7.86162 chi2min 6.90578 (estimate based on parabola)
+Sensitivity v1Cl-_z-zeta Fit to parabola: a    58.8398 b   -1045.09 c    4647.73
+    p[0] 8.40883 chi2[0] 20.2072
+    p[1] 8.87883 chi2[1] 7.09965
+    p[2] 9.34883 chi2[2] 19.9876
+    pmin 8.88081 chi2min 7.09942 (estimate based on parabola)
+Sensitivity v1F-_z-zeta Fit to parabola: a     40.772 b   -962.399 c     5686.3
+    p[0] 11.3166 chi2[0] 16.7026
+    p[1] 11.7866 chi2[1] 7.09965
+    p[2] 12.2566 chi2[2] 15.5098
+    pmin 11.8022 chi2min 7.08978 (estimate based on parabola)
+Sensitivity v1K+_z-zeta Fit to parabola: a    31.0767 b   -879.629 c     6231.6
+    p[0] 13.6848 chi2[0] 13.9001
+    p[1] 14.1548 chi2[1] 7.09965
+    p[2] 14.6248 chi2[2] 14.0289
+    pmin 14.1526 chi2min 7.0995 (estimate based on parabola)
+Sensitivity v1Na+_z-zeta Fit to parabola: a    1.77539 b   -72.6239 c    749.788
+    p[0] 19.9667 chi2[0] 7.51904
+    p[1] 20.4367 chi2[1] 7.09965
+    p[2] 20.9067 chi2[2] 7.46463
+    pmin 20.453 chi2min 7.09918 (estimate based on parabola)
+Sensitivity v1Br--charge Fit to parabola: a    32.1657 b    159.744 c    205.431
+    p[0] -2.533 chi2[0] 7.17887
+    p[1] -2.488 chi2[1] 7.09965
+    p[2] -2.443 chi2[2] 7.15071
+    pmin -2.48314 chi2min 7.09889 (estimate based on parabola)
+Sensitivity v1Cl--charge Fit to parabola: a    51.3277 b    293.491 c    426.624
+    p[0] -2.88501 chi2[0] 7.11593
+    p[1] -2.84001 chi2[1] 7.09965
+    p[2] -2.79501 chi2[2] 7.29125
+    pmin -2.85899 chi2min 7.08117 (estimate based on parabola)
+Sensitivity v1F--charge Fit to parabola: a    79.9475 b    357.695 c    407.186
+    p[0] -2.29104 chi2[0] 7.32617
+    p[1] -2.24604 chi2[1] 7.09965
+    p[2] -2.20104 chi2[2] 7.19692
+    pmin -2.23706 chi2min 7.0932 (estimate based on parabola)
+Sensitivity v1K+-charge Fit to parabola: a    10.4451 b    184.497 c    821.807
+    p[0] -8.85122 chi2[0] 7.09682
+    p[1] -8.80622 chi2[1] 7.09965
+    p[2] -8.76122 chi2[2] 7.14479
+    pmin -8.83174 chi2min 7.09285 (estimate based on parabola)
+Sensitivity v1Na+-charge Fit to parabola: a    5.82223 b    54.8692 c    136.372
+    p[0] -4.74819 chi2[0] 7.10681
+    p[1] -4.70319 chi2[1] 7.09965
+    p[2] -4.65819 chi2[2] 7.11608
+    pmin -4.71204 chi2min 7.0992 (estimate based on parabola)
+Sensitivity analysis done.Final best genome.
+Genome: [  7.80382  8.87883  11.7866  14.1548  20.4367   -2.488 -2.84001 -2.24604 -8.80622 -4.70319 ]; fitness_[Train]:  7.09965; probability_:     -nan
+
+Chi2 components of the best parameter vector found (for Train):
+Components of training function for Train set
+Electrostatics       3840.912  TW:        541  fc:          1  weighted:    7.09965  Train
+TOT                     7.100  TW:          1  fc:          1  weighted:    7.09965  Train
+Minimum chi2 for Train 7.09965
+Will save best force field to Train-tune.xml
+
+Molecule 1: Name: lithium#fluoride, Qtot: 0, Multiplicity: 1, MolWt: 25.9394 SymmetryNumber: 1 Dataset: Train
+Electrostatic properties.
+Atom   Type            ACM        x        y   z(pm)          fx         fy fz(kJ/mol nm)     qtot
+3   1  Li+               1    0.000    0.000  -92.018      0.000      0.000 -125393.257           1
+9   2  F-          1.24604    0.000    0.000   33.982      0.000      0.000 140021.213     2.24604
+0   3  v1F-       -2.24604    0.000    0.000   33.982      0.000      0.000 -14627.956           0
+           EPOT             COULOMB           INDUCTION     INDUCTIONCORRECTION          DISPERSION            EXCHANGE             EXCHIND             ALLELEC     
+        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT
+   -757.17    -65.84   -859.17   -867.31   -101.94      0.00      0.00      0.00     -6.76     -3.10    199.33    804.56     97.39    804.56   -961.12   -867.31 0009
+   -756.82    -35.26   -864.03   -871.98   -103.81      0.00      0.00      0.00     -6.99     -3.10    206.34    839.83    102.53    839.83   -967.84   -871.98 0300
+   -755.75   -242.41   -826.45   -835.25    -90.34      0.00      0.00      0.00     -5.37     -3.08    156.92    595.92     66.59    595.92   -916.78   -835.25 0205
+   -755.60     30.47   -873.88   -881.39   -107.70      0.00      0.00      0.00     -7.48     -3.11    221.17    914.96    113.47    914.96   -981.58   -881.39 0008
+   -753.67    102.86   -883.93   -890.88   -111.83      0.00      0.00      0.00     -8.01     -3.11    237.15    996.85    125.32    996.85   -995.76   -890.88 0204
+   -752.41    141.72   -889.02   -895.64   -113.99      0.00      0.00      0.00     -8.30     -3.11    245.61   1040.47    131.62   1040.47  -1003.02   -895.64 0007
+   -747.34    270.02   -904.61   -910.02   -120.89      0.00      0.00      0.00     -9.22     -3.12    273.02   1183.16    152.13   1183.16  -1025.50   -910.02 0006
+   -741.76   -430.57   -775.12   -783.47    -75.07      0.00      0.00      0.00     -3.69     -3.04    105.19    355.94     30.12    355.94   -850.19   -783.47 0206
+   -740.09    417.76   -920.65   -924.50   -128.45      0.00      0.00      0.00    -10.26     -3.12    303.77   1345.38    175.32   1345.38  -1049.11   -924.50 0005
+   -730.31    587.65   -937.18   -939.01   -136.75      0.00      0.00      0.00    -11.45     -3.13    338.33   1529.78    201.58   1529.78  -1073.93   -939.01 0004
+   -717.60    782.80   -954.21   -953.50   -145.88      0.00      0.00      0.00    -12.81     -3.13    377.21   1739.43    231.34   1739.43  -1100.08   -953.50 0003
+   -715.12   -536.92   -721.97   -728.71    -62.39      0.00      0.00      0.00     -2.44     -2.98     66.91    194.77      4.51    194.77   -784.36   -728.71 0207
+   -712.63    854.04   -959.99   -958.32   -149.12      0.00      0.00      0.00    -13.31     -3.13    391.24   1815.48    242.12   1815.48  -1109.11   -958.32 0203
+   -701.50   1006.72   -971.74   -967.91   -155.92      0.00      0.00      0.00    -14.37     -3.13    421.01   1977.76    265.09   1977.76  -1127.66   -967.91 0002
+   -688.23   -573.59   -681.42   -686.63    -54.41      0.00      0.00      0.00     -1.74     -2.91     45.88    115.94     -8.53    115.94   -735.83   -686.63 0208
+   -681.46   1263.42   -989.81   -982.16   -166.97      0.00      0.00      0.00    -16.14     -3.14    470.40   2248.71    303.43   2248.71  -1156.79   -982.16 0001
+   -656.88   1557.46  -1008.44   -996.15   -179.18      0.00      0.00      0.00    -18.19     -3.14    526.19   2556.75    347.01   2556.75  -1187.62   -996.15 0000
+   -655.38   -582.47   -639.11   -642.76    -47.28      0.00      0.00      0.00     -1.19     -2.80     29.85     63.10    -17.43     63.10   -686.40   -642.76 0209
+   -627.38   -574.53   -606.56   -609.17    -42.41      0.00      0.00      0.00     -0.87     -2.69     20.80     37.32    -21.61     37.32   -648.98   -609.17 0210
+   -615.78   2016.64  -1034.13  -1014.23   -197.45      0.00      0.00      0.00    -21.42     -3.14    612.08   3034.02    414.62   3034.02  -1231.58  -1014.23 0202
+   -595.79   -556.45   -572.32   -574.04    -37.69      0.00      0.00      0.00     -0.61     -2.53     13.75     20.12    -23.95     20.12   -610.01   -574.04 0211
+   -570.02   -537.55   -545.77   -546.96    -34.21      0.00      0.00      0.00     -0.46     -2.38      9.69     11.79    -24.52     11.79   -579.98   -546.96 0212
+   -541.66   -514.32   -517.65   -518.41    -30.60      0.00      0.00      0.00     -0.33     -2.19      6.48      6.27    -24.12      6.27   -548.24   -518.41 0213
+   -518.88   -494.58   -495.68   -496.19    -27.80      0.00      0.00      0.00     -0.25     -2.02      4.61      3.63    -23.20      3.63   -523.48   -496.19 0214
+   -497.48   -475.56   -475.46   -475.80    -25.23      0.00      0.00      0.00     -0.20     -1.84      3.29      2.08    -21.94      2.08   -500.69   -475.80 0215
+   -474.20   -454.59   -453.82   -454.04    -22.46      0.00      0.00      0.00     -0.15     -1.64      2.23      1.08    -20.23      1.08   -476.28   -454.04 0216
+   -455.63   -437.76   -436.76   -436.90    -20.29      0.00      0.00      0.00     -0.11     -1.47      1.61      0.61    -18.68      0.61   -457.05   -436.90 0217
+   -435.47   -419.45   -418.38   -418.48    -17.96      0.00      0.00      0.00     -0.09     -1.28      1.10      0.32    -16.86      0.32   -436.34   -418.48 0218
+   -419.39   -404.84   -403.81   -403.88    -16.14      0.00      0.00      0.00     -0.07     -1.14      0.80      0.18    -15.34      0.18   -419.94   -403.88 0219
+   -401.94   -388.98   -388.03   -388.09    -14.20      0.00      0.00      0.00     -0.05     -0.98      0.55      0.09    -13.65      0.09   -402.22   -388.09 0220
+   -388.01   -376.31   -375.45   -375.50    -12.69      0.00      0.00      0.00     -0.04     -0.86      0.40      0.05    -12.29      0.05   -388.14   -375.50 0221
+   -374.96   -364.43   -363.66   -363.71    -11.32      0.00      0.00      0.00     -0.03     -0.75      0.29      0.03    -11.03      0.03   -374.98   -363.71 0222
+   -360.76   -351.48   -350.80   -350.85     -9.89      0.00      0.00      0.00     -0.03     -0.64      0.20      0.01     -9.69      0.01   -360.69   -350.85 0223
+   -349.40   -341.08   -340.48   -340.53     -8.79      0.00      0.00      0.00     -0.02     -0.56      0.14      0.01     -8.64      0.01   -349.27   -340.53 0224
+   -337.01   -329.70   -329.19   -329.23     -7.65      0.00      0.00      0.00     -0.02     -0.48      0.10      0.00     -7.55      0.00   -336.83   -329.23 0225
+   -327.06   -320.54   -320.08   -320.13     -6.78      0.00      0.00      0.00     -0.01     -0.42      0.07      0.00     -6.71      0.00   -326.86   -320.13 0226
+   -316.18   -310.48   -310.08   -310.12     -5.89      0.00      0.00      0.00     -0.01     -0.35      0.05      0.00     -5.84      0.00   -315.97   -310.12 0227
+   -307.43   -302.34   -302.00   -302.03     -5.21      0.00      0.00      0.00     -0.01     -0.31      0.04      0.00     -5.18      0.00   -307.21   -302.03 0228
+   -297.82   -293.38   -293.08   -293.11     -4.52      0.00      0.00      0.00     -0.01     -0.26      0.02      0.00     -4.50      0.00   -297.61   -293.11 0229
+   -290.07   -286.10   -285.85   -285.88     -4.00      0.00      0.00      0.00     -0.01     -0.23      0.02      0.00     -3.99      0.00   -289.85   -285.88 0230
+   -282.73   -279.19   -278.97   -278.99     -3.55      0.00      0.00      0.00     -0.00     -0.20      0.01      0.00     -3.53      0.00   -282.51   -278.99 0231
+   -274.63   -271.53   -271.34   -271.36     -3.08      0.00      0.00      0.00     -0.00     -0.17      0.01      0.00     -3.07      0.00   -274.42   -271.36 0232
+   -268.07   -265.30   -265.13   -265.14     -2.73      0.00      0.00      0.00     -0.00     -0.15      0.01      0.00     -2.73      0.00   -267.87   -265.14 0233
+   -260.81   -258.37   -258.24   -258.24     -2.38      0.00      0.00      0.00     -0.00     -0.13      0.00      0.00     -2.38      0.00   -260.62   -258.24 0234
+   -254.91   -252.72   -252.61   -252.61     -2.12      0.00      0.00      0.00     -0.00     -0.12      0.00      0.00     -2.11      0.00   -254.73   -252.61 0235
+   -248.36   -246.44   -246.34   -246.34     -1.85      0.00      0.00      0.00     -0.00     -0.10      0.00      0.00     -1.85      0.00   -248.19   -246.34 0236
+   -243.02   -241.30   -241.21   -241.21     -1.65      0.00      0.00      0.00     -0.00     -0.09      0.00      0.00     -1.65      0.00   -242.86   -241.21 0237
+   -237.92   -236.36   -236.29   -236.28     -1.48      0.00      0.00      0.00     -0.00     -0.08      0.00      0.00     -1.47      0.00   -237.77   -236.28 0238
+   -232.24   -230.86   -230.80   -230.79     -1.30      0.00      0.00      0.00     -0.00     -0.07      0.00      0.00     -1.30      0.00   -232.10   -230.79 0239
+   -227.59   -226.34   -226.29   -226.28     -1.16      0.00      0.00      0.00     -0.00     -0.06      0.00      0.00     -1.16      0.00   -227.46   -226.28 0240
+   -222.40   -221.29   -221.25   -221.23     -1.03      0.00      0.00      0.00     -0.00     -0.05      0.00      0.00     -1.03      0.00   -222.28   -221.23 0241
+   -218.14   -217.13   -217.10   -217.09     -0.93      0.00      0.00      0.00     -0.00     -0.05      0.00      0.00     -0.92      0.00   -218.03   -217.09 0242
+   -213.38   -212.48   -212.46   -212.44     -0.82      0.00      0.00      0.00     -0.00     -0.04      0.00      0.00     -0.82      0.00   -213.28   -212.44 0243
+   -209.47   -208.65   -208.63   -208.61     -0.74      0.00      0.00      0.00     -0.00     -0.04      0.00      0.00     -0.74      0.00   -209.37   -208.61 0244
+   -205.09   -204.35   -204.34   -204.32     -0.66      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -0.66      0.00   -205.00   -204.32 0245
+   -201.48   -200.80   -200.79   -200.77     -0.60      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -0.60      0.00   -201.40   -200.77 0246
+   -198.00   -197.38   -197.37   -197.35     -0.55      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -0.55      0.00   -197.92   -197.35 0247
+   -194.08   -193.53   -193.52   -193.50     -0.49      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.49      0.00   -194.02   -193.50 0248
+   -190.85   -190.34   -190.34   -190.32     -0.45      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.45      0.00   -190.79   -190.32 0249
+   -187.22   -186.76   -186.76   -186.74     -0.41      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.41      0.00   -187.17   -186.74 0250
+   -184.22   -183.79   -183.80   -183.78     -0.37      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.37      0.00   -184.17   -183.78 0251
+   -180.84   -180.45   -180.45   -180.44     -0.34      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.34      0.00   -180.79   -180.44 0252
+   -178.04   -177.68   -177.68   -177.67     -0.31      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.31      0.00   -178.00   -177.67 0253
+   -175.32   -174.99   -175.00   -174.98     -0.29      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.29      0.00   -175.29   -174.98 0254
+   -172.26   -171.96   -171.96   -171.95     -0.26      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.26      0.00   -172.23   -171.95 0255
+   -169.72   -169.44   -169.45   -169.43     -0.25      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.25      0.00   -169.69   -169.43 0256
+   -166.85   -166.60   -166.60   -166.59     -0.23      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.23      0.00   -166.83   -166.59 0257
+   -164.47   -164.24   -164.24   -164.23     -0.21      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.21      0.00   -164.45   -164.23 0258
+   -161.78   -161.56   -161.56   -161.55     -0.20      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.20      0.00   -161.76   -161.55 0259
+   -159.54   -159.34   -159.34   -159.33     -0.18      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.18      0.00   -159.52   -159.33 0260
+   -157.01   -156.82   -156.82   -156.81     -0.17      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.17      0.00   -156.99   -156.81 0261
+   -154.90   -154.72   -154.72   -154.72     -0.16      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.16      0.00   -154.88   -154.72 0262
+   -152.85   -152.68   -152.68   -152.68     -0.15      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.15      0.00   -152.83   -152.68 0263
+   -150.53   -150.37   -150.37   -150.36     -0.14      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.14      0.00   -150.51   -150.36 0264
+   -148.59   -148.44   -148.44   -148.44     -0.13      0.00      0.00      0.00     -0.00     -0.00      0.00      0.00     -0.13      0.00   -148.57   -148.44 0265
+   -146.39   -146.25   -146.25   -146.25     -0.12      0.00      0.00      0.00     -0.00     -0.00      0.00      0.00     -0.12      0.00   -146.38   -146.25 0266
+   -144.56   -144.43   -144.43   -144.42     -0.12      0.00      0.00      0.00     -0.00     -0.00      0.00      0.00     -0.12      0.00   -144.55   -144.42 0267
+   -142.48   -142.36   -142.36   -142.35     -0.11      0.00      0.00      0.00     -0.00     -0.00      0.00      0.00     -0.11      0.00   -142.47   -142.35 0268
+   -140.74   -140.63   -140.63   -140.62     -0.11      0.00      0.00      0.00     -0.00     -0.00      0.00      0.00     -0.11      0.00   -140.73   -140.62 0269
+           COULOMB RMSD     3.89 MSE    -0.54 MAE     1.72 (kJ/mol) R 100.0% #points =    79 lithium#fluoride
+
+
+Molecule 2: Name: sodium#fluoride, Qtot: 0, Multiplicity: 1, MolWt: 41.9882 SymmetryNumber: 1 Dataset: Train
+Electrostatic properties.
+Atom   Type            ACM        x        y   z(pm)          fx         fy fz(kJ/mol nm)     qtot
+11  1  Na+         5.70319    0.000    0.000  -84.159      0.000      0.000  11794.223     5.70319
+0   2  v1Na+      -4.70319    0.000    0.000  -84.159      0.000      0.000 -16300.644           1
+9   3  F-          1.24604    0.000    0.000  101.841      0.000      0.000  14973.250     2.24604
+0   4  v1F-       -2.24604    0.000    0.000  101.841      0.000      0.000 -10466.829           0
+           EPOT             COULOMB           INDUCTION     INDUCTIONCORRECTION          DISPERSION            EXCHANGE             EXCHIND             ALLELEC     
+        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT
+   -625.50   -581.82   -739.62   -738.61    -38.15      0.00      0.00      0.00     -3.74    -11.25    155.79    168.03    117.64    168.03   -777.77   -738.61 0005
+   -625.18   -589.93   -717.25   -715.51    -36.54      0.00      0.00      0.00     -3.30    -11.00    131.92    136.58     95.39    136.58   -753.79   -715.51 0006
+   -624.45   -591.96   -708.78   -706.80    -35.93      0.00      0.00      0.00     -3.14    -10.90    123.50    125.74     87.57    125.74   -744.71   -706.80 0206
+   -623.20   -568.40   -763.90   -763.77    -39.90      0.00      0.00      0.00     -4.24    -11.48    184.31    206.85    144.41    206.85   -803.80   -763.77 0004
+   -622.79   -593.89   -696.54   -694.26    -35.05      0.00      0.00      0.00     -2.92    -10.73    111.91    111.10     76.86    111.10   -731.59   -694.26 0007
+   -619.01   -552.84   -784.91   -785.57    -41.38      0.00      0.00      0.00     -4.69    -11.65    211.14    244.38    169.76    244.38   -826.29   -785.57 0205
+   -618.79   -594.63   -677.28   -674.62    -33.68      0.00      0.00      0.00     -2.59    -10.45     95.08     90.45     61.40     90.45   -710.96   -674.62 0008
+   -617.58   -548.17   -790.40   -791.28    -41.77      0.00      0.00      0.00     -4.82    -11.69    218.48    254.80    176.72    254.80   -832.17   -791.28 0003
+   -613.54   -592.88   -659.29   -656.42    -32.44      0.00      0.00      0.00     -2.31    -10.15     80.91     73.69     48.48     73.69   -691.73   -656.42 0009
+   -612.37   -592.29   -655.84   -652.94    -32.20      0.00      0.00      0.00     -2.26    -10.09     78.36     70.74     46.16     70.74   -688.03   -652.94 0207
+   -607.76   -519.26   -819.51   -821.41    -43.74      0.00      0.00      0.00     -5.45    -11.88    259.54    314.03    215.80    314.03   -863.26   -821.41 0002
+   -592.86   -577.90   -611.69   -608.81    -29.26      0.00      0.00      0.00     -1.67     -9.18     50.31     40.09     21.05     40.09   -640.94   -608.81 0208
+   -592.69   -479.31   -851.71   -854.49    -45.82      0.00      0.00      0.00     -6.20    -12.05    309.00    387.22    263.18    387.22   -897.53   -854.49 0001
+   -571.00   -425.33   -887.57   -890.82    -47.96      0.00      0.00      0.00     -7.04    -12.20    368.75    477.69    320.79    477.69   -935.52   -890.82 0000
+   -570.05   -556.90   -574.05   -571.62    -26.82      0.00      0.00      0.00     -1.27     -8.21     32.66     22.93      5.84     22.93   -600.87   -571.62 0209
+   -542.73   -530.05   -537.04   -535.25    -24.36      0.00      0.00      0.00     -0.94     -7.09     20.18     12.29     -4.19     12.29   -561.41   -535.25 0210
+   -519.00   -506.34   -508.77   -507.44    -22.37      0.00      0.00      0.00     -0.73     -6.14     13.37      7.23     -9.01      7.23   -531.14   -507.44 0211
+   -496.09   -483.49   -483.53   -482.57    -20.47      0.00      0.00      0.00     -0.56     -5.26      8.92      4.34    -11.55      4.34   -504.00   -482.57 0212
+   -471.25   -458.94   -457.73   -457.08    -18.38      0.00      0.00      0.00     -0.42     -4.36      5.67      2.50    -12.71      2.50   -476.11   -457.08 0213
+   -450.85   -439.02   -437.38   -436.92    -16.63      0.00      0.00      0.00     -0.32     -3.68      3.84      1.59    -12.79      1.59   -454.01   -436.92 0214
+   -431.73   -420.54   -418.80   -418.49    -14.96      0.00      0.00      0.00     -0.25     -3.09      2.61      1.04    -12.35      1.04   -433.76   -418.49 0215
+   -411.40   -401.10   -399.43   -399.24    -13.18      0.00      0.00      0.00     -0.19     -2.53      1.69      0.67    -11.48      0.67   -412.61   -399.24 0216
+   -394.91   -385.44   -383.91   -383.80    -11.73      0.00      0.00      0.00     -0.14     -2.11      1.16      0.47    -10.57      0.47   -395.64   -383.80 0217
+   -379.55   -370.94   -369.56   -369.51    -10.40      0.00      0.00      0.00     -0.11     -1.77      0.80      0.34     -9.60      0.34   -379.97   -369.51 0218
+   -363.29   -355.63   -354.43   -354.43     -9.03      0.00      0.00      0.00     -0.09     -1.44      0.52      0.24     -8.51      0.24   -363.46   -354.43 0219
+   -350.11   -343.23   -342.19   -342.21     -7.96      0.00      0.00      0.00     -0.07     -1.20      0.36      0.18     -7.60      0.18   -350.15   -342.21 0220
+   -337.82   -331.67   -330.77   -330.80     -7.00      0.00      0.00      0.00     -0.05     -1.01      0.25      0.14     -6.75      0.14   -337.77   -330.80 0221
+   -324.78   -319.39   -318.63   -318.66     -6.03      0.00      0.00      0.00     -0.04     -0.83      0.16      0.10     -5.87      0.10   -324.66   -318.66 0222
+   -314.16   -309.36   -308.71   -308.75     -5.29      0.00      0.00      0.00     -0.03     -0.70      0.11      0.08     -5.18      0.08   -314.00   -308.75 0223
+   -304.22   -299.96   -299.40   -299.43     -4.64      0.00      0.00      0.00     -0.03     -0.59      0.07      0.06     -4.56      0.06   -304.04   -299.43 0224
+   -293.60   -289.89   -289.43   -289.45     -3.98      0.00      0.00      0.00     -0.02     -0.49      0.05      0.05     -3.93      0.05   -293.41   -289.45 0225
+   -284.90   -281.62   -281.23   -281.25     -3.48      0.00      0.00      0.00     -0.02     -0.41      0.03      0.04     -3.45      0.04   -284.71   -281.25 0226
+   -276.72   -273.82   -273.48   -273.49     -3.05      0.00      0.00      0.00     -0.01     -0.35      0.02      0.03     -3.03      0.03   -276.53   -273.49 0227
+   -269.01   -266.44   -266.15   -266.16     -2.67      0.00      0.00      0.00     -0.01     -0.30      0.02      0.02     -2.65      0.02   -268.82   -266.16 0228
+   -260.71   -258.48   -258.24   -258.24     -2.29      0.00      0.00      0.00     -0.01     -0.25      0.01      0.02     -2.28      0.02   -260.53   -258.24 0229
+   -253.88   -251.90   -251.69   -251.69     -2.01      0.00      0.00      0.00     -0.01     -0.22      0.01      0.02     -2.00      0.02   -253.70   -251.69 0230
+   -247.40   -245.65   -245.47   -245.47     -1.76      0.00      0.00      0.00     -0.01     -0.19      0.01      0.01     -1.76      0.01   -247.24   -245.47 0231
+   -240.41   -238.87   -238.73   -238.72     -1.52      0.00      0.00      0.00     -0.01     -0.16      0.00      0.01     -1.52      0.01   -240.25   -238.72 0232
+   -234.62   -233.24   -233.13   -233.11     -1.34      0.00      0.00      0.00     -0.00     -0.14      0.00      0.01     -1.34      0.01   -234.47   -233.11 0233
+   -229.11   -227.88   -227.78   -227.76     -1.19      0.00      0.00      0.00     -0.00     -0.12      0.00      0.01     -1.19      0.01   -228.97   -227.76 0234
+   -223.13   -222.04   -221.96   -221.94     -1.04      0.00      0.00      0.00     -0.00     -0.10      0.00      0.01     -1.03      0.01   -223.00   -221.94 0235
+   -218.16   -217.17   -217.11   -217.09     -0.92      0.00      0.00      0.00     -0.00     -0.09      0.00      0.00     -0.92      0.00   -218.03   -217.09 0236
+   -213.41   -212.52   -212.47   -212.44     -0.82      0.00      0.00      0.00     -0.00     -0.08      0.00      0.00     -0.82      0.00   -213.29   -212.44 0237
+   -208.23   -207.43   -207.39   -207.37     -0.73      0.00      0.00      0.00     -0.00     -0.07      0.00      0.00     -0.73      0.00   -208.12   -207.37 0238
+   -203.90   -203.18   -203.15   -203.12     -0.65      0.00      0.00      0.00     -0.00     -0.06      0.00      0.00     -0.65      0.00   -203.80   -203.12 0239
+   -199.76   -199.10   -199.07   -199.05     -0.59      0.00      0.00      0.00     -0.00     -0.05      0.00      0.00     -0.59      0.00   -199.66   -199.05 0240
+   -195.22   -194.63   -194.61   -194.59     -0.53      0.00      0.00      0.00     -0.00     -0.05      0.00      0.00     -0.53      0.00   -195.14   -194.59 0241
+   -191.43   -190.89   -190.87   -190.85     -0.48      0.00      0.00      0.00     -0.00     -0.04      0.00      0.00     -0.48      0.00   -191.35   -190.85 0242
+   -187.77   -187.28   -187.27   -187.24     -0.43      0.00      0.00      0.00     -0.00     -0.04      0.00      0.00     -0.43      0.00   -187.70   -187.24 0243
+   -183.77   -183.32   -183.31   -183.29     -0.39      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -0.39      0.00   -183.70   -183.29 0244
+   -180.41   -180.00   -179.99   -179.97     -0.36      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -0.36      0.00   -180.35   -179.97 0245
+   -177.16   -176.79   -176.78   -176.76     -0.33      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -0.33      0.00   -177.11   -176.76 0246
+   -173.60   -173.26   -173.25   -173.24     -0.30      0.00      0.00      0.00     -0.00     -0.02     -0.00      0.00     -0.30      0.00   -173.55   -173.24 0247
+   -170.60   -170.29   -170.28   -170.26     -0.27      0.00      0.00      0.00     -0.00     -0.02     -0.00      0.00     -0.27      0.00   -170.55   -170.26 0248
+   -167.70   -167.41   -167.41   -167.39     -0.25      0.00      0.00      0.00     -0.00     -0.02     -0.00      0.00     -0.25      0.00   -167.66   -167.39 0249
+   -164.90   -164.63   -164.63   -164.62     -0.23      0.00      0.00      0.00     -0.00     -0.02     -0.00      0.00     -0.23      0.00   -164.86   -164.62 0250
+   -161.81   -161.57   -161.57   -161.55     -0.21      0.00      0.00      0.00     -0.00     -0.02     -0.00      0.00     -0.21      0.00   -161.78   -161.55 0251
+   -159.20   -158.98   -158.98   -158.97     -0.20      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.20      0.00   -159.17   -158.97 0252
+   -156.68   -156.47   -156.47   -156.46     -0.18      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.18      0.00   -156.65   -156.46 0253
+   -153.89   -153.70   -153.70   -153.69     -0.17      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.17      0.00   -153.87   -153.69 0254
+   -151.53   -151.36   -151.36   -151.35     -0.16      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.16      0.00   -151.51   -151.35 0255
+   -149.25   -149.08   -149.08   -149.07     -0.14      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.14      0.00   -149.23   -149.07 0256
+   -146.72   -146.57   -146.56   -146.56     -0.13      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.13      0.00   -146.70   -146.56 0257
+   -144.57   -144.43   -144.43   -144.42     -0.13      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.13      0.00   -144.56   -144.42 0258
+   -142.49   -142.36   -142.36   -142.35     -0.12      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.12      0.00   -142.48   -142.35 0259
+   -140.18   -140.06   -140.06   -140.06     -0.11      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.11      0.00   -140.17   -140.06 0260
+           COULOMB RMSD     1.11 MSE     0.27 MAE     0.56 (kJ/mol) R 100.0% #points =    66 sodium#fluoride
+
+
+Molecule 3: Name: potassium#fluoride, Qtot: 0, Multiplicity: 1, MolWt: 58.0967 SymmetryNumber: 1 Dataset: Train
+Electrostatic properties.
+Atom   Type            ACM        x        y   z(pm)          fx         fy fz(kJ/mol nm)     qtot
+19  1  K+          9.80622    0.000    0.000  -58.344      0.000      0.000  25863.743     9.80622
+0   2  v1K+       -8.80622    0.000    0.000  -58.344      0.000      0.000 -25411.517           1
+9   3  F-          1.24604    0.000    0.000  119.656      0.000      0.000  19765.257     2.24604
+0   4  v1F-       -2.24604    0.000    0.000  119.656      0.000      0.000 -20217.482           0
+           EPOT             COULOMB           INDUCTION     INDUCTIONCORRECTION          DISPERSION            EXCHANGE             EXCHIND             ALLELEC     
+        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT
+   -563.52   -623.75   -672.42   -663.29    -56.14      0.00      0.00      0.00    -15.55     -9.52    187.85     49.06    131.70     49.06   -728.56   -663.29 0005
+   -563.39   -638.14   -696.61   -688.39    -61.48      0.00      0.00      0.00    -17.17     -9.84    219.61     60.10    158.13     60.10   -758.09   -688.39 0004
+   -563.33   -620.94   -667.86   -658.60    -55.16      0.00      0.00      0.00    -15.25     -9.45    182.09     47.11    126.94     47.11   -723.02   -658.60 0206
+   -561.94   -609.90   -650.49   -640.81    -51.45      0.00      0.00      0.00    -14.09     -9.18    160.87     40.09    109.42     40.09   -701.94   -640.81 0006
+   -561.15   -652.98   -723.45   -716.52    -67.56      0.00      0.00      0.00    -18.97    -10.15    257.07     73.69    189.51     73.69   -791.01   -716.52 0003
+   -558.97   -596.60   -630.51   -620.56    -47.30      0.00      0.00      0.00    -12.79     -8.84    137.93     32.80     90.63     32.80   -677.81   -620.56 0007
+   -556.30   -668.16   -753.39   -748.15    -74.51      0.00      0.00      0.00    -20.96    -10.45    301.27     90.44    226.76     90.44   -827.90   -748.15 0205
+   -556.30   -668.16   -753.39   -748.15    -74.51      0.00      0.00      0.00    -20.96    -10.45    301.27     90.44    226.76     90.44   -827.90   -748.15 0002
+   -554.90   -583.86   -612.21   -602.24    -43.63      0.00      0.00      0.00    -11.61     -8.49    118.40     26.87     74.77     26.87   -655.84   -602.24 0008
+   -550.99   -574.08   -598.62   -588.80    -41.00      0.00      0.00      0.00    -10.75     -8.21    104.88     22.93     63.88     22.93   -639.62   -588.80 0207
+   -549.94   -571.68   -595.36   -585.58    -40.38      0.00      0.00      0.00    -10.54     -8.14    101.76     22.04     61.38     22.04   -635.73   -585.58 0009
+   -548.28   -683.46   -786.99   -783.82    -82.47      0.00      0.00      0.00    -23.15    -10.73    353.50    111.10    271.03    111.10   -869.45   -783.82 0001
+   -536.37   -698.56   -824.89   -824.14    -91.61      0.00      0.00      0.00    -25.53    -11.00    415.26    136.58    323.65    136.58   -916.50   -824.14 0000
+   -531.53   -538.16   -551.78   -543.36    -32.56      0.00      0.00      0.00     -7.94     -7.09     65.03     12.29     32.47     12.29   -584.33   -543.36 0208
+   -515.67   -715.73   -877.14   -879.59   -104.47      0.00      0.00      0.00    -28.57    -11.29    504.56    175.15    400.09    175.15   -981.61   -879.59 0204
+   -508.88   -506.69   -513.87   -507.40    -26.55      0.00      0.00      0.00     -5.89     -6.01     40.73      6.72     14.18      6.72   -540.42   -507.40 0209
+   -485.47   -478.78   -482.15   -477.52    -22.13      0.00      0.00      0.00     -4.39     -5.03     25.73      3.77      3.60      3.77   -504.28   -477.52 0210
+   -459.76   -450.82   -451.77   -448.81    -18.42      0.00      0.00      0.00     -3.16     -4.06     15.47      2.05     -2.94      2.05   -470.19   -448.81 0211
+   -438.11   -428.52   -428.34   -426.43    -15.85      0.00      0.00      0.00     -2.36     -3.33      9.91      1.24     -5.94      1.24   -444.19   -426.43 0212
+   -417.83   -408.28   -407.53   -406.34    -13.75      0.00      0.00      0.00     -1.77     -2.73      6.38      0.79     -7.38      0.79   -421.29   -406.34 0213
+   -412.18   -745.16  -1066.10  -1074.68   -152.59      0.00      0.00      0.00    -37.28    -11.95    854.28    341.47    701.69    341.47  -1218.69  -1074.68 0203
+   -398.96   -389.83   -388.85   -388.12    -11.99      0.00      0.00      0.00     -1.33     -2.22      4.13      0.52     -7.87      0.52   -400.85   -388.12 0214
+   -379.40   -370.95   -369.93   -369.52    -10.32      0.00      0.00      0.00     -0.98     -1.77      2.55      0.34     -7.77      0.34   -380.24   -369.52 0215
+   -363.40   -355.63   -354.68   -354.43     -9.04      0.00      0.00      0.00     -0.75     -1.44      1.67      0.24     -7.37      0.24   -363.71   -354.43 0216
+   -348.59   -341.53   -340.68   -340.53     -7.92      0.00      0.00      0.00     -0.58     -1.17      1.10      0.17     -6.82      0.17   -348.60   -340.53 0217
+   -334.87   -328.51   -327.77   -327.68     -6.94      0.00      0.00      0.00     -0.45     -0.96      0.72      0.13     -6.21      0.13   -334.71   -327.68 0218
+   -320.62   -315.01   -314.39   -314.33     -5.97      0.00      0.00      0.00     -0.34     -0.77      0.45      0.09     -5.52      0.09   -320.37   -314.33 0219
+   -308.90   -303.92   -303.39   -303.35     -5.22      0.00      0.00      0.00     -0.27     -0.63      0.30      0.07     -4.92      0.07   -308.62   -303.35 0220
+   -297.99   -293.58   -293.14   -293.11     -4.56      0.00      0.00      0.00     -0.21     -0.52      0.20      0.05     -4.36      0.05   -297.70   -293.11 0221
+   -287.82   -283.94   -283.56   -283.54     -3.98      0.00      0.00      0.00     -0.17     -0.43      0.13      0.04     -3.84      0.04   -287.54   -283.54 0222
+   -277.18   -273.82   -273.51   -273.49     -3.40      0.00      0.00      0.00     -0.13     -0.35      0.08      0.03     -3.32      0.03   -276.92   -273.49 0223
+   -268.36   -265.42   -265.16   -265.14     -2.96      0.00      0.00      0.00     -0.11     -0.30      0.06      0.02     -2.91      0.02   -268.12   -265.14 0224
+   -260.10   -257.52   -257.31   -257.29     -2.58      0.00      0.00      0.00     -0.09     -0.25      0.04      0.02     -2.54      0.02   -259.89   -257.29 0225
+   -252.34   -250.08   -249.90   -249.88     -2.25      0.00      0.00      0.00     -0.07     -0.21      0.02      0.01     -2.22      0.01   -252.15   -249.88 0226
+   -244.16   -242.21   -242.07   -242.05     -1.93      0.00      0.00      0.00     -0.06     -0.17      0.02      0.01     -1.91      0.01   -244.00   -242.05 0227
+   -237.34   -235.62   -235.50   -235.48     -1.69      0.00      0.00      0.00     -0.05     -0.15      0.01      0.01     -1.67      0.01   -237.19   -235.48 0228
+   -230.89   -229.39   -229.29   -229.27     -1.48      0.00      0.00      0.00     -0.04     -0.13      0.01      0.01     -1.47      0.01   -230.77   -229.27 0229
+   -224.80   -223.47   -223.39   -223.37     -1.30      0.00      0.00      0.00     -0.03     -0.11      0.00      0.01     -1.29      0.01   -224.69   -223.37 0230
+   -218.32   -217.17   -217.11   -217.09     -1.13      0.00      0.00      0.00     -0.03     -0.09      0.00      0.00     -1.13      0.00   -218.23   -217.09 0231
+   -212.88   -211.87   -211.81   -211.79     -1.00      0.00      0.00      0.00     -0.02     -0.08      0.00      0.00     -1.00      0.00   -212.81   -211.79 0232
+   -207.72   -206.82   -206.77   -206.75     -0.89      0.00      0.00      0.00     -0.02     -0.07      0.00      0.00     -0.89      0.00   -207.65   -206.75 0233
+   -202.20   -201.41   -201.37   -201.36     -0.78      0.00      0.00      0.00     -0.02     -0.06      0.00      0.00     -0.78      0.00   -202.15   -201.36 0234
+   -197.55   -196.84   -196.80   -196.79     -0.70      0.00      0.00      0.00     -0.01     -0.05      0.00      0.00     -0.70      0.00   -197.50   -196.79 0235
+   -193.10   -192.47   -192.44   -192.43     -0.63      0.00      0.00      0.00     -0.01     -0.04      0.00      0.00     -0.63      0.00   -193.07   -192.43 0236
+   -188.86   -188.30   -188.27   -188.26     -0.57      0.00      0.00      0.00     -0.01     -0.04      0.00      0.00     -0.57      0.00   -188.84   -188.26 0237
+   -184.31   -183.81   -183.78   -183.78     -0.51      0.00      0.00      0.00     -0.01     -0.03      0.00      0.00     -0.51      0.00   -184.29   -183.78 0238
+   -180.45   -180.00   -179.97   -179.97     -0.46      0.00      0.00      0.00     -0.01     -0.03      0.00      0.00     -0.46      0.00   -180.44   -179.97 0239
+   -176.75   -176.34   -176.32   -176.31     -0.42      0.00      0.00      0.00     -0.01     -0.03      0.00      0.00     -0.42      0.00   -176.74   -176.31 0240
+   -173.20   -172.83   -172.81   -172.81     -0.39      0.00      0.00      0.00     -0.01     -0.02      0.00      0.00     -0.39      0.00   -173.19   -172.81 0241
+   -169.38   -169.04   -169.02   -169.02     -0.35      0.00      0.00      0.00     -0.01     -0.02      0.00      0.00     -0.35      0.00   -169.37   -169.02 0242
+   -166.12   -165.81   -165.79   -165.79     -0.33      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.33      0.00   -166.12   -165.79 0243
+   -162.99   -162.70   -162.69   -162.69     -0.30      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.30      0.00   -162.99   -162.69 0244
+   -159.97   -159.71   -159.69   -159.70     -0.28      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.28      0.00   -159.97   -159.70 0245
+   -156.71   -156.47   -156.46   -156.46     -0.26      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.26      0.00   -156.71   -156.46 0246
+   -153.92   -153.70   -153.69   -153.69     -0.24      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.24      0.00   -153.92   -153.69 0247
+   -151.23   -151.03   -151.01   -151.02     -0.22      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.22      0.00   -151.23   -151.02 0248
+   -148.64   -148.44   -148.43   -148.44     -0.21      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.21      0.00   -148.64   -148.44 0249
+   -145.82   -145.64   -145.63   -145.63     -0.19      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.19      0.00   -145.82   -145.63 0250
+   -143.41   -143.24   -143.23   -143.23     -0.18      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.18      0.00   -143.41   -143.23 0251
+   -141.07   -140.92   -140.91   -140.91     -0.17      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.17      0.00   -141.07   -140.91 0252
+           COULOMB RMSD     4.21 MSE     1.90 MAE     2.26 (kJ/mol) R 100.0% #points =    60 potassium#fluoride
+
+
+Molecule 4: Name: lithium#chloride, Qtot: 0, Multiplicity: 1, MolWt: 42.394 SymmetryNumber: 1 Dataset: Train
+Electrostatic properties.
+Atom   Type            ACM        x        y   z(pm)          fx         fy fz(kJ/mol nm)     qtot
+3   1  Li+               1    0.000    0.000 -136.594      0.000      0.000 -23871.784           1
+17  2  Cl-         1.84001    0.000    0.000   27.406      0.000      0.000  34791.575     2.84001
+0   3  v1Cl-      -2.84001    0.000    0.000   27.406      0.000      0.000 -10919.790           0
+           EPOT             COULOMB           INDUCTION     INDUCTIONCORRECTION          DISPERSION            EXCHANGE             EXCHIND             ALLELEC     
+        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT
+   -634.66   -557.48   -653.78   -660.90   -104.20      0.00      0.00      0.00     -4.97     -2.90    126.60    106.31     22.40    106.31   -757.98   -660.90 0008
+   -634.56   -561.28   -648.70   -655.88   -102.05      0.00      0.00      0.00     -4.69     -2.88    119.27     97.48     17.22     97.48   -750.75   -655.88 0207
+   -634.40   -562.91   -646.17   -653.37   -101.01      0.00      0.00      0.00     -4.56     -2.87    115.77     93.34     14.76     93.34   -747.18   -653.37 0009
+   -634.16   -550.28   -661.47   -668.44   -107.58      0.00      0.00      0.00     -5.41     -2.92    138.49    121.07     30.91    121.07   -769.05   -668.44 0007
+   -632.82   -541.04   -669.22   -675.96   -111.17      0.00      0.00      0.00     -5.90     -2.94    151.54    137.86     40.37    137.86   -780.40   -675.96 0006
+   -630.52   -529.46   -677.04   -683.46   -115.00      0.00      0.00      0.00     -6.44     -2.95    165.89    156.95     50.89    156.95   -792.04   -683.46 0005
+   -627.15   -515.22   -684.90   -690.92   -119.08      0.00      0.00      0.00     -7.04     -2.97    181.65    178.67     62.57    178.67   -803.98   -690.92 0206
+   -627.15   -515.22   -684.90   -690.92   -119.08      0.00      0.00      0.00     -7.04     -2.97    181.65    178.67     62.57    178.67   -803.98   -690.92 0004
+   -626.51   -571.01   -614.28   -621.24    -89.05      0.00      0.00      0.00     -3.19     -2.77     78.85     52.99    -10.20     52.99   -703.34   -621.24 0208
+   -622.58   -497.92   -692.80   -698.29   -123.43      0.00      0.00      0.00     -7.70     -2.99    198.97    203.36     75.55    203.36   -816.23   -698.29 0003
+   -616.66   -477.12   -700.72   -705.56   -128.07      0.00      0.00      0.00     -8.43     -3.00    218.02    231.44     89.95    231.44   -828.79   -705.56 0002
+   -609.78   -562.14   -582.12   -588.17    -78.80      0.00      0.00      0.00     -2.21     -2.62     52.49     28.66    -26.31     28.66   -660.92   -588.17 0209
+   -609.22   -452.34   -708.63   -712.70   -133.04      0.00      0.00      0.00     -9.24     -3.02    238.97    263.37    105.94    263.37   -841.67   -712.70 0001
+   -600.09   -423.03   -716.51   -719.67   -138.37      0.00      0.00      0.00    -10.14     -3.03    262.04    299.67    123.67    299.67   -854.88   -719.67 0000
+   -592.96   -400.64   -721.74   -724.20   -142.12      0.00      0.00      0.00    -10.79     -3.04    278.68    326.60    136.56    326.60   -863.86   -724.20 0205
+   -588.51   -544.33   -552.33   -557.29    -70.39      0.00      0.00      0.00     -1.55     -2.46     35.16     15.41    -35.22     15.41   -622.72   -557.29 0210
+   -565.17   -522.82   -524.91   -528.78    -63.26      0.00      0.00      0.00     -1.10     -2.27     23.70      8.23    -39.56      8.23   -588.17   -528.78 0211
+   -541.24   -500.35   -499.72   -502.63    -57.05      0.00      0.00      0.00     -0.79     -2.07     16.05      4.36    -41.00      4.36   -556.77   -502.63 0212
+   -517.60   -478.30   -476.58   -478.72    -51.54      0.00      0.00      0.00     -0.58     -1.87     10.93      2.29    -40.61      2.29   -528.12   -478.72 0213
+   -513.17   -159.36   -756.93   -752.21   -173.84      0.00      0.00      0.00    -16.87     -3.08    430.39    595.93    256.56    595.93   -930.77   -752.21 0204
+   -494.74   -457.33   -455.32   -456.85    -46.57      0.00      0.00      0.00     -0.43     -1.67      7.48      1.19    -39.09      1.19   -501.89   -456.85 0214
+   -472.93   -437.68   -435.75   -436.82    -42.05      0.00      0.00      0.00     -0.32     -1.47      5.14      0.61    -36.91      0.61   -477.80   -436.82 0215
+   -452.31   -419.41   -417.71   -418.44    -37.92      0.00      0.00      0.00     -0.24     -1.28      3.54      0.32    -34.38      0.32   -455.63   -418.44 0216
+   -432.91   -402.48   -401.04   -401.53    -34.14      0.00      0.00      0.00     -0.18     -1.11      2.45      0.16    -31.69      0.16   -435.17   -401.53 0217
+   -414.73   -386.80   -385.60   -385.93    -30.68      0.00      0.00      0.00     -0.14     -0.96      1.70      0.08    -28.97      0.08   -416.27   -385.93 0218
+   -397.73   -372.26   -371.27   -371.48    -27.51      0.00      0.00      0.00     -0.11     -0.82      1.19      0.04    -26.32      0.04   -398.79   -371.48 0219
+   -381.87   -358.76   -357.96   -358.08    -24.62      0.00      0.00      0.00     -0.09     -0.70      0.83      0.02    -23.79      0.02   -382.58   -358.08 0220
+   -367.06   -346.20   -345.54   -345.61    -22.00      0.00      0.00      0.00     -0.07     -0.60      0.58      0.01    -21.42      0.01   -367.55   -345.61 0221
+   -353.26   -334.48   -333.95   -333.98    -19.63      0.00      0.00      0.00     -0.05     -0.51      0.41      0.01    -19.22      0.01   -353.58   -333.98 0222
+   -340.37   -323.54   -323.11   -323.11    -17.48      0.00      0.00      0.00     -0.04     -0.44      0.29      0.00    -17.19      0.00   -340.59   -323.11 0223
+   -328.34   -313.29   -312.94   -312.92    -15.54      0.00      0.00      0.00     -0.03     -0.37      0.21      0.00    -15.34      0.00   -328.48   -312.92 0224
+   -317.09   -303.67   -303.38   -303.35    -13.80      0.00      0.00      0.00     -0.03     -0.32      0.15      0.00    -13.66      0.00   -317.18   -303.35 0225
+   -306.58   -294.62   -294.39   -294.35    -12.24      0.00      0.00      0.00     -0.02     -0.27      0.10      0.00    -12.14      0.00   -306.63   -294.35 0226
+   -296.73   -286.10   -285.91   -285.88    -10.85      0.00      0.00      0.00     -0.02     -0.23      0.07      0.00    -10.78      0.00   -296.76   -285.88 0227
+   -287.50   -278.07   -277.90   -277.87     -9.61      0.00      0.00      0.00     -0.01     -0.20      0.05      0.00     -9.56      0.00   -287.51   -277.87 0228
+   -278.84   -270.47   -270.33   -270.30     -8.51      0.00      0.00      0.00     -0.01     -0.17      0.04      0.00     -8.47      0.00   -278.84   -270.30 0229
+   -270.70   -263.28   -263.16   -263.14     -7.53      0.00      0.00      0.00     -0.01     -0.15      0.03      0.00     -7.50      0.00   -270.69   -263.14 0230
+   -263.04   -256.46   -256.36   -256.34     -6.67      0.00      0.00      0.00     -0.01     -0.13      0.02      0.00     -6.65      0.00   -263.02   -256.34 0231
+   -255.82   -249.99   -249.90   -249.88     -5.90      0.00      0.00      0.00     -0.01     -0.11      0.01      0.00     -5.89      0.00   -255.80   -249.88 0232
+   -249.00   -243.84   -243.76   -243.75     -5.23      0.00      0.00      0.00     -0.01     -0.09      0.01      0.00     -5.22      0.00   -248.99   -243.75 0233
+   -242.57   -237.98   -237.91   -237.90     -4.64      0.00      0.00      0.00     -0.00     -0.08      0.01      0.00     -4.63      0.00   -242.55   -237.90 0234
+   -236.47   -232.40   -232.34   -232.33     -4.11      0.00      0.00      0.00     -0.00     -0.07      0.00      0.00     -4.11      0.00   -236.46   -232.33 0235
+   -230.70   -227.08   -227.03   -227.02     -3.65      0.00      0.00      0.00     -0.00     -0.06      0.00      0.00     -3.65      0.00   -230.68   -227.02 0236
+   -225.98   -222.71   -222.66   -222.65     -3.31      0.00      0.00      0.00     -0.00     -0.06      0.00      0.00     -3.30      0.00   -225.97   -222.65 0237
+   -220.73   -217.82   -217.77   -217.77     -2.95      0.00      0.00      0.00     -0.00     -0.05      0.00      0.00     -2.94      0.00   -220.72   -217.77 0238
+   -215.74   -213.13   -213.09   -213.09     -2.63      0.00      0.00      0.00     -0.00     -0.04      0.00      0.00     -2.63      0.00   -215.72   -213.09 0239
+   -210.98   -208.65   -208.61   -208.61     -2.35      0.00      0.00      0.00     -0.00     -0.04      0.00      0.00     -2.35      0.00   -210.96   -208.61 0240
+   -206.44   -204.35   -204.32   -204.32     -2.10      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -2.10      0.00   -206.42   -204.32 0241
+   -202.10   -200.22   -200.20   -200.20     -1.89      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -1.89      0.00   -202.09   -200.20 0242
+   -197.95   -196.26   -196.24   -196.24     -1.70      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -1.70      0.00   -197.94   -196.24 0243
+   -193.97   -192.45   -192.43   -192.43     -1.53      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -1.53      0.00   -193.96   -192.43 0244
+   -190.17   -188.79   -188.77   -188.77     -1.38      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -1.38      0.00   -190.16   -188.77 0245
+   -186.51   -185.27   -185.25   -185.25     -1.25      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -1.25      0.00   -186.50   -185.25 0246
+   -183.00   -181.87   -181.86   -181.85     -1.14      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -1.14      0.00   -182.99   -181.85 0247
+   -176.38   -175.44   -175.43   -175.42     -0.95      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.94      0.00   -176.37   -175.42 0249
+   -173.25   -172.39   -172.38   -172.38     -0.86      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.86      0.00   -173.24   -172.38 0250
+   -170.24   -169.44   -169.44   -169.43     -0.79      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.79      0.00   -170.23   -169.43 0251
+   -167.33   -166.60   -166.59   -166.59     -0.73      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.73      0.00   -167.32   -166.59 0252
+   -164.52   -163.85   -163.84   -163.84     -0.67      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.67      0.00   -164.52   -163.84 0253
+   -159.19   -158.61   -158.61   -158.60     -0.58      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.58      0.00   -159.18   -158.60 0255
+   -156.65   -156.11   -156.11   -156.11     -0.53      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.53      0.00   -156.64   -156.11 0256
+   -151.82   -151.35   -151.35   -151.35     -0.46      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.46      0.00   -151.81   -151.35 0258
+           COULOMB RMSD     3.14 MSE    -1.61 MAE     1.78 (kJ/mol) R 100.0% #points =    62 lithium#chloride
+
+
+Molecule 5: Name: sodium#chloride, Qtot: 0, Multiplicity: 1, MolWt: 58.4428 SymmetryNumber: 1 Dataset: Train
+Electrostatic properties.
+Atom   Type            ACM        x        y   z(pm)          fx         fy fz(kJ/mol nm)     qtot
+11  1  Na+         5.70319    0.000    0.000 -139.975      0.000      0.000  11808.768     5.70319
+0   2  v1Na+      -4.70319    0.000    0.000 -139.975      0.000      0.000  -9859.263           1
+17  3  Cl-         1.84001    0.000    0.000   92.025      0.000      0.000   6117.140     2.84001
+0   4  v1Cl-      -2.84001    0.000    0.000   92.025      0.000      0.000  -8066.646           0
+           EPOT             COULOMB           INDUCTION     INDUCTIONCORRECTION          DISPERSION            EXCHANGE             EXCHIND             ALLELEC     
+        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT
+   -538.79   -580.46   -596.29   -598.84    -50.02      0.00      0.00      0.00     -3.09     -8.49    110.47     26.87     60.45     26.87   -646.31   -598.84 0008
+   -538.24   -570.13   -581.95   -584.03    -48.91      0.00      0.00      0.00     -2.83     -8.14     95.36     22.04     46.45     22.04   -630.86   -584.03 0009
+   -537.82   -590.61   -611.62   -614.58    -51.13      0.00      0.00      0.00     -3.38     -8.84    128.10     32.80     76.97     32.80   -662.75   -614.58 0007
+   -537.29   -563.91   -573.76   -575.57    -48.26      0.00      0.00      0.00     -2.69     -7.93     87.35     19.59     39.09     19.59   -622.02   -575.57 0208
+   -536.38   -596.54   -621.33   -624.49    -51.81      0.00      0.00      0.00     -3.57     -9.05    140.08     36.99     88.27     36.99   -673.14   -624.49 0207
+   -535.00   -600.40   -628.03   -631.31    -52.26      0.00      0.00      0.00     -3.70     -9.18    148.71     40.09     96.45     40.09   -680.30   -631.31 0006
+   -529.96   -609.57   -645.69   -649.11    -53.39      0.00      0.00      0.00     -4.04     -9.52    172.81     49.06    119.41     49.06   -699.09   -649.11 0005
+   -526.50   -531.33   -534.59   -535.07    -44.80      0.00      0.00      0.00     -2.05     -6.81     55.00     10.54     10.19     10.54   -579.40   -535.07 0209
+   -522.23   -617.80   -664.77   -668.06    -54.52      0.00      0.00      0.00     -4.41     -9.84    201.00     60.10    146.48     60.10   -719.28   -668.06 0004
+   -511.91   -504.63   -505.26   -504.99    -41.84      0.00      0.00      0.00     -1.62     -5.88     36.92      6.24     -4.92      6.24   -547.10   -504.99 0210
+   -511.27   -624.68   -685.43   -688.22    -55.62      0.00      0.00      0.00     -4.80    -10.15    234.01     73.69    178.39     73.69   -741.05   -688.22 0003
+   -496.44   -629.67   -707.95   -709.66    -56.70      0.00      0.00      0.00     -5.21    -10.45    272.70     90.44    216.00     90.44   -764.64   -709.66 0002
+   -492.34   -476.74   -476.01   -475.34    -38.51      0.00      0.00      0.00     -1.24     -4.91     23.57      3.51    -14.94      3.51   -514.52   -475.34 0211
+   -476.97   -632.07   -732.57   -732.44    -57.73      0.00      0.00      0.00     -5.62    -10.73    318.07    111.10    260.35    111.10   -790.30   -732.44 0001
+   -471.55   -451.61   -450.36   -449.59    -35.23      0.00      0.00      0.00     -0.95     -4.06     15.14      2.05    -20.09      2.05   -485.59   -449.59 0212
+   -451.99   -631.03   -759.63   -756.61    -58.71      0.00      0.00      0.00     -6.04    -11.00    371.34    136.58    312.63    136.58   -818.34   -756.61 0000
+   -450.72   -428.97   -427.59   -426.88    -32.05      0.00      0.00      0.00     -0.72     -3.33      9.79      1.24    -22.26      1.24   -459.63   -426.88 0213
+   -430.47   -408.51   -407.17   -406.57    -28.98      0.00      0.00      0.00     -0.55     -2.73      6.36      0.79    -22.62      0.79   -436.15   -406.57 0214
+   -411.16   -389.94   -388.71   -388.24    -26.07      0.00      0.00      0.00     -0.42     -2.22      4.16      0.52    -21.91      0.52   -414.78   -388.24 0215
+   -392.94   -373.01   -371.92   -371.55    -23.33      0.00      0.00      0.00     -0.32     -1.81      2.73      0.35    -20.60      0.35   -395.25   -371.55 0216
+   -375.87   -357.50   -356.56   -356.27    -20.78      0.00      0.00      0.00     -0.24     -1.48      1.80      0.25    -18.98      0.25   -377.34   -356.27 0217
+   -361.87   -344.96   -344.14   -343.91    -18.72      0.00      0.00      0.00     -0.19     -1.24      1.26      0.19    -17.46      0.19   -362.86   -343.91 0218
+   -346.92   -331.68   -330.98   -330.80    -16.56      0.00      0.00      0.00     -0.15     -1.01      0.84      0.14    -15.72      0.14   -347.55   -330.80 0219
+   -333.02   -319.39   -318.81   -318.66    -14.61      0.00      0.00      0.00     -0.12     -0.83      0.56      0.10    -14.05      0.10   -333.42   -318.66 0220
+   -320.11   -307.98   -307.50   -307.38    -12.86      0.00      0.00      0.00     -0.09     -0.68      0.38      0.08    -12.48      0.08   -320.36   -307.38 0221
+   -308.11   -297.38   -296.97   -296.87    -11.29      0.00      0.00      0.00     -0.07     -0.56      0.26      0.06    -11.03      0.06   -308.26   -296.87 0222
+   -296.95   -287.48   -287.14   -287.06     -9.90      0.00      0.00      0.00     -0.06     -0.47      0.17      0.04     -9.73      0.04   -297.04   -287.06 0223
+   -286.56   -278.22   -277.94   -277.87     -8.67      0.00      0.00      0.00     -0.04     -0.39      0.12      0.03     -8.55      0.03   -286.61   -277.87 0224
+   -278.05   -270.61   -270.36   -270.30     -7.71      0.00      0.00      0.00     -0.04     -0.33      0.08      0.03     -7.63      0.03   -278.07   -270.30 0225
+   -268.93   -262.40   -262.19   -262.14     -6.74      0.00      0.00      0.00     -0.03     -0.28      0.06      0.02     -6.69      0.02   -268.93   -262.14 0226
+   -260.40   -254.68   -254.50   -254.46     -5.90      0.00      0.00      0.00     -0.02     -0.23      0.04      0.02     -5.86      0.02   -260.39   -254.46 0227
+   -252.42   -247.40   -247.25   -247.22     -5.16      0.00      0.00      0.00     -0.02     -0.20      0.03      0.01     -5.13      0.01   -252.40   -247.22 0228
+   -244.93   -240.53   -240.40   -240.37     -4.51      0.00      0.00      0.00     -0.02     -0.17      0.02      0.01     -4.49      0.01   -244.90   -240.37 0229
+   -237.88   -234.03   -233.92   -233.90     -3.95      0.00      0.00      0.00     -0.01     -0.14      0.01      0.01     -3.94      0.01   -237.87   -233.90 0230
+   -231.26   -227.88   -227.78   -227.76     -3.46      0.00      0.00      0.00     -0.01     -0.12      0.01      0.01     -3.45      0.01   -231.24   -227.76 0231
+   -225.77   -222.75   -222.66   -222.65     -3.09      0.00      0.00      0.00     -0.01     -0.11      0.01      0.01     -3.08      0.01   -225.75   -222.65 0232
+   -219.83   -217.17   -217.09   -217.09     -2.72      0.00      0.00      0.00     -0.01     -0.09      0.00      0.00     -2.71      0.00   -219.81   -217.09 0233
+   -214.21   -211.87   -211.79   -211.79     -2.40      0.00      0.00      0.00     -0.01     -0.08      0.00      0.00     -2.39      0.00   -214.19   -211.79 0234
+   -208.89   -206.82   -206.75   -206.75     -2.12      0.00      0.00      0.00     -0.01     -0.07      0.00      0.00     -2.12      0.00   -208.87   -206.75 0235
+   -203.84   -202.00   -201.94   -201.94     -1.88      0.00      0.00      0.00     -0.00     -0.06      0.00      0.00     -1.88      0.00   -203.82   -201.94 0236
+   -199.04   -197.40   -197.35   -197.35     -1.67      0.00      0.00      0.00     -0.00     -0.05      0.00      0.00     -1.67      0.00   -199.03   -197.35 0237
+   -194.48   -193.01   -192.97   -192.97     -1.50      0.00      0.00      0.00     -0.00     -0.05      0.00      0.00     -1.49      0.00   -194.46   -192.97 0238
+   -190.13   -188.81   -188.77   -188.77     -1.34      0.00      0.00      0.00     -0.00     -0.04      0.00      0.00     -1.34      0.00   -190.11   -188.77 0239
+   -186.49   -185.28   -185.25   -185.25     -1.22      0.00      0.00      0.00     -0.00     -0.04      0.00      0.00     -1.22      0.00   -186.47   -185.25 0240
+   -182.50   -181.41   -181.38   -181.38     -1.10      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -1.10      0.00   -182.48   -181.38 0241
+   -178.68   -177.69   -177.67   -177.67     -0.99      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -0.99      0.00   -178.67   -177.67 0242
+   -175.02   -174.13   -174.11   -174.10     -0.90      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.90      0.00   -175.01   -174.10 0243
+   -171.52   -170.70   -170.69   -170.68     -0.82      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.82      0.00   -171.51   -170.68 0244
+   -168.15   -167.41   -167.40   -167.39     -0.75      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.75      0.00   -168.15   -167.39 0245
+   -164.92   -164.24   -164.23   -164.23     -0.68      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.68      0.00   -164.91   -164.23 0246
+   -162.20   -161.57   -161.56   -161.55     -0.63      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.63      0.00   -162.19   -161.55 0247
+   -159.19   -158.62   -158.61   -158.60     -0.58      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.58      0.00   -159.19   -158.60 0248
+   -156.30   -155.77   -155.76   -155.76     -0.53      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.53      0.00   -156.30   -155.76 0249
+   -153.51   -153.02   -153.02   -153.01     -0.49      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.49      0.00   -153.51   -153.01 0250
+   -150.83   -150.37   -150.37   -150.36     -0.45      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.45      0.00   -150.82   -150.36 0251
+   -148.23   -147.81   -147.81   -147.80     -0.42      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.42      0.00   -148.23   -147.80 0252
+   -145.73   -145.34   -145.34   -145.33     -0.39      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.39      0.00   -145.72   -145.33 0253
+   -143.31   -142.95   -142.94   -142.94     -0.36      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.36      0.00   -143.30   -142.94 0254
+   -141.25   -140.92   -140.91   -140.91     -0.34      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.34      0.00   -141.25   -140.91 0255
+           COULOMB RMSD     1.23 MSE    -0.32 MAE     0.61 (kJ/mol) R 100.0% #points =    59 sodium#chloride
+
+
+Molecule 6: Name: potassium#chloride, Qtot: 0, Multiplicity: 1, MolWt: 74.5513 SymmetryNumber: 1 Dataset: Train
+Electrostatic properties.
+Atom   Type            ACM        x        y   z(pm)          fx         fy fz(kJ/mol nm)     qtot
+19  1  K+          9.80622    0.000    0.000  -97.434      0.000      0.000  20366.061     9.80622
+0   2  v1K+       -8.80622    0.000    0.000  -97.434      0.000      0.000 -13676.491           1
+17  3  Cl-         1.84001    0.000    0.000  108.565      0.000      0.000  10284.688     2.84001
+0   4  v1Cl-      -2.84001    0.000    0.000  108.565      0.000      0.000 -16974.257           0
+           EPOT             COULOMB           INDUCTION     INDUCTIONCORRECTION          DISPERSION            EXCHANGE             EXCHIND             ALLELEC     
+        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT
+   -477.52   -540.02   -543.03   -540.92    -44.37      0.00      0.00      0.00    -13.73     -6.07    124.62      6.97     80.26      6.97   -587.40   -540.92 0007
+   -477.43   -537.14   -540.11   -537.85    -43.99      0.00      0.00      0.00    -13.50     -6.01    121.18      6.72     77.19      6.72   -584.10   -537.85 0208
+   -477.33   -555.06   -558.34   -557.06    -46.38      0.00      0.00      0.00    -14.95     -6.40    143.44      8.40     97.06      8.40   -604.72   -557.06 0006
+   -476.61   -526.06   -528.88   -526.10    -42.51      0.00      0.00      0.00    -12.62     -5.75    108.36      5.80     65.85      5.80   -571.39   -526.10 0008
+   -475.80   -571.28   -575.00   -574.69    -48.51      0.00      0.00      0.00    -16.28     -6.74    165.16     10.15    116.65     10.15   -623.51   -574.69 0005
+   -474.78   -513.07   -515.77   -512.46    -40.77      0.00      0.00      0.00    -11.61     -5.44     94.28      4.84     53.51      4.84   -556.54   -512.46 0009
+   -472.70   -588.78   -593.20   -593.98    -50.80      0.00      0.00      0.00    -17.76     -7.09    190.28     12.29    139.48     12.29   -644.00   -593.98 0207
+   -472.70   -588.78   -593.20   -593.98    -50.80      0.00      0.00      0.00    -17.76     -7.09    190.28     12.29    139.48     12.29   -644.00   -593.98 0004
+   -469.63   -491.88   -494.41   -490.49    -37.90      0.00      0.00      0.00    -10.00     -4.91     73.50      3.51     35.60      3.51   -532.31   -490.49 0209
+   -467.72   -607.66   -613.15   -615.13    -53.26      0.00      0.00      0.00    -19.38     -7.43    219.35     14.90    166.09     14.90   -666.41   -615.13 0003
+   -460.52   -628.03   -635.12   -638.35    -55.91      0.00      0.00      0.00    -21.17     -7.79    253.01     18.11    197.10     18.11   -691.02   -638.35 0002
+   -454.58   -456.31   -458.44   -454.27    -32.98      0.00      0.00      0.00     -7.46     -3.96     44.93      1.92     11.95      1.92   -491.41   -454.27 0210
+   -450.71   -649.97   -659.40   -663.87    -58.76      0.00      0.00      0.00    -23.15     -8.14    292.00     22.04    233.23     22.04   -718.16   -663.87 0001
+   -443.37   -663.91   -675.22   -680.38    -60.59      0.00      0.00      0.00    -24.43     -8.35    318.30     24.82    257.71     24.82   -735.81   -680.38 0206
+   -437.80   -673.55   -686.35   -691.93    -61.85      0.00      0.00      0.00    -25.32     -8.49    337.17     26.87    275.32     26.87   -748.20   -691.93 0000
+   -436.27   -427.40   -429.00   -425.33    -28.87      0.00      0.00      0.00     -5.58     -3.17     27.67      1.10     -1.20      1.10   -457.87   -425.33 0211
+   -416.88   -403.10   -404.17   -401.24    -25.35      0.00      0.00      0.00     -4.17     -2.53     17.16      0.67     -8.19      0.67   -429.52   -401.24 0212
+   -399.75   -384.28   -384.93   -382.67    -22.61      0.00      0.00      0.00     -3.23     -2.06     11.28      0.45    -11.33      0.45   -407.54   -382.67 0213
+   -381.17   -365.47   -365.73   -364.13    -19.88      0.00      0.00      0.00     -2.42     -1.64      7.08      0.30    -12.81      0.30   -385.62   -364.13 0214
+   -368.84   -760.39   -795.73   -801.90    -73.83      0.00      0.00      0.00    -33.75     -9.58    536.18     51.09    462.36     51.09   -869.56   -801.90 0205
+   -363.60   -348.61   -348.62   -347.52    -17.46      0.00      0.00      0.00     -1.83     -1.30      4.46      0.20    -13.00      0.20   -366.08   -347.52 0215
+   -347.19   -333.35   -333.20   -332.45    -15.31      0.00      0.00      0.00     -1.38     -1.04      2.82      0.14    -12.49      0.14   -348.51   -332.45 0216
+   -331.93   -319.41   -319.19   -318.69    -13.40      0.00      0.00      0.00     -1.05     -0.83      1.79      0.10    -11.60      0.10   -332.59   -318.69 0217
+   -319.32   -308.00   -307.74   -307.39    -11.88      0.00      0.00      0.00     -0.83     -0.68      1.20      0.08    -10.67      0.08   -319.62   -307.39 0218
+   -306.12   -296.10   -295.85   -295.61    -10.35      0.00      0.00      0.00     -0.64     -0.55      0.77      0.06     -9.58      0.06   -306.20   -295.61 0219
+   -293.92   -285.11   -284.86   -284.71     -9.00      0.00      0.00      0.00     -0.50     -0.44      0.49      0.04     -8.51      0.04   -293.87   -284.71 0220
+   -282.61   -274.91   -274.68   -274.58     -7.82      0.00      0.00      0.00     -0.39     -0.36      0.32      0.03     -7.50      0.03   -282.50   -274.58 0221
+   -272.13   -265.42   -265.22   -265.14     -6.78      0.00      0.00      0.00     -0.31     -0.30      0.21      0.02     -6.57      0.02   -272.00   -265.14 0222
+   -262.40   -256.56   -256.39   -256.34     -5.88      0.00      0.00      0.00     -0.24     -0.24      0.13      0.02     -5.74      0.02   -262.27   -256.34 0223
+   -254.33   -249.18   -249.03   -248.99     -5.17      0.00      0.00      0.00     -0.20     -0.21      0.09      0.01     -5.08      0.01   -254.20   -248.99 0224
+   -245.83   -241.37   -241.23   -241.21     -4.48      0.00      0.00      0.00     -0.16     -0.17      0.06      0.01     -4.42      0.01   -245.71   -241.21 0225
+   -237.91   -234.03   -233.91   -233.90     -3.88      0.00      0.00      0.00     -0.13     -0.14      0.04      0.01     -3.84      0.01   -237.80   -233.90 0226
+   -230.50   -227.13   -227.03   -227.02     -3.37      0.00      0.00      0.00     -0.11     -0.12      0.03      0.01     -3.34      0.01   -230.40   -227.02 0227
+   -223.56   -220.63   -220.54   -220.53     -2.93      0.00      0.00      0.00     -0.09     -0.10      0.02      0.01     -2.91      0.01   -223.47   -220.53 0228
+   -217.74   -215.15   -215.08   -215.07     -2.59      0.00      0.00      0.00     -0.07     -0.09      0.01      0.00     -2.58      0.00   -217.67   -215.07 0229
+   -214.63   -875.69   -981.39   -971.63    -93.58      0.00      0.00      0.00    -45.60    -10.68    908.19    106.62    814.62    106.62  -1074.97   -971.63 0204
+   -211.57   -209.31   -209.25   -209.24     -2.27      0.00      0.00      0.00     -0.06     -0.07      0.01      0.00     -2.26      0.00   -211.51   -209.24 0230
+   -205.76   -203.78   -203.73   -203.72     -1.99      0.00      0.00      0.00     -0.05     -0.06      0.00      0.00     -1.98      0.00   -205.71   -203.72 0231
+   -200.28   -198.53   -198.49   -198.48     -1.75      0.00      0.00      0.00     -0.04     -0.05      0.00      0.00     -1.74      0.00   -200.24   -198.48 0232
+   -195.09   -193.55   -193.51   -193.50     -1.54      0.00      0.00      0.00     -0.04     -0.05      0.00      0.00     -1.54      0.00   -195.06   -193.50 0233
+   -190.72   -189.32   -189.30   -189.29     -1.39      0.00      0.00      0.00     -0.03     -0.04      0.00      0.00     -1.39      0.00   -190.68   -189.29 0234
+   -186.03   -184.79   -184.76   -184.75     -1.23      0.00      0.00      0.00     -0.03     -0.04      0.00      0.00     -1.23      0.00   -186.00   -184.75 0235
+   -181.57   -180.47   -180.45   -180.44     -1.10      0.00      0.00      0.00     -0.02     -0.03      0.00      0.00     -1.10      0.00   -181.55   -180.44 0236
+   -177.34   -176.34   -176.32   -176.31     -0.99      0.00      0.00      0.00     -0.02     -0.03      0.00      0.00     -0.99      0.00   -177.31   -176.31 0237
+   -173.30   -172.40   -172.39   -172.38     -0.89      0.00      0.00      0.00     -0.02     -0.02      0.00      0.00     -0.89      0.00   -173.28   -172.38 0238
+   -169.86   -169.04   -169.03   -169.02     -0.82      0.00      0.00      0.00     -0.01     -0.02      0.00      0.00     -0.82      0.00   -169.85   -169.02 0239
+   -166.16   -165.42   -165.41   -165.40     -0.74      0.00      0.00      0.00     -0.01     -0.02      0.00      0.00     -0.74      0.00   -166.15   -165.40 0240
+   -162.62   -161.95   -161.94   -161.93     -0.67      0.00      0.00      0.00     -0.01     -0.02      0.00      0.00     -0.67      0.00   -162.61   -161.93 0241
+   -159.24   -158.62   -158.61   -158.60     -0.61      0.00      0.00      0.00     -0.01     -0.01      0.00      0.00     -0.61      0.00   -159.22   -158.60 0242
+   -155.99   -155.42   -155.42   -155.41     -0.56      0.00      0.00      0.00     -0.01     -0.01      0.00      0.00     -0.56      0.00   -155.98   -155.41 0243
+   -153.21   -152.69   -152.68   -152.68     -0.52      0.00      0.00      0.00     -0.01     -0.01      0.00      0.00     -0.52      0.00   -153.20   -152.68 0244
+   -150.21   -149.72   -149.72   -149.71     -0.48      0.00      0.00      0.00     -0.01     -0.01      0.00      0.00     -0.48      0.00   -150.20   -149.71 0245
+   -147.32   -146.88   -146.87   -146.87     -0.44      0.00      0.00      0.00     -0.01     -0.01      0.00      0.00     -0.44      0.00   -147.31   -146.87 0246
+   -144.54   -144.13   -144.13   -144.12     -0.41      0.00      0.00      0.00     -0.01     -0.01      0.00      0.00     -0.41      0.00   -144.54   -144.12 0247
+   -141.87   -141.49   -141.49   -141.48     -0.38      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.38      0.00   -141.86   -141.48 0248
+   -139.57   -139.22   -139.22   -139.21     -0.35      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.35      0.00   -139.57   -139.21 0249
+           COULOMB RMSD     2.40 MSE     0.28 MAE     1.29 (kJ/mol) R 100.0% #points =    56 potassium#chloride
+
+
+Molecule 7: Name: lithium#bromide, Qtot: 0, Multiplicity: 1, MolWt: 86.845 SymmetryNumber: 1 Dataset: Train
+Electrostatic properties.
+Atom   Type            ACM        x        y   z(pm)          fx         fy fz(kJ/mol nm)     qtot
+3   1  Li+               1    0.000    0.000 -154.284      0.000      0.000 -20650.955           1
+35  2  Br-           1.488    0.000    0.000   13.716      0.000      0.000  28616.369       2.488
+0   3  v1Br-        -2.488    0.000    0.000   13.716      0.000      0.000  -7965.414           0
+           EPOT             COULOMB           INDUCTION     INDUCTIONCORRECTION          DISPERSION            EXCHANGE             EXCHIND             ALLELEC     
+        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT
+   -603.47   -557.79   -600.07   -603.59   -106.50      0.00      0.00      0.00     -4.15     -2.75    106.34     48.55     -0.16     48.55   -706.57   -603.59 0008
+   -603.44   -556.70   -608.48   -611.74   -110.39      0.00      0.00      0.00     -4.62     -2.78    119.05     57.82      8.66     57.82   -718.87   -611.74 0007
+   -602.46   -557.41   -591.75   -595.45   -102.84      0.00      0.00      0.00     -3.73     -2.71     95.01     40.75     -7.82     40.75   -694.59   -595.45 0009
+   -602.46   -557.41   -591.75   -595.45   -102.84      0.00      0.00      0.00     -3.73     -2.71     95.01     40.75     -7.82     40.75   -694.59   -595.45 0208
+   -602.21   -553.83   -616.94   -619.85   -114.54      0.00      0.00      0.00     -5.14     -2.82    133.32     68.84     18.78     68.84   -731.48   -619.85 0006
+   -601.09   -551.62   -621.18   -623.89   -116.73      0.00      0.00      0.00     -5.43     -2.84    141.12     75.10     24.39     75.10   -737.91   -623.89 0207
+   -599.59   -548.82   -625.42   -627.90   -119.00      0.00      0.00      0.00     -5.74     -2.85    149.38     81.93     30.38     81.93   -744.42   -627.90 0005
+   -595.35   -541.25   -633.89   -635.85   -123.78      0.00      0.00      0.00     -6.42     -2.88    167.44     97.48     43.66     97.48   -757.67   -635.85 0004
+   -592.68   -547.83   -563.31   -567.26    -91.70      0.00      0.00      0.00     -2.60     -2.56     64.32     21.99    -27.38     21.99   -655.00   -567.26 0209
+   -589.26   -530.63   -642.30   -643.66   -128.94      0.00      0.00      0.00     -7.19     -2.91    187.76    115.94     58.82    115.94   -771.24   -643.66 0003
+   -581.02   -516.36   -650.64   -651.28   -134.49      0.00      0.00      0.00     -8.06     -2.94    210.63    137.86     76.13    137.86   -785.13   -651.28 0206
+   -581.02   -516.36   -650.64   -651.28   -134.49      0.00      0.00      0.00     -8.06     -2.94    210.63    137.86     76.13    137.86   -785.13   -651.28 0002
+   -576.50   -530.70   -536.38   -540.11    -82.46      0.00      0.00      0.00     -1.84     -2.38     43.76     11.79    -38.70     11.79   -618.84   -540.11 0210
+   -570.32   -497.74   -658.83   -658.66   -140.49      0.00      0.00      0.00     -9.05     -2.96    236.37    163.88     95.88    163.88   -799.32   -658.66 0001
+   -556.78   -473.95   -666.82   -665.74   -146.98      0.00      0.00      0.00    -10.17     -2.98    265.37    194.77    118.38    194.77   -813.80   -665.74 0000
+   -553.87   -507.32   -507.71   -510.88    -73.52      0.00      0.00      0.00     -1.26     -2.16     28.33      5.73    -45.19      5.73   -581.24   -510.88 0211
+   -532.49   -486.05   -484.51   -487.11    -66.73      0.00      0.00      0.00     -0.92     -1.96     19.47      3.02    -47.27      3.02   -551.25   -487.11 0212
+   -519.44   -406.78   -681.87   -678.71   -161.62      0.00      0.00      0.00    -12.91     -3.02    334.80    274.96    173.19    274.96   -843.49   -678.71 0205
+   -510.76   -465.24   -462.99   -465.06    -60.66      0.00      0.00      0.00     -0.68     -1.75     13.44      1.58    -47.22      1.58   -523.65   -465.06 0213
+   -489.34   -445.41   -443.08   -444.67    -55.14      0.00      0.00      0.00     -0.51     -1.55      9.31      0.82    -45.83      0.82   -498.22   -444.67 0214
+   -468.61   -426.78   -424.65   -425.84    -50.10      0.00      0.00      0.00     -0.38     -1.36      6.47      0.42    -43.63      0.42   -474.75   -425.84 0215
+   -448.80   -409.43   -407.57   -408.46    -45.47      0.00      0.00      0.00     -0.29     -1.18      4.52      0.21    -40.95      0.21   -453.05   -408.46 0216
+   -427.42   -391.09   -389.58   -390.19    -40.63      0.00      0.00      0.00     -0.22     -1.00      3.00      0.10    -37.63      0.10   -430.22   -390.19 0217
+   -409.86   -376.27   -375.04   -375.46    -36.76      0.00      0.00      0.00     -0.17     -0.86      2.11      0.05    -34.65      0.05   -411.79   -375.46 0218
+   -409.40   -197.03   -702.98   -695.88   -193.60      0.00      0.00      0.00    -19.84     -3.07    504.16    501.92    310.55    501.92   -896.59   -695.88 0204
+   -393.36   -362.50   -361.50   -361.79    -33.20      0.00      0.00      0.00     -0.13     -0.74      1.49      0.03    -31.72      0.03   -394.70   -361.79 0219
+   -377.89   -349.69   -348.88   -349.07    -29.94      0.00      0.00      0.00     -0.10     -0.63      1.05      0.01    -28.89      0.01   -378.82   -349.07 0220
+   -363.40   -337.75   -337.09   -337.22    -26.96      0.00      0.00      0.00     -0.08     -0.54      0.74      0.01    -26.22      0.01   -364.05   -337.22 0221
+   -347.99   -325.06   -324.55   -324.61    -23.87      0.00      0.00      0.00     -0.06     -0.45      0.50      0.00    -23.37      0.00   -348.42   -324.61 0222
+   -335.44   -314.71   -314.30   -314.33    -21.43      0.00      0.00      0.00     -0.05     -0.38      0.36      0.00    -21.08      0.00   -335.73   -314.33 0223
+   -323.69   -305.00   -304.67   -304.68    -19.22      0.00      0.00      0.00     -0.04     -0.32      0.25      0.00    -18.97      0.00   -323.89   -304.68 0224
+   -312.69   -295.88   -295.61   -295.61    -17.22      0.00      0.00      0.00     -0.03     -0.28      0.18      0.00    -17.04      0.00   -312.83   -295.61 0225
+   -302.39   -287.29   -287.07   -287.06    -15.41      0.00      0.00      0.00     -0.02     -0.23      0.13      0.00    -15.28      0.00   -302.48   -287.06 0226
+   -292.73   -279.19   -279.01   -278.99    -13.78      0.00      0.00      0.00     -0.02     -0.20      0.09      0.00    -13.69      0.00   -292.79   -278.99 0227
+   -282.41   -270.47   -270.33   -270.30    -12.12      0.00      0.00      0.00     -0.02     -0.17      0.06      0.00    -12.06      0.00   -282.45   -270.30 0228
+   -273.96   -263.28   -263.16   -263.14    -10.83      0.00      0.00      0.00     -0.01     -0.15      0.05      0.00    -10.78      0.00   -273.99   -263.14 0229
+   -266.02   -256.46   -256.36   -256.34     -9.67      0.00      0.00      0.00     -0.01     -0.13      0.03      0.00     -9.64      0.00   -266.03   -256.34 0230
+   -258.54   -249.99   -249.90   -249.88     -8.64      0.00      0.00      0.00     -0.01     -0.11      0.02      0.00     -8.62      0.00   -258.54   -249.88 0231
+   -251.49   -243.84   -243.76   -243.75     -7.72      0.00      0.00      0.00     -0.01     -0.09      0.02      0.00     -7.70      0.00   -251.49   -243.75 0232
+   -243.90   -237.17   -237.11   -237.09     -6.79      0.00      0.00      0.00     -0.01     -0.08      0.01      0.00     -6.78      0.00   -243.90   -237.09 0233
+   -237.66   -231.63   -231.57   -231.56     -6.08      0.00      0.00      0.00     -0.00     -0.07      0.01      0.00     -6.07      0.00   -237.65   -231.56 0234
+   -231.74   -226.34   -226.29   -226.28     -5.44      0.00      0.00      0.00     -0.00     -0.06      0.01      0.00     -5.44      0.00   -231.73   -226.28 0235
+   -226.13   -221.29   -221.24   -221.23     -4.88      0.00      0.00      0.00     -0.00     -0.05      0.00      0.00     -4.88      0.00   -226.12   -221.23 0236
+   -220.81   -216.46   -216.42   -216.41     -4.38      0.00      0.00      0.00     -0.00     -0.05      0.00      0.00     -4.38      0.00   -220.80   -216.41 0237
+   -215.74   -211.83   -211.80   -211.79     -3.94      0.00      0.00      0.00     -0.00     -0.04      0.00      0.00     -3.94      0.00   -215.74   -211.79 0238
+   -205.69   -202.56   -202.53   -202.53     -3.16      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -3.15      0.00   -205.69   -202.53 0240
+   -197.18   -194.61   -194.59   -194.59     -2.59      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -2.59      0.00   -197.17   -194.59 0242
+   -193.20   -190.87   -190.84   -190.85     -2.35      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -2.35      0.00   -193.20   -190.85 0243
+   -189.39   -187.26   -187.24   -187.24     -2.14      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -2.14      0.00   -189.38   -187.24 0244
+   -181.74   -179.98   -179.97   -179.97     -1.77      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -1.77      0.00   -181.74   -179.97 0246
+           COULOMB RMSD     1.98 MSE    -0.72 MAE     1.19 (kJ/mol) R 100.0% #points =    50 lithium#bromide
+
+
+Molecule 8: Name: sodium#bromide, Qtot: 0, Multiplicity: 1, MolWt: 102.894 SymmetryNumber: 1 Dataset: Train
+Electrostatic properties.
+Atom   Type            ACM        x        y   z(pm)          fx         fy fz(kJ/mol nm)     qtot
+11  1  Na+         5.70319    0.000    0.000 -171.918      0.000      0.000   9503.878     5.70319
+0   2  v1Na+      -4.70319    0.000    0.000 -171.918      0.000      0.000  -8212.147           1
+35  3  Br-           1.488    0.000    0.000   50.082      0.000      0.000   6309.453       2.488
+0   4  v1Br-        -2.488    0.000    0.000   50.082      0.000      0.000  -7601.184           0
+           EPOT             COULOMB           INDUCTION     INDUCTIONCORRECTION          DISPERSION            EXCHANGE             EXCHIND             ALLELEC     
+        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT
+   -516.66   -554.16   -560.04   -561.63    -56.78      0.00      0.00      0.00     -3.02     -7.43    103.11     14.90     46.33     14.90   -616.82   -561.63 0007
+   -516.62   -556.21   -562.65   -564.20    -57.02      0.00      0.00      0.00     -3.07     -7.51    106.04     15.49     49.02     15.49   -619.67   -564.20 0208
+   -516.14   -543.93   -547.47   -549.13    -55.57      0.00      0.00      0.00     -2.80     -7.09     89.65     12.29     34.08     12.29   -603.04   -549.13 0008
+   -515.88   -564.42   -573.41   -574.74    -58.00      0.00      0.00      0.00     -3.26     -7.79    118.68     18.11     60.68     18.11   -631.42   -574.74 0006
+   -514.54   -533.82   -535.60   -537.22    -54.37      0.00      0.00      0.00     -2.59     -6.74     78.01     10.15     23.64     10.15   -589.97   -537.22 0009
+   -513.55   -574.59   -587.67   -588.49    -59.24      0.00      0.00      0.00     -3.52     -8.14    136.72     22.04     77.48     22.04   -646.91   -588.49 0005
+   -512.02   -523.87   -524.37   -525.87    -53.17      0.00      0.00      0.00     -2.40     -6.40     67.94      8.40     14.76      8.40   -577.54   -525.87 0209
+   -509.36   -584.54   -602.92   -602.92    -60.48      0.00      0.00      0.00     -3.81     -8.49    157.61     26.87     97.14     26.87   -663.39   -602.92 0004
+   -507.08   -588.42   -609.32   -608.88    -60.97      0.00      0.00      0.00     -3.92     -8.63    166.88     29.10    105.91     29.10   -670.29   -608.88 0207
+   -502.95   -594.08   -619.27   -618.04    -61.71      0.00      0.00      0.00     -4.10     -8.84    181.84     32.80    120.13     32.80   -680.99   -618.04 0003
+   -499.52   -493.63   -492.03   -492.92    -49.40      0.00      0.00      0.00     -1.87     -5.38     43.84      4.66     -5.55      4.66   -541.43   -492.92 0210
+   -493.90   -602.97   -636.88   -633.88    -62.93      0.00      0.00      0.00     -4.41     -9.18    209.93     40.09    147.00     40.09   -699.81   -633.88 0002
+   -482.80   -466.19   -464.06   -464.39    -45.66      0.00      0.00      0.00     -1.45     -4.47     28.47      2.67    -17.19      2.67   -509.72   -464.39 0211
+   -481.73   -610.91   -655.86   -650.45    -64.14      0.00      0.00      0.00     -4.73     -9.52    242.53     49.06    178.39     49.06   -720.00   -650.45 0001
+   -472.68   -615.06   -668.00   -660.75    -64.84      0.00      0.00      0.00     -4.92     -9.71    264.55     55.41    199.71     55.41   -732.85   -660.75 0206
+   -465.84   -617.50   -676.44   -667.76    -65.30      0.00      0.00      0.00     -5.05     -9.84    280.37     60.10    215.07     60.10   -741.74   -667.76 0000
+   -464.11   -441.55   -439.50   -439.45    -41.98      0.00      0.00      0.00     -1.11     -3.68     18.59      1.59    -23.39      1.59   -481.48   -439.45 0212
+   -444.81   -419.46   -417.66   -417.42    -38.39      0.00      0.00      0.00     -0.85     -3.02     12.20      0.98    -26.19      0.98   -456.05   -417.42 0213
+   -425.69   -399.59   -398.06   -397.76    -34.93      0.00      0.00      0.00     -0.65     -2.46      8.05      0.64    -26.89      0.64   -432.99   -397.76 0214
+   -407.21   -381.61   -380.32   -380.03    -31.63      0.00      0.00      0.00     -0.50     -2.01      5.33      0.43    -26.30      0.43   -411.95   -380.03 0215
+   -389.60   -365.27   -364.17   -363.93    -28.51      0.00      0.00      0.00     -0.38     -1.64      3.54      0.30    -24.96      0.30   -392.68   -363.93 0216
+   -372.97   -350.32   -349.39   -349.19    -25.59      0.00      0.00      0.00     -0.29     -1.33      2.37      0.21    -23.22      0.21   -374.97   -349.19 0217
+   -357.37   -336.58   -335.79   -335.65    -22.88      0.00      0.00      0.00     -0.23     -1.09      1.58      0.15    -21.30      0.15   -358.67   -335.65 0218
+   -342.79   -323.91   -323.24   -323.13    -20.40      0.00      0.00      0.00     -0.18     -0.89      1.07      0.11    -19.33      0.11   -343.63   -323.13 0219
+   -327.56   -310.77   -310.21   -310.13    -17.86      0.00      0.00      0.00     -0.13     -0.71      0.69      0.08    -17.18      0.08   -328.07   -310.13 0220
+   -315.00   -299.96   -299.49   -299.43    -15.84      0.00      0.00      0.00     -0.10     -0.59      0.47      0.06    -15.38      0.06   -315.34   -299.43 0221
+   -303.30   -289.89   -289.49   -289.45    -14.02      0.00      0.00      0.00     -0.08     -0.49      0.32      0.05    -13.70      0.05   -303.51   -289.45 0222
+   -292.40   -280.48   -280.14   -280.11    -12.39      0.00      0.00      0.00     -0.07     -0.41      0.22      0.04    -12.17      0.04   -292.53   -280.11 0223
+   -282.23   -271.67   -271.38   -271.36    -10.93      0.00      0.00      0.00     -0.05     -0.34      0.15      0.03    -10.78      0.03   -282.31   -271.36 0224
+   -272.75   -263.40   -263.15   -263.14     -9.64      0.00      0.00      0.00     -0.04     -0.28      0.10      0.02     -9.54      0.02   -272.79   -263.14 0225
+   -263.88   -255.62   -255.40   -255.40     -8.50      0.00      0.00      0.00     -0.03     -0.24      0.07      0.02     -8.43      0.02   -263.90   -255.40 0226
+   -255.58   -248.29   -248.10   -248.10     -7.48      0.00      0.00      0.00     -0.03     -0.20      0.05      0.01     -7.44      0.01   -255.59   -248.10 0227
+   -247.80   -241.37   -241.20   -241.21     -6.59      0.00      0.00      0.00     -0.02     -0.17      0.03      0.01     -6.56      0.01   -247.80   -241.21 0228
+   -240.50   -234.83   -234.68   -234.69     -5.81      0.00      0.00      0.00     -0.02     -0.15      0.02      0.01     -5.79      0.01   -240.49   -234.69 0229
+   -233.63   -228.63   -228.50   -228.51     -5.12      0.00      0.00      0.00     -0.01     -0.12      0.02      0.01     -5.11      0.01   -233.62   -228.51 0230
+   -227.17   -222.75   -222.64   -222.65     -4.52      0.00      0.00      0.00     -0.01     -0.11      0.01      0.01     -4.51      0.01   -227.16   -222.65 0231
+   -221.08   -217.17   -217.07   -217.09     -4.00      0.00      0.00      0.00     -0.01     -0.09      0.01      0.00     -3.99      0.00   -221.07   -217.09 0232
+   -215.32   -211.87   -211.78   -211.79     -3.54      0.00      0.00      0.00     -0.01     -0.08      0.01      0.00     -3.53      0.00   -215.31   -211.79 0233
+   -209.88   -206.82   -206.73   -206.75     -3.14      0.00      0.00      0.00     -0.01     -0.07      0.00      0.00     -3.13      0.00   -209.87   -206.75 0234
+   -204.72   -202.00   -201.92   -201.94     -2.79      0.00      0.00      0.00     -0.01     -0.06      0.00      0.00     -2.79      0.00   -204.71   -201.94 0235
+   -199.83   -197.40   -197.33   -197.35     -2.48      0.00      0.00      0.00     -0.01     -0.05      0.00      0.00     -2.48      0.00   -199.82   -197.35 0236
+   -194.61   -192.47   -192.41   -192.43     -2.19      0.00      0.00      0.00     -0.00     -0.04      0.00      0.00     -2.19      0.00   -194.60   -192.43 0237
+   -190.21   -188.30   -188.24   -188.26     -1.96      0.00      0.00      0.00     -0.00     -0.04      0.00      0.00     -1.96      0.00   -190.20   -188.26 0238
+   -186.02   -184.30   -184.25   -184.26     -1.76      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -1.76      0.00   -186.01   -184.26 0239
+   -182.02   -180.47   -180.42   -180.44     -1.59      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -1.59      0.00   -182.01   -180.44 0240
+   -178.19   -176.79   -176.75   -176.76     -1.44      0.00      0.00      0.00     -0.00     -0.03      0.00      0.00     -1.44      0.00   -178.19   -176.76 0241
+   -174.53   -173.26   -173.22   -173.24     -1.30      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -1.30      0.00   -174.53   -173.24 0242
+   -171.03   -169.87   -169.84   -169.85     -1.18      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -1.18      0.00   -171.02   -169.85 0243
+   -167.66   -166.61   -166.58   -166.59     -1.08      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -1.08      0.00   -167.66   -166.59 0244
+   -164.43   -163.47   -163.44   -163.45     -0.98      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.98      0.00   -164.43   -163.45 0245
+   -161.33   -160.45   -160.43   -160.43     -0.90      0.00      0.00      0.00     -0.00     -0.02      0.00      0.00     -0.90      0.00   -161.33   -160.43 0246
+   -158.35   -157.54   -157.51   -157.52     -0.83      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.83      0.00   -158.34   -157.52 0247
+   -155.47   -154.73   -154.71   -154.72     -0.76      0.00      0.00      0.00     -0.00     -0.01      0.00      0.00     -0.76      0.00   -155.47   -154.72 0248
+   -150.04   -149.40   -149.39   -149.39     -0.65      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.65      0.00   -150.03   -149.39 0250
+   -147.46   -146.88   -146.86   -146.87     -0.60      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.60      0.00   -147.46   -146.87 0251
+   -144.97   -144.43   -144.42   -144.42     -0.55      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.55      0.00   -144.97   -144.42 0252
+   -142.28   -141.78   -141.76   -141.77     -0.51      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.51      0.00   -142.28   -141.77 0253
+   -139.97   -139.50   -139.49   -139.49     -0.48      0.00      0.00      0.00     -0.00     -0.01     -0.00      0.00     -0.48      0.00   -139.96   -139.49 0254
+           COULOMB RMSD     1.78 MSE     0.28 MAE     0.68 (kJ/mol) R 100.0% #points =    58 sodium#bromide
+
+
+Molecule 9: Name: potassium#bromide, Qtot: 0, Multiplicity: 1, MolWt: 119.002 SymmetryNumber: 1 Dataset: Train
+Electrostatic properties.
+Atom   Type            ACM        x        y   z(pm)          fx         fy fz(kJ/mol nm)     qtot
+19  1  K+          9.80622    0.000    0.000 -164.689      0.000      0.000  18361.088     9.80622
+0   2  v1K+       -8.80622    0.000    0.000 -164.689      0.000      0.000 -13717.014           1
+35  3  Br-           1.488    0.000    0.000   81.311      0.000      0.000   4154.090       2.488
+0   4  v1Br-        -2.488    0.000    0.000   81.311      0.000      0.000  -8798.164           0
+           EPOT             COULOMB           INDUCTION     INDUCTIONCORRECTION          DISPERSION            EXCHANGE             EXCHIND             ALLELEC     
+        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT        QM       ACT
+   -456.43   -517.33   -515.48   -516.23    -45.95      0.00      0.00      0.00    -13.88     -5.14    119.53      4.04     73.58      4.04   -561.43   -516.23 0006
+   -456.02   -531.16   -529.28   -530.55    -47.72      0.00      0.00      0.00    -15.04     -5.44    136.69      4.83     88.97      4.83   -577.00   -530.55 0005
+   -455.82   -504.39   -502.72   -502.93    -44.25      0.00      0.00      0.00    -12.81     -4.85    104.58      3.39     60.33      3.39   -546.97   -502.93 0007
+   -455.22   -539.91   -538.13   -539.67    -48.80      0.00      0.00      0.00    -15.78     -5.63    148.18      5.39     99.38      5.39   -586.93   -539.67 0208
+   -454.43   -545.94   -544.27   -545.99    -49.54      0.00      0.00      0.00    -16.30     -5.75    156.38      5.80    106.85      5.80   -593.81   -545.99 0004
+   -454.36   -492.26   -490.88   -490.54    -42.60      0.00      0.00      0.00    -11.84     -4.58     91.53      2.86     48.94      2.86   -533.48   -490.54 0209
+   -454.36   -492.26   -490.88   -490.54    -42.60      0.00      0.00      0.00    -11.84     -4.58     91.53      2.86     48.94      2.86   -533.48   -490.54 0008
+   -452.20   -480.90   -479.87   -479.00    -41.00      0.00      0.00      0.00    -10.94     -4.31     80.16      2.42     39.16      2.42   -520.87   -479.00 0009
+   -451.43   -561.73   -560.59   -562.63    -51.44      0.00      0.00      0.00    -17.68     -6.07    179.01      6.97    127.57      6.97   -612.02   -562.63 0003
+   -446.77   -578.60   -578.41   -580.59    -53.41      0.00      0.00      0.00    -19.18     -6.40    205.00      8.40    151.58      8.40   -631.82   -580.59 0002
+   -444.04   -454.47   -454.42   -452.38    -37.13      0.00      0.00      0.00     -8.91     -3.68     56.89      1.59     19.75      1.59   -491.55   -452.38 0210
+   -440.17   -596.60   -597.93   -600.00    -55.49      0.00      0.00      0.00    -20.81     -6.74    234.86     10.15    179.37     10.15   -653.42   -600.00 0001
+   -438.58   -600.34   -602.06   -604.07    -55.92      0.00      0.00      0.00    -21.15     -6.81    241.35     10.54    185.43     10.54   -657.97   -604.07 0207
+   -431.27   -615.77   -619.33   -620.97    -57.75      0.00      0.00      0.00    -22.57     -7.09    269.26     12.29    211.51     12.29   -677.08   -620.97 0000
+   -428.93   -423.96   -424.90   -421.95    -32.51      0.00      0.00      0.00     -6.73     -2.94     35.58      0.93      3.07      0.93   -457.41   -421.95 0211
+   -411.71   -398.70   -400.07   -396.94    -28.66      0.00      0.00      0.00     -5.09     -2.34     22.39      0.57     -6.28      0.57   -428.73   -396.94 0212
+   -393.92   -377.25   -378.63   -375.77    -25.41      0.00      0.00      0.00     -3.85     -1.86     14.16      0.37    -11.25      0.37   -404.04   -375.77 0213
+   -390.67   -675.98   -691.89   -689.10    -64.86      0.00      0.00      0.00    -28.34     -8.07    395.53     21.19    330.67     21.19   -756.76   -689.10 0206
+   -376.40   -358.60   -359.80   -357.38    -22.55      0.00      0.00      0.00     -2.92     -1.48      9.01      0.25    -13.54      0.25   -382.35   -357.38 0214
+   -359.61   -342.07   -343.10   -341.07    -19.94      0.00      0.00      0.00     -2.21     -1.17      5.76      0.17    -14.18      0.17   -363.04   -341.07 0215
+   -342.04   -325.64   -326.57   -324.85    -17.27      0.00      0.00      0.00     -1.64     -0.91      3.52      0.12    -13.75      0.12   -343.84   -324.85 0216
+   -327.29   -312.27   -313.18   -311.62    -15.07      0.00      0.00      0.00     -1.26     -0.73      2.27      0.08    -12.80      0.08   -328.24   -311.62 0217
+   -313.55   -300.00   -300.92   -299.48    -13.09      0.00      0.00      0.00     -0.97     -0.59      1.47      0.06    -11.62      0.06   -314.01   -299.48 0218
+   -300.79   -288.70   -289.61   -288.27    -11.35      0.00      0.00      0.00     -0.75     -0.48      0.95      0.05    -10.40      0.05   -300.95   -288.27 0219
+   -288.94   -278.23   -279.11   -277.88     -9.83      0.00      0.00      0.00     -0.59     -0.39      0.62      0.03     -9.21      0.03   -288.94   -277.88 0220
+   -277.93   -268.51   -269.34   -268.22     -8.52      0.00      0.00      0.00     -0.46     -0.32      0.40      0.03     -8.11      0.03   -277.85   -268.22 0221
+   -267.72   -259.45   -260.22   -259.21     -7.37      0.00      0.00      0.00     -0.37     -0.26      0.26      0.02     -7.11      0.02   -267.60   -259.21 0222
+   -258.22   -250.99   -251.72   -250.79     -6.37      0.00      0.00      0.00     -0.29     -0.21      0.17      0.01     -6.20      0.01   -258.09   -250.79 0223
+   -249.38   -243.06   -243.76   -242.89     -5.49      0.00      0.00      0.00     -0.23     -0.18      0.11      0.01     -5.37      0.01   -249.25   -242.89 0224
+   -241.13   -235.62   -236.30   -235.48     -4.71      0.00      0.00      0.00     -0.19     -0.15      0.08      0.01     -4.63      0.01   -241.01   -235.48 0225
+   -233.44   -228.63   -229.30   -228.51     -4.03      0.00      0.00      0.00     -0.15     -0.12      0.05      0.01     -3.98      0.01   -233.33   -228.51 0226
+   -226.24   -222.04   -222.71   -221.94     -3.43      0.00      0.00      0.00     -0.12     -0.10      0.03      0.01     -3.40      0.01   -226.14   -221.94 0227
+   -219.49   -215.82   -216.49   -215.74     -2.92      0.00      0.00      0.00     -0.10     -0.09      0.02      0.00     -2.89      0.00   -219.41   -215.74 0228
+   -213.16   -209.94   -210.61   -209.87     -2.47      0.00      0.00      0.00     -0.08     -0.08      0.01      0.00     -2.46      0.00   -213.08   -209.87 0229
+   -207.20   -204.38   -205.04   -204.32     -2.10      0.00      0.00      0.00     -0.07     -0.06      0.01      0.00     -2.09      0.00   -207.14   -204.32 0230
+   -201.59   -199.10   -199.75   -199.05     -1.78      0.00      0.00      0.00     -0.06     -0.05      0.01      0.00     -1.77      0.00   -201.53   -199.05 0231
+   -191.27   -189.32   -189.94   -189.29     -1.29      0.00      0.00      0.00     -0.04     -0.04      0.00      0.00     -1.28      0.00   -191.23   -189.29 0233
+   -186.52   -184.79   -185.39   -184.75     -1.10      0.00      0.00      0.00     -0.04     -0.04      0.00      0.00     -1.10      0.00   -186.49   -184.75 0234
+   -182.01   -180.47   -181.04   -180.44     -0.94      0.00      0.00      0.00     -0.03     -0.03      0.00      0.00     -0.94      0.00   -181.98   -180.44 0235
+   -177.73   -176.34   -176.90   -176.31     -0.81      0.00      0.00      0.00     -0.03     -0.03      0.00      0.00     -0.81      0.00   -177.70   -176.31 0236
+   -173.65   -172.40   -172.93   -172.38     -0.69      0.00      0.00      0.00     -0.02     -0.02      0.00      0.00     -0.69      0.00   -173.63   -172.38 0237
+   -169.76   -168.63   -169.14   -168.61     -0.60      0.00      0.00      0.00     -0.02     -0.02      0.00      0.00     -0.60      0.00   -169.74   -168.61 0238
+   -166.05   -165.02   -165.51   -165.01     -0.51      0.00      0.00      0.00     -0.02     -0.02      0.00      0.00     -0.51      0.00   -166.03   -165.01 0239
+   -162.50   -161.57   -162.04   -161.55     -0.44      0.00      0.00      0.00     -0.01     -0.02      0.00      0.00     -0.44      0.00   -162.48   -161.55 0240
+   -159.10   -158.25   -158.71   -158.24     -0.38      0.00      0.00      0.00     -0.01     -0.01      0.00      0.00     -0.38      0.00   -159.09   -158.24 0241
+   -155.85   -155.07   -155.51   -155.06     -0.33      0.00      0.00      0.00     -0.01     -0.01      0.00      0.00     -0.33      0.00   -155.84   -155.06 0242
+   -152.73   -152.02   -152.44   -152.01     -0.28      0.00      0.00      0.00     -0.01     -0.01      0.00      0.00     -0.28      0.00   -152.72   -152.01 0243
+   -149.74   -149.08   -149.49   -149.07     -0.24      0.00      0.00      0.00     -0.01     -0.01      0.00      0.00     -0.24      0.00   -149.73   -149.07 0244
+   -146.86   -146.26   -146.65   -146.25     -0.20      0.00      0.00      0.00     -0.01     -0.01      0.00      0.00     -0.20      0.00   -146.85   -146.25 0245
+   -144.09   -143.54   -143.91   -143.53     -0.17      0.00      0.00      0.00     -0.01     -0.01      0.00      0.00     -0.17      0.00   -144.08   -143.53 0246
+   -141.43   -140.92   -141.28   -140.91     -0.14      0.00      0.00      0.00     -0.01     -0.01      0.00      0.00     -0.14      0.00   -141.42   -140.91 0247
+           COULOMB RMSD     1.40 MSE     0.56 MAE     1.16 (kJ/mol) R 100.0% #points =    51 potassium#bromide
+
+
+*** Results for Train data set ***
+Fitting data to y = ax, where x = SAPT
+Property                              N             a    R(%)     RMSD      MSE      MAE      Model
+----------------------------------------------------------------------------------------------
+COULOMB (kJ/mol)                    541  1.001(0.000)   99.99   2.6645  -0.0115   1.2664 Alexandria-Train
+
+*** Results for Test data set ***
+
+*** Results for Ignore data set ***
+Br- (e)                               3   -nan( -nan)    0.00   0.4880   0.4880   0.4880 Alexandria
+Cl- (e)                               3   -nan( -nan)    0.00   0.8400   0.8400   0.8400 Alexandria
+F- (e)                                3   -nan( -nan)    0.00   0.2460   0.2460   0.2460 Alexandria
+K+ (e)                                3   -nan( -nan)    0.00   8.8062   8.8062   8.8062 Alexandria
+Li+ (e)                               3   -nan( -nan)    0.00   0.0000   0.0000   0.0000 Alexandria
+Na+ (e)                               3   -nan( -nan)    0.00   4.7032   4.7032   4.7032 Alexandria
+
+Overview of COULOMB-Train outliers for Alexandria (Diff > 3.997)
+----------------------------------
+Name                                         Reference    Alexandria      ACT-Ref.
+lithium#bromide                               -702.984      -695.876       7.10767
+lithium#chloride                              -756.934       -752.21       4.72438
+lithium#chloride                              -684.902      -690.916      -6.01408
+lithium#chloride                              -648.698       -655.88      -7.18233
+lithium#chloride                              -614.285      -621.236      -6.95065
+lithium#chloride                              -582.121      -588.175      -6.05355
+lithium#chloride                              -552.332      -557.288      -4.95573
+lithium#chloride                               -708.63      -712.701      -4.07142
+lithium#chloride                              -700.716      -705.563      -4.84695
+lithium#chloride                                -692.8       -698.29      -5.48993
+lithium#chloride                              -684.902      -690.916      -6.01408
+lithium#chloride                              -677.038      -683.464       -6.4263
+lithium#chloride                              -669.222      -675.963      -6.74074
+lithium#chloride                              -661.466      -668.436      -6.97022
+lithium#chloride                              -653.779        -660.9      -7.12081
+lithium#chloride                              -646.172      -653.374      -7.20187
+lithium#fluoride                              -1034.13      -1014.23       19.8952
+lithium#fluoride                              -883.928      -890.876      -6.94788
+lithium#fluoride                              -826.447      -835.249      -8.80214
+lithium#fluoride                              -775.119      -783.469      -8.35018
+lithium#fluoride                              -721.969      -728.709      -6.73983
+lithium#fluoride                              -681.418      -686.626      -5.20848
+lithium#fluoride                              -864.031      -871.984      -7.95262
+lithium#fluoride                              -1008.44      -996.148       12.2917
+lithium#fluoride                              -989.813      -982.155       7.65796
+lithium#fluoride                              -904.609      -910.023      -5.41446
+lithium#fluoride                              -889.024      -895.641      -6.61706
+lithium#fluoride                              -873.884       -881.39      -7.50625
+lithium#fluoride                              -859.175      -867.306      -8.13132
+potassium#chloride                            -981.394      -971.632       9.76204
+potassium#chloride                            -795.733      -801.896      -6.16286
+potassium#chloride                            -675.223      -680.383      -5.16027
+potassium#chloride                            -458.437      -454.267       4.17048
+potassium#chloride                             -686.35      -691.927      -5.57706
+potassium#chloride                            -659.397       -663.87      -4.47344
+potassium#fluoride                             -1066.1      -1074.68      -8.58066
+potassium#fluoride                             -753.39      -748.148       5.24223
+potassium#fluoride                            -667.863        -658.6       9.26348
+potassium#fluoride                             -598.62      -588.798       9.82198
+potassium#fluoride                            -551.776      -543.359       8.41734
+potassium#fluoride                            -513.869      -507.396       6.47295
+potassium#fluoride                            -482.147      -477.525       4.62246
+potassium#fluoride                             -753.39      -748.148       5.24223
+potassium#fluoride                            -723.447      -716.516       6.93095
+potassium#fluoride                            -696.609       -688.39       8.21892
+potassium#fluoride                            -672.419      -663.293       9.12646
+potassium#fluoride                            -650.493      -640.806        9.6874
+potassium#fluoride                            -630.514      -620.563       9.95122
+potassium#fluoride                            -612.209      -602.244       9.96484
+potassium#fluoride                            -595.356      -585.584       9.77177
+sodium#bromide                                -668.004      -660.747       7.25669
+sodium#bromide                                -676.441      -667.758       8.68325
+sodium#bromide                                 -655.86      -650.448        5.4122
+Program finished, please check the output in this file.
+
+Thanks for using the Alexandria Chemistry Toolkit.
+    https://github.com/AlexandriaChemistry/ACT

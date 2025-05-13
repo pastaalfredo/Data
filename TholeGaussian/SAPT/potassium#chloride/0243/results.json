@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -2.72953e-06,
+        "Disp20": -3.62141e-06,
+        "Disp21": 8.339899999999999e-07,
+        "Disp22 (S) (CCD)": -7.29e-08,
+        "Disp22 (SDQ)": -4.64e-09,
+        "Disp22 (T)": -4.4701000000000003e-07,
+        "Disp22 (T) (CCD)": -4.4446999999999996e-07,
+        "Dispersion": -3.28821e-06,
+        "Electrostatics": -0.05919467625,
+        "Elst10,r": -0.059194334339999995,
+        "Elst12,r": -5.2032e-07,
+        "Est. Disp22 (T)": -4.534e-07,
+        "Est. Disp22 (T) (CCD)": -4.5082e-07,
+        "Exch-Disp20": 6.700000000000001e-10,
+        "Exch-Ind20,r": 3.806e-08,
+        "Exch-Ind22": 2.55e-09,
+        "Exch10": 1.021e-08,
+        "Exch10(S^2)": 1.021e-08,
+        "Exch11(S^2)": -7e-11,
+        "Exch12(S^2)": 6.45e-09,
+        "Exchange": 1.6589999999999998e-08,
+        "Ind20,r": -0.00019356794999999998,
+        "Ind22": -1.296847e-05,
+        "Induction": -0.00021432218,
+        "InteractionEnergy": -0.05941244869,
+        "delta HF,r (2)": -1.43815e-06,
+        "delta MP2,r (2)": -6.42407e-06
+    },
+    "index": "0243",
+    "jobtype": "SP",
+    "logFile": "0243.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -4.228469114196
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        4.711530885804
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#chloride"
+}

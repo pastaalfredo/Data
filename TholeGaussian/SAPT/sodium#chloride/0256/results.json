@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -1.3039e-07,
+        "Disp20": -1.3536000000000002e-07,
+        "Disp21": 3.01e-09,
+        "Disp22 (S) (CCD)": -8.78e-09,
+        "Disp22 (SDQ)": -5.800000000000001e-09,
+        "Disp22 (T)": -1.468e-08,
+        "Disp22 (T) (CCD)": -1.5699999999999998e-08,
+        "Dispersion": -1.5603e-07,
+        "Electrostatics": -0.05281402155,
+        "Elst10,r": -0.052812657719999996,
+        "Elst12,r": -2.41979e-06,
+        "Est. Disp22 (T)": -1.497e-08,
+        "Est. Disp22 (T) (CCD)": -1.6010000000000002e-08,
+        "Exch-Disp20": 0.0,
+        "Exch-Ind20,r": 6.3e-10,
+        "Exch-Ind22": 4.9999999999999995e-11,
+        "Exch10": 6e-11,
+        "Exch10(S^2)": 6e-11,
+        "Exch11(S^2)": -1.0000000000000001e-11,
+        "Exch12(S^2)": -1.04e-09,
+        "Exchange": -9.8e-10,
+        "Ind20,r": -0.00010522317,
+        "Ind22": -8.61354e-06,
+        "Induction": -0.00011949709,
+        "InteractionEnergy": -0.05293473161,
+        "delta HF,r (2)": -1.40829e-06,
+        "delta MP2,r (2)": -4.253630000000001e-06
+    },
+    "index": "0256",
+    "jobtype": "SP",
+    "logFile": "0256.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -6.045483691646
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        3.974516308354
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#chloride"
+}

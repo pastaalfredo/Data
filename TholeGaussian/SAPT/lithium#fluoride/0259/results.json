@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -4.071e-08,
+        "Disp20": -3.874e-08,
+        "Disp21": -2.74e-09,
+        "Disp22 (S) (CCD)": -3.55e-09,
+        "Disp22 (SDQ)": -3.1200000000000004e-09,
+        "Disp22 (T)": -4.1300000000000004e-09,
+        "Disp22 (T) (CCD)": -4.19e-09,
+        "Dispersion": -4.886e-08,
+        "Electrostatics": -0.06153606947,
+        "Elst10,r": -0.06153501629,
+        "Elst12,r": -9.474460000000001e-06,
+        "Est. Disp22 (T)": -4.26e-09,
+        "Est. Disp22 (T) (CCD)": -4.33e-09,
+        "Exch-Disp20": -2.0000000000000002e-11,
+        "Exch-Ind20,r": 1.0000000000000001e-11,
+        "Exch-Ind22": 0.0,
+        "Exch10": -9e-11,
+        "Exch10(S^2)": -9e-11,
+        "Exch11(S^2)": 0.0,
+        "Exch12(S^2)": -3.9999999999999996e-10,
+        "Exchange": -4.9e-10,
+        "Ind20,r": -5.463622e-05,
+        "Ind22": -1.2515979999999999e-05,
+        "Induction": -7.453584000000001e-05,
+        "InteractionEnergy": -0.061619075940000004,
+        "delta HF,r (2)": -6.7838e-07,
+        "delta MP2,r (2)": -6.70552e-06
+    },
+    "index": "0259",
+    "jobtype": "SP",
+    "logFile": "0259.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -6.280607115739
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        2.319392884261
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#fluoride"
+}

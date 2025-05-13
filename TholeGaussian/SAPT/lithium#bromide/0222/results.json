@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -1.72298e-05,
+        "Disp20": -1.710295e-05,
+        "Disp21": -4.2131e-07,
+        "Disp22 (S) (CCD)": -9.2702e-07,
+        "Disp22 (SDQ)": -5.8632e-07,
+        "Disp22 (T)": -1.0723e-06,
+        "Disp22 (T) (CCD)": -1.1981500000000001e-06,
+        "Dispersion": -2.2982329999999997e-05,
+        "Electrostatics": -0.12361343234000001,
+        "Elst10,r": -0.12358911704,
+        "Elst12,r": -2.967177e-05,
+        "Est. Disp22 (T)": -1.40338e-06,
+        "Est. Disp22 (T) (CCD)": -1.56808e-06,
+        "Exch-Disp20": 1.89735e-06,
+        "Exch-Ind20,r": 0.00037514129000000004,
+        "Exch-Ind22": 3.555303e-05,
+        "Exch10": 0.00016201933,
+        "Exch10(S^2)": 0.0001620129,
+        "Exch11(S^2)": -6.623399999999999e-07,
+        "Exch12(S^2)": 2.9762790000000002e-05,
+        "Exchange": 0.00019111979,
+        "Ind20,r": -0.00611032164,
+        "Ind22": -0.00057908961,
+        "Induction": -0.00909281823,
+        "InteractionEnergy": -0.13254374263,
+        "delta HF,r (2)": -0.0018701638599999998,
+        "delta MP2,r (2)": -0.00094936529
+    },
+    "index": "0222",
+    "jobtype": "SP",
+    "logFile": "0222.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.930564671278
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        0.349435328722
+                    ],
+                    "elem": "Br"
+                }
+            ],
+            "charge": -1,
+            "compound": "bromide",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#bromide"
+}

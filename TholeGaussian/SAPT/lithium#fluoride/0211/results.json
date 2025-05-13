@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -0.00018156527,
+        "Disp20": -0.00016705512,
+        "Disp21": -1.739968e-05,
+        "Disp22 (S) (CCD)": -2.539988e-05,
+        "Disp22 (SDQ)": -2.683457e-05,
+        "Disp22 (T)": -1.621748e-05,
+        "Disp22 (T) (CCD)": -1.567975e-05,
+        "Dispersion": -0.00023278006,
+        "Electrostatics": -0.21798503249,
+        "Elst10,r": -0.21813549810000002,
+        "Elst12,r": 0.00056496965,
+        "Est. Disp22 (T)": -2.012078e-05,
+        "Est. Disp22 (T) (CCD)": -1.9453629999999998e-05,
+        "Exch-Disp20": 2.872058e-05,
+        "Exch-Ind20,r": 0.00471709308,
+        "Exch-Ind22": 0.00147339344,
+        "Exch10": 0.003570198,
+        "Exch10(S^2)": 0.0035669146299999997,
+        "Exch11(S^2)": -2.037918e-05,
+        "Exch12(S^2)": 0.00168589288,
+        "Exchange": 0.0052357117,
+        "Ind20,r": -0.0152082634,
+        "Ind22": -0.00475033142,
+        "Induction": -0.01435567875,
+        "InteractionEnergy": -0.2269254199,
+        "delta HF,r (2)": -0.00074576682,
+        "delta MP2,r (2)": 0.00012097018
+    },
+    "index": "0211",
+    "jobtype": "SP",
+    "logFile": "0211.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -1.767333630243
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        0.652666369757
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#fluoride"
+}

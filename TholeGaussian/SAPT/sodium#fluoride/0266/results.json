@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -3.142e-08,
+        "Disp20": -2.9139999999999998e-08,
+        "Disp21": -2.6699999999999997e-09,
+        "Disp22 (S) (CCD)": -3.77e-09,
+        "Disp22 (SDQ)": -3.4199999999999998e-09,
+        "Disp22 (T)": -3.950000000000001e-09,
+        "Disp22 (T) (CCD)": -4.08e-09,
+        "Dispersion": -3.9369999999999995e-08,
+        "Electrostatics": -0.04899924516,
+        "Elst10,r": -0.04899880649,
+        "Elst12,r": -3.31738e-06,
+        "Est. Disp22 (T)": -4.01e-09,
+        "Est. Disp22 (T) (CCD)": -4.14e-09,
+        "Exch-Disp20": 0.0,
+        "Exch-Ind20,r": 3e-10,
+        "Exch-Ind22": 6e-11,
+        "Exch10": 9e-11,
+        "Exch10(S^2)": 9e-11,
+        "Exch11(S^2)": -0.0,
+        "Exch12(S^2)": 1.12e-09,
+        "Exchange": 1.2100000000000002e-09,
+        "Ind20,r": -2.225831e-05,
+        "Ind22": -4.7101399999999994e-06,
+        "Induction": -2.865959e-05,
+        "InteractionEnergy": -0.04903082163,
+        "delta HF,r (2)": -8.087000000000001e-08,
+        "delta MP2,r (2)": -1.6106700000000001e-06
+    },
+    "index": "0266",
+    "jobtype": "SP",
+    "logFile": "0266.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -4.886679800784
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        5.913320199216
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#fluoride"
+}

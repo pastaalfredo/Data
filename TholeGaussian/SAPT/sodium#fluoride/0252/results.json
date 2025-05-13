@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -1.1463e-07,
+        "Disp20": -1.0612e-07,
+        "Disp21": -9.94e-09,
+        "Disp22 (S) (CCD)": -1.446e-08,
+        "Disp22 (SDQ)": -1.347e-08,
+        "Disp22 (T)": -1.426e-08,
+        "Disp22 (T) (CCD)": -1.473e-08,
+        "Dispersion": -1.4472000000000001e-07,
+        "Electrostatics": -0.06055149461,
+        "Elst10,r": -0.060549993669999996,
+        "Elst12,r": -1.276821e-05,
+        "Est. Disp22 (T)": -1.4630000000000001e-08,
+        "Est. Disp22 (T) (CCD)": -1.511e-08,
+        "Exch-Disp20": -1.0000000000000001e-11,
+        "Exch-Ind20,r": 8.000000000000001e-11,
+        "Exch-Ind22": 2.0000000000000002e-11,
+        "Exch10": -8.000000000000001e-11,
+        "Exch10(S^2)": -8.000000000000001e-11,
+        "Exch11(S^2)": -1.0000000000000001e-11,
+        "Exch12(S^2)": -1.4699999999999999e-09,
+        "Exchange": -1.5600000000000002e-09,
+        "Ind20,r": -5.3914539999999996e-05,
+        "Ind22": -1.263596e-05,
+        "Induction": -7.436033e-05,
+        "InteractionEnergy": -0.06063726849,
+        "delta HF,r (2)": -7.462200000000001e-07,
+        "delta MP2,r (2)": -7.06421e-06
+    },
+    "index": "0252",
+    "jobtype": "SP",
+    "logFile": "0252.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.954590875819
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        4.785409124181
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#fluoride"
+}

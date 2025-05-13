@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -0.00117701439,
+        "Disp20": -0.0011762799,
+        "Disp21": -1.969664e-05,
+        "Disp22 (S) (CCD)": -6.31893e-05,
+        "Disp22 (SDQ)": -4.15776e-05,
+        "Disp22 (T)": -8.914944e-05,
+        "Disp22 (T) (CCD)": -9.789284e-05,
+        "Dispersion": -0.00107785186,
+        "Electrostatics": -0.22165222116000002,
+        "Elst10,r": -0.22147929803,
+        "Elst12,r": -0.00012102214999999999,
+        "Est. Disp22 (T)": -0.00010883953,
+        "Est. Disp22 (T) (CCD)": -0.00011951405,
+        "Exch-Disp20": 0.00034380889,
+        "Exch-Ind20,r": 0.06078029003,
+        "Exch-Ind22": 0.00539648618,
+        "Exch10": 0.0347657887,
+        "Exch10(S^2)": 0.03446587459,
+        "Exch11(S^2)": -0.00054013515,
+        "Exch12(S^2)": 0.00209595045,
+        "Exchange": 0.036321604,
+        "Ind20,r": -0.08410925535,
+        "Ind22": -0.00746778986,
+        "Induction": -0.01862978888,
+        "InteractionEnergy": -0.20500393636,
+        "delta HF,r (2)": 0.00497645546,
+        "delta MP2,r (2)": 0.00171450221
+    },
+    "index": "0009",
+    "jobtype": "SP",
+    "logFile": "0009.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -1.478187130193
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        0.971812869807
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#chloride"
+}

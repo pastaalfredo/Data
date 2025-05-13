@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -2.168051e-05,
+        "Disp20": -2.813686e-05,
+        "Disp21": 5.88935e-06,
+        "Disp22 (S) (CCD)": -7.784400000000001e-07,
+        "Disp22 (SDQ)": -2.7764e-07,
+        "Disp22 (T)": -3.26424e-06,
+        "Disp22 (T) (CCD)": -3.2850399999999997e-06,
+        "Dispersion": -2.761665e-05,
+        "Electrostatics": -0.08192010074,
+        "Elst10,r": -0.0819155362,
+        "Elst12,r": -7.86195e-06,
+        "Est. Disp22 (T)": -3.49206e-06,
+        "Est. Disp22 (T) (CCD)": -3.51432e-06,
+        "Exch-Disp20": 1.9302e-07,
+        "Exch-Ind20,r": 1.067771e-05,
+        "Exch-Ind22": 8.9224e-07,
+        "Exch10": 3.01848e-06,
+        "Exch10(S^2)": 3.01848e-06,
+        "Exch11(S^2)": -1.078e-08,
+        "Exch12(S^2)": 1.28099e-06,
+        "Exchange": 4.2887e-06,
+        "Ind20,r": -0.0007860962500000001,
+        "Ind22": -6.568694999999999e-05,
+        "Induction": -0.00098742778,
+        "InteractionEnergy": -0.08293417648000001,
+        "delta HF,r (2)": -6.67914e-05,
+        "delta MP2,r (2)": -8.228212e-05
+    },
+    "index": "0229",
+    "jobtype": "SP",
+    "logFile": "0229.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.055470970661
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        3.404529029339
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#chloride"
+}

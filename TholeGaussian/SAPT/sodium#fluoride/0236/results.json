@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -8.1662e-07,
+        "Disp20": -7.5057e-07,
+        "Disp21": -7.609e-08,
+        "Disp22 (S) (CCD)": -1.2638999999999998e-07,
+        "Disp22 (SDQ)": -1.2796e-07,
+        "Disp22 (T)": -1.0132e-07,
+        "Disp22 (T) (CCD)": -1.0351e-07,
+        "Dispersion": -1.07496e-06,
+        "Electrostatics": -0.08269322411,
+        "Elst10,r": -0.08268994505,
+        "Elst12,r": -4.977889e-05,
+        "Est. Disp22 (T)": -1.0669e-07,
+        "Est. Disp22 (T) (CCD)": -1.0899e-07,
+        "Exch-Disp20": 1.4699999999999999e-09,
+        "Exch-Ind20,r": 3.6708e-07,
+        "Exch-Ind22": 1.0477e-07,
+        "Exch10": 1.3531e-07,
+        "Exch10(S^2)": 1.3531e-07,
+        "Exch11(S^2)": -5.4e-10,
+        "Exch12(S^2)": 2.5242e-07,
+        "Exchange": 3.8719999999999997e-07,
+        "Ind20,r": -0.00020947136999999999,
+        "Ind22": -5.97861e-05,
+        "Induction": -0.00035134496,
+        "InteractionEnergy": -0.08309175738,
+        "delta HF,r (2)": -1.4503820000000001e-05,
+        "delta MP2,r (2)": -6.808065e-05
+    },
+    "index": "0236",
+    "jobtype": "SP",
+    "logFile": "0236.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -2.895810252316
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        3.504189747684
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#fluoride"
+}

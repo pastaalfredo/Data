@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -6.0132e-07,
+        "Disp20": -7.0539e-07,
+        "Disp21": 7.663e-08,
+        "Disp22 (S) (CCD)": -5.428e-08,
+        "Disp22 (SDQ)": -3.779e-08,
+        "Disp22 (T)": -1.1012e-07,
+        "Disp22 (T) (CCD)": -1.0564e-07,
+        "Dispersion": -7.6367e-07,
+        "Electrostatics": -0.054553102549999996,
+        "Elst10,r": -0.05455379733,
+        "Elst12,r": 2.70304e-06,
+        "Est. Disp22 (T)": -1.1114e-07,
+        "Est. Disp22 (T) (CCD)": -1.0662000000000001e-07,
+        "Exch-Disp20": 6e-11,
+        "Exch-Ind20,r": 2.9399999999999998e-09,
+        "Exch-Ind22": 3.6e-10,
+        "Exch10": 7.999999999999999e-10,
+        "Exch10(S^2)": 7.999999999999999e-10,
+        "Exch11(S^2)": -1.0000000000000001e-11,
+        "Exch12(S^2)": 3.09e-09,
+        "Exchange": 3.8900000000000004e-09,
+        "Ind20,r": -5.492277e-05,
+        "Ind22": -6.704489999999999e-06,
+        "Induction": -6.808665999999999e-05,
+        "InteractionEnergy": -0.05461994074,
+        "delta HF,r (2)": -1.02155e-06,
+        "delta MP2,r (2)": -5.44269e-06
+    },
+    "index": "0251",
+    "jobtype": "SP",
+    "logFile": "0251.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.179396191651
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        6.520603808349
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#fluoride"
+}

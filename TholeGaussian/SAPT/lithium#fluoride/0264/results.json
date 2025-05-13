@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -2.6259999999999998e-08,
+        "Disp20": -2.501e-08,
+        "Disp21": -1.75e-09,
+        "Disp22 (S) (CCD)": -2.23e-09,
+        "Disp22 (SDQ)": -1.92e-09,
+        "Disp22 (T)": -2.6800000000000003e-09,
+        "Disp22 (T) (CCD)": -2.7199999999999997e-09,
+        "Dispersion": -3.1399999999999997e-08,
+        "Electrostatics": -0.05727269932,
+        "Elst10,r": -0.05727202853,
+        "Elst12,r": -6.1848e-06,
+        "Est. Disp22 (T)": -2.75e-09,
+        "Est. Disp22 (T) (CCD)": -2.79e-09,
+        "Exch-Disp20": -1.0000000000000001e-11,
+        "Exch-Ind20,r": 1.2e-10,
+        "Exch-Ind22": 3e-11,
+        "Exch10": -9e-11,
+        "Exch10(S^2)": -9e-11,
+        "Exch11(S^2)": 0.0,
+        "Exch12(S^2)": -0.0,
+        "Exchange": -9.999999999999999e-11,
+        "Ind20,r": -4.049941e-05,
+        "Ind22": -8.980810000000001e-06,
+        "Induction": -5.372978e-05,
+        "InteractionEnergy": -0.0573319746,
+        "delta HF,r (2)": -2.9021e-07,
+        "delta MP2,r (2)": -3.95958e-06
+    },
+    "index": "0264",
+    "jobtype": "SP",
+    "logFile": "0264.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -6.748001133654
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        2.491998866346
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#fluoride"
+}

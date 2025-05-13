@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -5.386199999999999e-07,
+        "Disp20": -5.6394e-07,
+        "Disp21": 1.417e-08,
+        "Disp22 (S) (CCD)": -2.255e-08,
+        "Disp22 (SDQ)": -9.63e-09,
+        "Disp22 (T)": -4.527e-08,
+        "Disp22 (T) (CCD)": -4.935e-08,
+        "Dispersion": -6.4745e-07,
+        "Electrostatics": -0.07945672965,
+        "Elst10,r": -0.07945281938,
+        "Elst12,r": -9.194489999999999e-06,
+        "Est. Disp22 (T)": -4.847e-08,
+        "Est. Disp22 (T) (CCD)": -5.284e-08,
+        "Exch-Disp20": 2.7e-09,
+        "Exch-Ind20,r": 6.8381e-07,
+        "Exch-Ind22": 6.572e-08,
+        "Exch10": 2.4314e-07,
+        "Exch10(S^2)": 2.4314e-07,
+        "Exch11(S^2)": -3.9000000000000005e-10,
+        "Exch12(S^2)": 1.2484e-07,
+        "Exchange": 3.6758999999999997e-07,
+        "Ind20,r": -0.00060361416,
+        "Ind22": -5.800856e-05,
+        "Induction": -0.00089504543,
+        "InteractionEnergy": -0.08035733964000001,
+        "delta HF,r (2)": -9.042309e-05,
+        "delta MP2,r (2)": -0.00014378577000000002
+    },
+    "index": "0240",
+    "jobtype": "SP",
+    "logFile": "0240.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -5.547061021342
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        1.112938978658
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#chloride"
+}

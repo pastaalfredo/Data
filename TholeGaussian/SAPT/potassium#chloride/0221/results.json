@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -0.00011215432,
+        "Disp20": -0.00014185503,
+        "Disp21": 2.6102899999999997e-05,
+        "Disp22 (S) (CCD)": -5.15379e-06,
+        "Disp22 (SDQ)": -2.36356e-06,
+        "Disp22 (T)": -1.673147e-05,
+        "Disp22 (T) (CCD)": -1.697869e-05,
+        "Dispersion": -0.0001484167,
+        "Electrostatics": -0.10462117638,
+        "Elst10,r": -0.10460408003,
+        "Elst12,r": -3.163463e-05,
+        "Est. Disp22 (T)": -1.813352e-05,
+        "Est. Disp22 (T) (CCD)": -1.840146e-05,
+        "Exch-Disp20": 5.96782e-06,
+        "Exch-Ind20,r": 0.00029034029,
+        "Exch-Ind22": 3.222979e-05,
+        "Exch10": 9.467133e-05,
+        "Exch10(S^2)": 9.466656e-05,
+        "Exch11(S^2)": -2.3451e-07,
+        "Exch12(S^2)": 2.710089e-05,
+        "Exchange": 0.0001215377,
+        "Ind20,r": -0.00255060749,
+        "Ind22": -0.00028313519,
+        "Induction": -0.0029780287200000003,
+        "InteractionEnergy": -0.10764090845,
+        "delta HF,r (2)": -0.0002641041,
+        "delta MP2,r (2)": -0.00022171305
+    },
+    "index": "0221",
+    "jobtype": "SP",
+    "logFile": "0221.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -2.39329459931
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        2.66670540069
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#chloride"
+}

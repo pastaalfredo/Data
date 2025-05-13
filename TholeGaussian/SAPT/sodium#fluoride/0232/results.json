@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -1.53006e-06,
+        "Disp20": -1.4004e-06,
+        "Disp21": -1.4806e-07,
+        "Disp22 (S) (CCD)": -2.5868e-07,
+        "Disp22 (SDQ)": -2.6993e-07,
+        "Disp22 (T)": -1.8672e-07,
+        "Disp22 (T) (CCD)": -1.9034999999999998e-07,
+        "Dispersion": -2.0609700000000003e-06,
+        "Electrostatics": -0.09092696173999999,
+        "Elst10,r": -0.09092553342,
+        "Elst12,r": -6.124201e-05,
+        "Est. Disp22 (T)": -2.0118e-07,
+        "Est. Disp22 (T) (CCD)": -2.0509e-07,
+        "Exch-Disp20": 5.48e-09,
+        "Exch-Ind20,r": 1.47133e-06,
+        "Exch-Ind22": 4.5026e-07,
+        "Exch10": 5.1462e-07,
+        "Exch10(S^2)": 5.1462e-07,
+        "Exch11(S^2)": -2.08e-09,
+        "Exch12(S^2)": 9.3828e-07,
+        "Exchange": 1.45082e-06,
+        "Ind20,r": -0.00032411306,
+        "Ind22": -9.918582e-05,
+        "Induction": -0.00058061717,
+        "InteractionEnergy": -0.09156800533000001,
+        "delta HF,r (2)": -3.2359239999999996e-05,
+        "delta MP2,r (2)": -0.00012695584
+    },
+    "index": "0232",
+    "jobtype": "SP",
+    "logFile": "0232.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -2.6333774482
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        3.1866225518
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#fluoride"
+}

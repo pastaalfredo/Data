@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -1.0044400000000001e-06,
+        "Disp20": -1.33884e-06,
+        "Disp21": 3.1408e-07,
+        "Disp22 (S) (CCD)": -2.5579999999999998e-08,
+        "Disp22 (SDQ)": -4.1e-10,
+        "Disp22 (T)": -1.6609e-07,
+        "Disp22 (T) (CCD)": -1.6473e-07,
+        "Dispersion": -1.20228e-06,
+        "Electrostatics": -0.05030328596,
+        "Elst10,r": -0.05030341979,
+        "Elst12,r": 3.4637999999999996e-07,
+        "Est. Disp22 (T)": -1.6782e-07,
+        "Est. Disp22 (T) (CCD)": -1.6645e-07,
+        "Exch-Disp20": 1.0000000000000001e-11,
+        "Exch-Ind20,r": 6.2e-10,
+        "Exch-Ind22": 4.0000000000000004e-11,
+        "Exch10": 3e-10,
+        "Exch10(S^2)": 3e-10,
+        "Exch11(S^2)": 0.0,
+        "Exch12(S^2)": 1.6999999999999998e-10,
+        "Exchange": 4.7e-10,
+        "Ind20,r": -9.972045e-05,
+        "Ind22": -6.48384e-06,
+        "Induction": -0.00010794852,
+        "InteractionEnergy": -0.05041222377,
+        "delta HF,r (2)": 5.980999999999999e-07,
+        "delta MP2,r (2)": -2.34884e-06
+    },
+    "index": "0252",
+    "jobtype": "SP",
+    "logFile": "0252.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -4.975782447578
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        5.544217552422
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#chloride"
+}

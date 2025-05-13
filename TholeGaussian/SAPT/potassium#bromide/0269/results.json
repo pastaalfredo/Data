@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -2.514e-07,
+        "Disp20": -3.4220000000000003e-07,
+        "Disp21": 8.847e-08,
+        "Disp22 (S) (CCD)": -7.570000000000001e-09,
+        "Disp22 (SDQ)": -3.32e-09,
+        "Disp22 (T)": -4.126e-08,
+        "Disp22 (T) (CCD)": -4.062e-08,
+        "Dispersion": -3.0088000000000003e-07,
+        "Electrostatics": -0.03837764213,
+        "Elst10,r": -0.03837764154,
+        "Elst12,r": 2.0024999999999998e-07,
+        "Est. Disp22 (T)": -4.168e-08,
+        "Est. Disp22 (T) (CCD)": -4.103e-08,
+        "Exch-Disp20": 0.0,
+        "Exch-Ind20,r": 7e-11,
+        "Exch-Ind22": 1.0000000000000001e-11,
+        "Exch10": 2.0000000000000002e-11,
+        "Exch10(S^2)": 2.0000000000000002e-11,
+        "Exch11(S^2)": -0.0,
+        "Exch12(S^2)": 1.0000000000000001e-11,
+        "Exchange": 3e-11,
+        "Ind20,r": -4.565164e-05,
+        "Ind22": -3.0707e-06,
+        "Induction": 3.768497e-05,
+        "InteractionEnergy": -0.038340057170000004,
+        "delta HF,r (2)": 8.679677e-05,
+        "delta MP2,r (2)": -3.9041999999999997e-07
+    },
+    "index": "0269",
+    "jobtype": "SP",
+    "logFile": "0269.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -9.252057292395
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        4.567942707605
+                    ],
+                    "elem": "Br"
+                }
+            ],
+            "charge": -1,
+            "compound": "bromide",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#bromide"
+}

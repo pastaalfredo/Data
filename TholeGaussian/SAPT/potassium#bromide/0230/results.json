@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -2.08146e-05,
+        "Disp20": -2.744541e-05,
+        "Disp21": 6.28571e-06,
+        "Disp22 (S) (CCD)": -7.759299999999999e-07,
+        "Disp22 (SDQ)": -3.8625999999999997e-07,
+        "Disp22 (T)": -3.09991e-06,
+        "Disp22 (T) (CCD)": -3.1017900000000002e-06,
+        "Dispersion": -2.6632329999999998e-05,
+        "Electrostatics": -0.07809576925,
+        "Elst10,r": -0.07809084233000001,
+        "Elst12,r": -5.70305e-06,
+        "Est. Disp22 (T)": -3.30015e-06,
+        "Est. Disp22 (T) (CCD)": -3.30215e-06,
+        "Exch-Disp20": 1.7908e-07,
+        "Exch-Ind20,r": 1.058827e-05,
+        "Exch-Ind22": 8.3013e-07,
+        "Exch10": 2.77013e-06,
+        "Exch10(S^2)": 2.77013e-06,
+        "Exch11(S^2)": -1.166e-08,
+        "Exch12(S^2)": 9.0286e-07,
+        "Exchange": 3.66133e-06,
+        "Ind20,r": -0.00086502045,
+        "Ind22": -6.781877e-05,
+        "Induction": -0.00079879106,
+        "InteractionEnergy": -0.07891832802,
+        "delta HF,r (2)": 0.00018930558,
+        "delta MP2,r (2)": -6.861513e-05
+    },
+    "index": "0230",
+    "jobtype": "SP",
+    "logFile": "0230.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -4.552387090325
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        2.247612909675
+                    ],
+                    "elem": "Br"
+                }
+            ],
+            "charge": -1,
+            "compound": "bromide",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#bromide"
+}

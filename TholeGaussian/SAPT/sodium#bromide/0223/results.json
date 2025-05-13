@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -1.83428e-05,
+        "Disp20": -1.813362e-05,
+        "Disp21": -3.911e-07,
+        "Disp22 (S) (CCD)": -1.53208e-06,
+        "Disp22 (SDQ)": -1.21948e-06,
+        "Disp22 (T)": -1.6188e-06,
+        "Disp22 (T) (CCD)": -1.76722e-06,
+        "Dispersion": -2.487645e-05,
+        "Electrostatics": -0.10670071382,
+        "Elst10,r": -0.10667893818,
+        "Elst12,r": -2.869352e-05,
+        "Est. Disp22 (T)": -1.89081e-06,
+        "Est. Disp22 (T) (CCD)": -2.06417e-06,
+        "Exch-Disp20": 7.378200000000001e-07,
+        "Exch-Ind20,r": 0.00021468804,
+        "Exch-Ind22": 2.1285209999999998e-05,
+        "Exch10": 6.794195999999999e-05,
+        "Exch10(S^2)": 6.794073e-05,
+        "Exch11(S^2)": -3.6227e-07,
+        "Exch12(S^2)": 1.5202510000000001e-05,
+        "Exchange": 8.27822e-05,
+        "Ind20,r": -0.00335114122,
+        "Ind22": -0.00033224833,
+        "Induction": -0.00471912097,
+        "InteractionEnergy": -0.11136899486,
+        "delta HF,r (2)": -0.00078173013,
+        "delta MP2,r (2)": -0.00049379771
+    },
+    "index": "0223",
+    "jobtype": "SP",
+    "logFile": "0223.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.84105805193
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        1.11894194807
+                    ],
+                    "elem": "Br"
+                }
+            ],
+            "charge": -1,
+            "compound": "bromide",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#bromide"
+}

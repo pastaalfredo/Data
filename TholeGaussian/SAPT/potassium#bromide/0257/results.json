@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -7.0616e-07,
+        "Disp20": -9.5851e-07,
+        "Disp21": 2.4537000000000003e-07,
+        "Disp22 (S) (CCD)": -2.1319999999999998e-08,
+        "Disp22 (SDQ)": -9.089999999999999e-09,
+        "Disp22 (T)": -1.1545e-07,
+        "Disp22 (T) (CCD)": -1.1383e-07,
+        "Dispersion": -8.4672e-07,
+        "Electrostatics": -0.0454927456,
+        "Elst10,r": -0.045492717239999994,
+        "Elst12,r": 2.0491e-07,
+        "Est. Disp22 (T)": -1.1663999999999999e-07,
+        "Est. Disp22 (T) (CCD)": -1.15e-07,
+        "Exch-Disp20": 0.0,
+        "Exch-Ind20,r": 1.5e-10,
+        "Exch-Ind22": 1.0000000000000001e-11,
+        "Exch10": 6e-11,
+        "Exch10(S^2)": 6e-11,
+        "Exch11(S^2)": 0.0,
+        "Exch12(S^2)": 8.000000000000001e-11,
+        "Exchange": 1.4e-10,
+        "Ind20,r": -9.047898e-05,
+        "Ind22": -6.09479e-06,
+        "Induction": 1.085354e-05,
+        "InteractionEnergy": -0.045482505369999995,
+        "delta HF,r (2)": 0.00010816339,
+        "delta MP2,r (2)": -7.404799999999999e-07
+    },
+    "index": "0257",
+    "jobtype": "SP",
+    "logFile": "0257.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -7.806004922527
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        3.853995077473
+                    ],
+                    "elem": "Br"
+                }
+            ],
+            "charge": -1,
+            "compound": "bromide",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#bromide"
+}

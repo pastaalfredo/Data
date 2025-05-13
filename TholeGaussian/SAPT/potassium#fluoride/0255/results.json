@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -4.0315e-07,
+        "Disp20": -4.7326999999999995e-07,
+        "Disp21": 5.176e-08,
+        "Disp22 (S) (CCD)": -3.6149999999999996e-08,
+        "Disp22 (SDQ)": -2.499e-08,
+        "Disp22 (T)": -7.388000000000001e-08,
+        "Disp22 (T) (CCD)": -7.085e-08,
+        "Dispersion": -5.1151e-07,
+        "Electrostatics": -0.05107760184,
+        "Elst10,r": -0.05107827416,
+        "Elst12,r": 2.77139e-06,
+        "Est. Disp22 (T)": -7.453e-08,
+        "Est. Disp22 (T) (CCD)": -7.148e-08,
+        "Exch-Disp20": 4.9999999999999995e-11,
+        "Exch-Ind20,r": 2.64e-09,
+        "Exch-Ind22": 3.2000000000000003e-10,
+        "Exch10": 6.3e-10,
+        "Exch10(S^2)": 6.3e-10,
+        "Exch11(S^2)": -1.0000000000000001e-11,
+        "Exch12(S^2)": 2.31e-09,
+        "Exchange": 2.93e-09,
+        "Ind20,r": -4.212092e-05,
+        "Ind22": -5.08983e-06,
+        "Induction": -5.258665e-05,
+        "InteractionEnergy": -0.05112859801,
+        "delta HF,r (2)": -8.392799999999999e-07,
+        "delta MP2,r (2)": -4.54037e-06
+    },
+    "index": "0255",
+    "jobtype": "SP",
+    "logFile": "0255.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.395726241804
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        6.964273758196
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#fluoride"
+}

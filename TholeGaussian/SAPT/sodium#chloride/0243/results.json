@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -5.3952e-07,
+        "Disp20": -5.5552e-07,
+        "Disp21": 8.05e-09,
+        "Disp22 (S) (CCD)": -3.8139999999999996e-08,
+        "Disp22 (SDQ)": -2.6699999999999998e-08,
+        "Disp22 (T)": -5.845e-08,
+        "Disp22 (T) (CCD)": -6.279e-08,
+        "Dispersion": -6.5483e-07,
+        "Electrostatics": -0.06631567061,
+        "Elst10,r": -0.06631190714,
+        "Elst12,r": -6.620540000000001e-06,
+        "Est. Disp22 (T)": -6.089e-08,
+        "Est. Disp22 (T) (CCD)": -6.541e-08,
+        "Exch-Disp20": 3.1e-10,
+        "Exch-Ind20,r": 1.0084999999999999e-07,
+        "Exch-Ind22": 9.05e-09,
+        "Exch10": 2.944e-08,
+        "Exch10(S^2)": 2.944e-08,
+        "Exch11(S^2)": -1.3e-10,
+        "Exch12(S^2)": 1.4840000000000001e-08,
+        "Exchange": 4.415e-08,
+        "Ind20,r": -0.00027713958,
+        "Ind22": -2.486069e-05,
+        "Induction": -0.00034337741,
+        "InteractionEnergy": -0.06666251595999999,
+        "delta HF,r (2)": -1.4112299999999999e-05,
+        "delta MP2,r (2)": -2.738697e-05
+    },
+    "index": "0243",
+    "jobtype": "SP",
+    "logFile": "0243.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -4.814666652628
+                    ],
+                    "elem": "Na"
+                }
+            ],
+            "charge": 1,
+            "compound": "sodium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        3.165333347372
+                    ],
+                    "elem": "Cl"
+                }
+            ],
+            "charge": -1,
+            "compound": "chloride",
+            "mult": 1
+        }
+    ],
+    "system": "sodium#chloride"
+}

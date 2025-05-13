@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -4.612181e-05,
+        "Disp20": -5.288213e-05,
+        "Disp21": 4.45672e-06,
+        "Disp22 (S) (CCD)": -7.31237e-06,
+        "Disp22 (SDQ)": -7.8532e-06,
+        "Disp22 (T)": -8.20496e-06,
+        "Disp22 (T) (CCD)": -7.834e-06,
+        "Dispersion": -6.494729000000001e-05,
+        "Electrostatics": -0.10800387712,
+        "Elst10,r": -0.1080019393,
+        "Elst12,r": -9.480981e-05,
+        "Est. Disp22 (T)": -8.91851e-06,
+        "Est. Disp22 (T) (CCD)": -8.51529e-06,
+        "Exch-Disp20": 1.3783999999999998e-06,
+        "Exch-Ind20,r": 5.910949e-05,
+        "Exch-Ind22": 1.558959e-05,
+        "Exch10": 2.230057e-05,
+        "Exch10(S^2)": 2.230028e-05,
+        "Exch11(S^2)": -4.616e-08,
+        "Exch12(S^2)": 2.821412e-05,
+        "Exchange": 5.046852e-05,
+        "Ind20,r": -0.00105492855,
+        "Ind22": -0.00027822788,
+        "Induction": -0.00151388632,
+        "InteractionEnergy": -0.10962519584000001,
+        "delta HF,r (2)": -8.280629e-05,
+        "delta MP2,r (2)": -0.00017708054000000002
+    },
+    "index": "0222",
+    "jobtype": "SP",
+    "logFile": "0222.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -1.606086735988
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        3.293913264012
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#fluoride"
+}

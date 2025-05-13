@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -3.8693e-07,
+        "Disp20": -3.649e-07,
+        "Disp21": -2.9240000000000002e-08,
+        "Disp22 (S) (CCD)": -4.874e-08,
+        "Disp22 (SDQ)": -5.0739999999999996e-08,
+        "Disp22 (T)": -3.917e-08,
+        "Disp22 (T) (CCD)": -3.898e-08,
+        "Dispersion": -4.931300000000001e-07,
+        "Electrostatics": -0.08790783904,
+        "Elst10,r": -0.08790661142,
+        "Elst12,r": -5.463848e-05,
+        "Est. Disp22 (T)": -4.204e-08,
+        "Est. Disp22 (T) (CCD)": -4.1839999999999996e-08,
+        "Exch-Disp20": 1.62e-09,
+        "Exch-Ind20,r": 3.4055e-07,
+        "Exch-Ind22": 1.0277e-07,
+        "Exch10": 1.3873e-07,
+        "Exch10(S^2)": 1.3873e-07,
+        "Exch11(S^2)": -2.3e-10,
+        "Exch12(S^2)": 2.5538999999999996e-07,
+        "Exchange": 3.939e-07,
+        "Ind20,r": -0.00026763011,
+        "Ind22": -8.076018999999999e-05,
+        "Induction": -0.00049382161,
+        "InteractionEnergy": -0.08845517107,
+        "delta HF,r (2)": -2.786754e-05,
+        "delta MP2,r (2)": -0.00011802464
+    },
+    "index": "0239",
+    "jobtype": "SP",
+    "logFile": "0239.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -4.396424981017
+                    ],
+                    "elem": "Li"
+                }
+            ],
+            "charge": 1,
+            "compound": "lithium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        1.623575018983
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "lithium#fluoride"
+}

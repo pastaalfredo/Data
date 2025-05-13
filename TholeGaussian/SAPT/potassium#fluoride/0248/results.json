@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -8.299899999999999e-07,
+        "Disp20": -9.7297e-07,
+        "Disp21": 1.0501e-07,
+        "Disp22 (S) (CCD)": -7.555e-08,
+        "Disp22 (SDQ)": -5.309e-08,
+        "Disp22 (T)": -1.5185e-07,
+        "Disp22 (T) (CCD)": -1.4572e-07,
+        "Dispersion": -1.0553800000000002e-06,
+        "Electrostatics": -0.057518144380000004,
+        "Elst10,r": -0.05751883195,
+        "Elst12,r": 2.41815e-06,
+        "Est. Disp22 (T)": -1.5334999999999998e-07,
+        "Est. Disp22 (T) (CCD)": -1.4716e-07,
+        "Exch-Disp20": 4.9999999999999995e-11,
+        "Exch-Ind20,r": 2.34e-09,
+        "Exch-Ind22": 2.9e-10,
+        "Exch10": 9.5e-10,
+        "Exch10(S^2)": 9.5e-10,
+        "Exch11(S^2)": 0.0,
+        "Exch12(S^2)": 3.39e-09,
+        "Exchange": 4.34e-09,
+        "Ind20,r": -6.802735e-05,
+        "Ind22": -8.40356e-06,
+        "Induction": -8.417182e-05,
+        "InteractionEnergy": -0.05760163668,
+        "delta HF,r (2)": -1.26289e-06,
+        "delta MP2,r (2)": -6.48341e-06
+    },
+    "index": "0248",
+    "jobtype": "SP",
+    "logFile": "0248.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -3.015509790019
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        6.184490209981
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#fluoride"
+}

@@ -1,0 +1,68 @@
+{
+    "energies": {
+        "Disp2 (CCD)": -0.00038340399,
+        "Disp20": -0.00043518198,
+        "Disp21": 3.234495e-05,
+        "Disp22 (S) (CCD)": -6.552375e-05,
+        "Disp22 (SDQ)": -7.180797e-05,
+        "Disp22 (T)": -6.24762e-05,
+        "Disp22 (T) (CCD)": -5.883748e-05,
+        "Dispersion": -0.00050815886,
+        "Electrostatics": -0.148105336,
+        "Elst10,r": -0.14805105835000001,
+        "Elst12,r": -0.00040114068,
+        "Est. Disp22 (T)": -7.451035e-05,
+        "Est. Disp22 (T) (CCD)": -7.017074e-05,
+        "Exch-Disp20": 5.3234129999999994e-05,
+        "Exch-Ind20,r": 0.00197071573,
+        "Exch-Ind22": 0.00083203542,
+        "Exch10": 0.0009103012700000001,
+        "Exch10(S^2)": 0.00090985874,
+        "Exch11(S^2)": -4.043739999999999e-06,
+        "Exch12(S^2)": 0.00066586733,
+        "Exchange": 0.0015721248699999998,
+        "Ind20,r": -0.005501775689999999,
+        "Ind22": -0.00232284757,
+        "Induction": -0.00456819425,
+        "InteractionEnergy": -0.15195711126,
+        "delta HF,r (2)": -0.00017179344,
+        "delta MP2,r (2)": 0.00058249279
+    },
+    "index": "0214",
+    "jobtype": "SP",
+    "logFile": "0214.log.gz",
+    "method": "sapt2+3(ccd)dmp2-aug-cc-pvtz",
+    "mols": [
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        -1.173426635681
+                    ],
+                    "elem": "K"
+                }
+            ],
+            "charge": 1,
+            "compound": "potassium",
+            "mult": 1
+        },
+        {
+            "atoms": [
+                {
+                    "coords": [
+                        0.0,
+                        0.0,
+                        2.406573364319
+                    ],
+                    "elem": "F"
+                }
+            ],
+            "charge": -1,
+            "compound": "fluoride",
+            "mult": 1
+        }
+    ],
+    "system": "potassium#fluoride"
+}
