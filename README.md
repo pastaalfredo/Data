@@ -3,5 +3,5 @@ Here we provide data used in ACT projects corresponding to published or submitte
 
 ## 2025
 + [ACT Paper](ACT-Paper) David van der Spoel et al., submitted.
-+ [ESP Paper](ESP-Paper-2025) A. Najla Hosseini et al., in preparation.
++ [ESP Paper](Electrostatics-ESP-ACT) A. Najla Hosseini et al., in preparation.
 + [Charge screening Paper](TholeGaussian) David van der Spoel and A. Najla Hosseini, submitted.
