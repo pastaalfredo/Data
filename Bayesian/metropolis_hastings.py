@@ -51,6 +51,10 @@ converter = {
                     'name': r'$\sigma$',
                     'unit': r'nm'
                 },
+                'gamma': {
+                    'name': r'$\gamma$',
+                    'unit': r'-'
+                },
                 'charge': {
                     'name': r'$q$',
                     'unit': r'e'
@@ -95,24 +99,27 @@ def parse_arguments():
 
     parser  = argparse.ArgumentParser()
 
-    parser.add_argument('-mol', '--molecule',      help='molecule in MolProps',                                          required=True, type=str)
-    parser.add_argument('-pt',  '--particletype',  help='particletype in .xml',                                          required=True, type=str)
-    parser.add_argument('-b',   '--base',          help='path to base directory',                                        required=True, type=str)
-    parser.add_argument('-exp', '--experiment',    help='path to experimental reference data .csv file',                 required=True, type=str)
-    parser.add_argument('-ff',  '--forcefield',    help='path to original ACT .xml file',                                required=True, type=str)
-    parser.add_argument('-eq',  '--equilibration', help='path to equilibration .dat file',                               required=True, type=str)
-    parser.add_argument('-sim', '--simulation',    help='path to simulation .dat file',                                  required=True, type=str)
-    parser.add_argument('-pdb', '--system',        help='path to system .pdb file',                                      required=True, type=str)
-    parser.add_argument('-d',   '--distributions', help='path to prior distributions .csv file',                         required=True, type=str)
-    parser.add_argument('-c',   '--coverage',	   help='sampling coverage along each dimension',                        required=True, type=float)
-    parser.add_argument('-m',   '--samples',       help='number of samples to sample',                                   required=True, type=int)
-    parser.add_argument('-n',   '--points',        help='number of points per parameter',                                required=True, type=int, nargs='+')
-    parser.add_argument('-i',   '--indices',       help='indices of the parameters on the grid',                         required=True, type=int, nargs='+')
-    parser.add_argument('-z',   '--initial',       help='initialize all n runs using parameters of initial force field', action='store_true')
-    parser.add_argument('-p',   '--parameters',    help='parameters to include',                                         required=True, type=str, nargs='+')
-    parser.add_argument('-o',   '--observables',   help='observables to include',                                        required=True, type=str, nargs='+')
-    parser.add_argument('-r',   '--resume',        help='whether this job resumes a previous job',                       action='store_true')
-    parser.add_argument('-v',   '--verbose',       help='print more intermediates',                                      action='store_true')
+    parser.add_argument('-nm',       '--name',          help='Name under which this MCMC operates',                           required=True, type=str)
+    parser.add_argument('-platform', '--platform',      help='Compute resource, to find scratch disk',                        required=True, type=str)
+    parser.add_argument('-mol',      '--molecule',      help='molecule in ACTdata/MolProps',                                  required=True, type=str)
+    parser.add_argument('-pt',       '--particletype',  help='particletype in .xml',                                          required=True, type=str)
+    parser.add_argument('-b',        '--base',          help='path to base directory',                                        required=True, type=str)
+    parser.add_argument('-exp',      '--experiment',    help='path to experimental reference data .csv file',                 required=True, type=str)
+    parser.add_argument('-ff',       '--forcefield',    help='path to original ACT .xml file',                                required=True, type=str)
+    parser.add_argument('-eq',       '--equilibration', help='path to equilibration .dat file',                               required=True, type=str)
+    parser.add_argument('-sim',      '--simulation',    help='path to simulation .dat file',                                  required=True, type=str)
+    parser.add_argument('-pdb',      '--system',        help='path to system .pdb file',                                      required=True, type=str)
+    parser.add_argument('-d',        '--distributions', help='path to prior distributions .csv file',                         required=True, type=str)
+    parser.add_argument('-vdw',      '--vanderwaals',   help='van der Waals type in ACT file',                                required=True, type=str)
+    parser.add_argument('-c',        '--coverage',      help='sampling coverage along each dimension',                        required=True, type=float)
+    parser.add_argument('-m',        '--samples',       help='number of samples to sample',                                   required=True, type=int)
+    parser.add_argument('-n',        '--points',        help='number of points per parameter',                                required=True, type=int, nargs='+')
+    parser.add_argument('-i',        '--indices',       help='indices of the parameters on the grid',                         required=True, type=int, nargs='+')
+    parser.add_argument('-z',        '--initial',       help='initialize all n runs using parameters of initial force field', action='store_true')
+    parser.add_argument('-p',        '--parameters',    help='parameters to include',                                         required=True, type=str, nargs='+')
+    parser.add_argument('-o',        '--observables',   help='observables to include',                                        required=True, type=str, nargs='+')
+    parser.add_argument('-r',        '--resume',        help='whether this job resumes a previous job',                       action='store_true')
+    parser.add_argument('-v',        '--verbose',       help='print more intermediates',                                      action='store_true')
     args = parser.parse_args()
 
     return args
@@ -125,6 +132,14 @@ def xml2dict(path):
         data = xml.read()
         dictionary = xmltodict.parse(data)
         return dictionary
+
+
+
+def dict2xml(path, data):
+
+    xml_out = xmltodict.unparse(data, pretty=True, full_document=True, short_empty_elements=True, indent="  ")
+    with open(path, 'w') as xml:
+        xml.write(xml_out)
 
 
 
@@ -225,15 +240,16 @@ class Model:
         # store all particles
         self.particletypes = {}
         for particle in data['alexandria_chemistry']['particletypes']['particletype']:
-            self.particletypes[particle['@identifier']] = {}
+            vdwtype = [property['@value'] for property in particle['option'] if property['@key'] == 'vdwtype'][0]
+            self.particletypes[vdwtype] = {}
             for option in particle['option']:
-                self.particletypes[particle['@identifier']][option['@key']] = option['@value']
+                self.particletypes[vdwtype][option['@key']] = option['@value']
         if self.settings['particletype'] not in self.particletypes:
             sys.exit(f'Did not find particletype {self.settings["particletype"]} in .xml file. Could only find {", ".join([particle for particle in self.particletypes.keys()])}. Exiting...')
 
         # start searching!
         for p, parameter in enumerate(self.settings['parameters']):
-            if parameter in ['epsilon', 'sigma']:
+            if parameter in ['epsilon', 'sigma', 'gamma']:
                 # epsilon and sigma can be found under the Van der Waals section
                 for interaction in data['alexandria_chemistry']['interaction']:
                     if interaction['@type'] == 'VANDERWAALS':
@@ -278,6 +294,40 @@ class Model:
             sys.exit(f'Could not find experimental data for {lookup[self.settings["molecule"]]} ')
 
 
+    def update_lennard_jones(self):
+
+        # get relevant information
+        particletype = self.settings['particletype']
+        vanderwaals  = self.settings['vanderwaals']
+        cutoff       = float(self.hyperparameters['nonbondedCutoff'])
+
+        # read openmm.xml
+        data = xml2dict('openmm.xml')
+        # get correct particle name
+        particleclass = f'{particletype}_b'
+        particlename = [atomtype['@name'] for atomtype in data['ForceField']['AtomTypes']['Type'] if atomtype['@class'] == particleclass][0]
+        if vanderwaals == 'WANG_BUCKINGHAM':
+            # get WBHAM parameters
+            wbham_parameters = [atomtype for atomtype in data['ForceField']['CustomNonbondedForce']['Atom'] if atomtype['@type'] == particlename][0]
+            wbham_epsilon    = float(wbham_parameters['@epsilon'])
+            wbham_sigma      = float(wbham_parameters['@sigma'])
+            wbham_gamma      = float(wbham_parameters['@gamma'])
+            # calculate updated epsilon for correct dispersion correction
+            lj_epsilon = str(
+                wbham_epsilon *
+                ((wbham_gamma+3) / wbham_gamma) *
+                ((3*(cutoff**9)) / ((wbham_sigma**9) - 6*(cutoff**6)*(wbham_sigma**3))) *
+                (2*np.arctan((cutoff/wbham_sigma)**3) - np.pi)
+            )
+            # update LJ epsilon
+            for i in range(len(data['ForceField']['NonbondedForce']['Atom'])):
+                if data['ForceField']['NonbondedForce']['Atom'][i]['@type'] == particlename:
+                    data['ForceField']['NonbondedForce']['Atom'][i]['@epsilon'] = lj_epsilon
+        # TODO: add more NB potentials in the future
+        # save changes
+        dict2xml('openmm.xml', data)
+
+
     def get_parameters(self):
 
         return self.parameters
@@ -294,7 +344,7 @@ class Model:
 
         # update ACT forcefield file
         for p, parameter in enumerate(self.settings['parameters']):
-            if parameter in ['epsilon', 'sigma']:
+            if parameter in ['epsilon', 'sigma', 'gamma']:
                 command = [
                     'alexandria', 'edit_ff', '-force',
                     '-ff',  'act.xml',
@@ -328,8 +378,13 @@ class Model:
             else:
                 sys.exit(f'Do not know how to modify {parameter}. Exiting...')
 
+            # (forcefully) remove old edit_ff.log to prevent too many files
+            command = ['rm', '-f', 'edit_ff.log']
+            with subprocess.Popen(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8") as process:
+                _, _ = process.communicate()
+
         # (forcefully) remove old sim.dat to prevent too many files
-        command = ['rm', '-f', 'sim.dat']
+        command = ['rm', '-f', 'sim.dat', 'edit_ff.log']
         with subprocess.Popen(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8") as process:
             _, _ = process.communicate()
 
@@ -338,8 +393,9 @@ class Model:
             'alexandria', 'gentop',
             '-ff',      'act.xml',
             '-db',      molecule,
-            '-charges', f'{base}/MolProps/mp2-aug-cc-pvtz.xml',
-            '-openmm', 'openmm.xml'
+            '-charges', f'{base}/../../MolProps/mp2-aug-cc-pvtz.xml',
+            '-openmm', 'openmm.xml',
+            '-mDrude', '0.4'
         ]
         with subprocess.Popen(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8") as process:
             stdout, stderr = process.communicate()
@@ -347,6 +403,14 @@ class Model:
                 if self.verbose and self.output is not None:
                     self.output.write(f'ALEXANDRIA ERROR: {stderr}\n')
 
+        # (forcefully) remove old gentop.log to prevent too many files
+        command = ['rm', '-f', 'gentop.log']
+        with subprocess.Popen(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8") as process:
+            _, _ = process.communicate()
+
+        # modify van der Waals if dispersion correction is used and not LJ 12-6
+        if (self.hyperparameters['useDispersionCorrection']) and (self.settings['vanderwaals'] != 'LJ12_6'):
+            self.update_lennard_jones()
 
 
     def xvg2obs(self, iteration=0):
@@ -490,14 +554,23 @@ class Model:
         return x_max, y_max
 
 
-    def xtc2xvgs(self, iteration=0, scratch='/scratch/burst/nordman'):
+    def xtc2xvgs(self, iteration=0):
+
+        # find where scratch disk is located
+        platform = self.settings['platform']
+        if platform == 'csb':
+            scratch = os.environ["TMPDIR"]
+        elif platform == 'davinci':
+            scratch = '/scratch/burst/nordman'
+        else:
+            sys.exit('PLATFORM ERROR: path to scratch on platform {platform} is not implemented yet!')
 
         # simulation parameters
         savetime    = self.dt*int(self.hyperparameters['saveXtc'])
         saved_steps = int(self.hyperparameters['steps']) // int(self.hyperparameters['saveXtc'])
 
         # prefix to keep track of scratch files TODO! add directory name to prefix
-        prefix = f"{scratch}/{'-'.join([str(index) for index in self.settings['indices']])}"
+        prefix = f"{scratch}/{self.settings['name']}-{'-'.join([str(index) for index in self.settings['indices']])}"
 
         # path to XTC file
         xtcfile = 'trajectory.xtc'
@@ -667,9 +740,11 @@ class Model:
 
 
     # take a step
-    def step(self, iteration=0, max_steps=10, maximum_retry_count=3):
+    def step(self, iteration=0, max_steps=None, maximum_retry_count=3):
 
         # setup
+        if max_steps is None:
+            max_steps = np.inf
         converged             = False
         current_step          = 0
         self.convergence_data = {

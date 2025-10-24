@@ -8,7 +8,7 @@ import numpy as np
 import seaborn as sns
 from scipy.linalg import cholesky
 from scipy.optimize import fsolve, linprog
-from scipy.stats import beta, chi2, gaussian_kde, kstest, multivariate_normal, shapiro
+from scipy.stats import beta, chi2, gaussian_kde, kstest, multivariate_normal, norm, shapiro
 from scipy.interpolate import griddata
 from sklearn.cluster import MeanShift, estimate_bandwidth
 from time import sleep
@@ -85,6 +85,10 @@ converter = {
                     'name': r'$\sigma$',
                     'unit': r'nm'
                 },
+                'gamma': {
+                    'name': r'$\gamma$',
+                    'unit': r'-'
+                },
                 'charge': {
                     'name': r'$q$',
                     'unit': r'e'
@@ -123,34 +127,35 @@ def parse_arguments():
 
     parser  = argparse.ArgumentParser()
 
-    parser.add_argument('-a',   '--action',           help='"submit" jobs, "analyze" results, or "statistics" from extra simulations',   required=True,  type=str, choices=['submit', 'analyze', 'statistics'])
-    parser.add_argument('-o',   '--output',           help='path to output directory in ACTdata/HydrogenHalides/Bayesian/output',        required=True,  type=str)
-    parser.add_argument('-p',   '--platform',         help='current platform (e.g. cluster name) used to run jobs',                      required=True,  type=str, choices=['local', 'csb', 'dardel', 'davinci'])
-    parser.add_argument('-mol', '--molecule',         help='molecule in MolProps',                                                       required=False, type=str, choices=['water', 'hydrogen-fluoride', 'hydrogen-chloride', 'hydrogen-bromide', 'hydrogen-iodide'])
-    parser.add_argument('-pt',  '--particletype',     help='particletype in .xml',                                                       required=False, type=str)
-    parser.add_argument('-ff',  '--forcefield',       help='path to reference ACT .xml file',                                            required=False, type=str)
-    parser.add_argument('-add', '--additional',       help='path to additional ACT .xml file(s) of similar models',                      required=False, type=str, nargs='+')
-    parser.add_argument('-eq',  '--equilibration',    help='path to equilibration .dat file',                                            required=False, type=str)
-    parser.add_argument('-sim', '--simulation',       help='path to simulation .dat file',                                               required=False, type=str)
-    parser.add_argument('-pst', '--post',             help='path to post-production .dat file (only needed for "analyze" without grid)', required=False, type=str,   default=None)
-    parser.add_argument('-pdb', '--system',           help='path to system .pdb file',                                                   required=False, type=str)
-    parser.add_argument('-d',   '--distributions',    help='path to prior distributions .csv file',                                      required=False, type=str)
-    parser.add_argument('-c',   '--coverage',         help='sampling coverage along each dimension',                                     required=False, type=float, default=0.7)
-    parser.add_argument('-m',   '--samples',          help='number of samples',                                                          required=False, type=int,   default=10)
-    parser.add_argument('-n',   '--points',           help='number of points per parameter',                                             required=False, type=int,   default=[10], nargs='+')
-    parser.add_argument('-z',   '--initial',          help='initialize all n runs using parameters of initial force field',              action='store_true')
-    parser.add_argument('-g',   '--grid',             help='perform a grid search for synthetic likelihood',                             action='store_true')
-    parser.add_argument('-e',   '--epsilon',          help='include Van der Waals epsilon as parameter',                                 action='store_true')
-    parser.add_argument('-s',   '--sigma',            help='include Van der Waals sigma as parameter',                                   action='store_true')
-    parser.add_argument('-q',   '--charge',           help='include particle charges as parameter',                                      action='store_true')
-    parser.add_argument('-vs',  '--vsite',            help='include vsite as parameter',                                                 action='store_true')
-    parser.add_argument('-dhv', '--energy',           help='include enthalpy of vaporization as observable',                             action='store_true')
-    parser.add_argument('-vol', '--volume',           help='include molecular volume as observable',                                     action='store_true')
-    parser.add_argument('-rXX', '--rXX',              help='include peak distance "r" to the first RDF peak as observable',              action='store_true')
-    parser.add_argument('-gXX', '--gXX',              help='include peak height "g(r)" of the first RDF peak as observable',             action='store_true')
-    parser.add_argument('-hbd', '--hbonddist',        help='include hydrogen bond distance as observable',                               action='store_true')
-    parser.add_argument('-hba', '--hbondangle',       help='include hydrogen bond angle as observable',                                  action='store_true')
-    parser.add_argument('-v',   '--verbose',	      help='print more intermediates',                                                   action='store_true')
+    parser.add_argument('-a',   '--action',           help='"submit" jobs, "analyze" results, or "statistics" from extra simulations',         required=True,  type=str, choices=['submit', 'analyze', 'statistics'])
+    parser.add_argument('-o',   '--output',           help='path to output directory in ACTdata/HydrogenHalides/Bayesian/output',              required=True,  type=str)
+    parser.add_argument('-p',   '--platform',         help='current platform (e.g. cluster name) used to run jobs',                            required=True,  type=str, choices=['local', 'csb', 'dardel', 'davinci'])
+    parser.add_argument('-mol', '--molecule',         help='molecule in ACTdata/MolProps',                                                     required=False, type=str, choices=['water', 'hydrogen-fluoride', 'hydrogen-chloride', 'hydrogen-bromide', 'hydrogen-iodide'])
+    parser.add_argument('-pt',  '--particletype',     help='particletype in .xml',                                                             required=False, type=str)
+    parser.add_argument('-ff',  '--forcefield',       help='path to reference ACT .xml file',                                                  required=False, type=str)
+    parser.add_argument('-add', '--additional',       help='path to additional ACT .xml file(s) of similar models',                            required=False, type=str, nargs='+')
+    parser.add_argument('-eq',  '--equilibration',    help='path to equilibration .dat file',                                                  required=False, type=str)
+    parser.add_argument('-sim', '--simulation',       help='path to simulation .dat file',                                                     required=False, type=str)
+    parser.add_argument('-pst', '--post',             help='path to post-production .dat file (only needed for "analyze" without grid)',       required=False, type=str,   default=None)
+    parser.add_argument('-pdb', '--system',           help='path to system .pdb file',                                                         required=False, type=str)
+    parser.add_argument('-d',   '--distributions',    help='path to prior distributions .csv file',                                            required=False, type=str)
+    parser.add_argument('-c',   '--coverage',         help='sampling coverage along each dimension',                                           required=False, type=float, default=0.7)
+    parser.add_argument('-m',   '--samples',          help='number of samples',                                                                required=False, type=int,   default=10)
+    parser.add_argument('-n',   '--points',           help='number of points per parameter',                                                   required=False, type=int,   default=[10], nargs='+')
+    parser.add_argument('-z',   '--initial',          help='initialize all n runs using parameters of initial force field',                    action='store_true')
+    parser.add_argument('-g',   '--grid',             help='perform a grid search for synthetic likelihood',                                   action='store_true')
+    parser.add_argument('-e',   '--epsilon',          help='include Van der Waals (Lennard-Jones 12-6, Wang-Buckingham) epsilon as parameter', action='store_true')
+    parser.add_argument('-s',   '--sigma',            help='include Van der Waals (Lennard-Jones 12-6, Wang-Buckingham) sigma as parameter',   action='store_true')
+    parser.add_argument('-y',   '--gamma',            help='include Van der Waals (Wang-Buckingham) gamma as parameter',                       action='store_true')
+    parser.add_argument('-q',   '--charge',           help='include particle charges as parameter',                                            action='store_true')
+    parser.add_argument('-vs',  '--vsite',            help='include vsite as parameter',                                                       action='store_true')
+    parser.add_argument('-dhv', '--energy',           help='include enthalpy of vaporization as observable',                                   action='store_true')
+    parser.add_argument('-vol', '--volume',           help='include molecular volume as observable',                                           action='store_true')
+    parser.add_argument('-rXX', '--rXX',              help='include peak distance "r" to the first RDF peak as observable',                    action='store_true')
+    parser.add_argument('-gXX', '--gXX',              help='include peak height "g(r)" of the first RDF peak as observable',                   action='store_true')
+    parser.add_argument('-hbd', '--hbonddist',        help='include hydrogen bond distance as observable',                                     action='store_true')
+    parser.add_argument('-hba', '--hbondangle',       help='include hydrogen bond angle as observable',                                        action='store_true')
+    parser.add_argument('-v',   '--verbose',	      help='print more intermediates',                                                         action='store_true')
     args = parser.parse_args()
 
     return args
@@ -192,12 +197,71 @@ def xml2dict(path):
 
 
 
-def get_num_jobs(platform):
+# for SWM4-NDP model
+def pdb2gmx(base, system, grofile='structure.gro', topfile='topology.top', model="SWM4-NDP-WBHAM"):
 
-    if platform == 'davinci':
-        command = "squeue -u nordman"
-    else:
-        return 0
+    coordinates = {}
+    with open(system, 'r') as pdb:
+        for line in pdb.readlines():
+            if line.startswith('CRYST1'):
+                box_data = line.split()
+                boxx = float(box_data[1])/10
+                boxy = float(box_data[2])/10
+                boxz = float(box_data[3])/10
+            if line.startswith('HETATM') or line.startswith('ATOM'):
+                molecule_number = int(line[22:26].strip())
+                if molecule_number not in coordinates:
+                    coordinates[molecule_number] = {}
+                atom_name = line[12:16].strip()
+                X = float(line[30:38].strip())/10
+                Y = float(line[38:46].strip())/10
+                Z = float(line[46:54].strip())/10
+                coordinates[molecule_number][atom_name] = np.array([X, Y, Z])
+
+    if model in ["SWM4-NDP", "SWM4-NDP-WBHAM", "SWM4-NDP-WBHAM-GAUSSIAN"]:
+        coefficient = 0.2051094645
+        with open(grofile, 'w') as gro:
+            gro.write("PLACEHOLDER\n")
+            gro.write(f"{5*molecule_number:5d}\n")
+            for i in range(molecule_number):
+                OW  = coordinates[i+1]['OW']
+                HW1 = coordinates[i+1]['HW1']
+                HW2 = coordinates[i+1]['HW2']
+                EW  = OW + coefficient*(HW1-OW) + coefficient*(HW2-OW)
+                gro.write(f"{i+1:5d}HOH      O{i*5+1:5d}{ OW[0]:8.3f}{ OW[1]:8.3f}{ OW[2]:8.3f}\n")
+                gro.write(f"{i+1:5d}HOH     H1{i*5+2:5d}{HW1[0]:8.3f}{HW1[1]:8.3f}{HW1[2]:8.3f}\n")
+                gro.write(f"{i+1:5d}HOH     H2{i*5+3:5d}{HW2[0]:8.3f}{HW2[1]:8.3f}{HW2[2]:8.3f}\n")
+                gro.write(f"{i+1:5d}HOH      S{i*5+4:5d}{ OW[0]:8.3f}{ OW[1]:8.3f}{ OW[2]:8.3f}\n")
+                gro.write(f"{i+1:5d}HOH      D{i*5+5:5d}{ EW[0]:8.3f}{ EW[1]:8.3f}{ EW[2]:8.3f}\n")
+            gro.write(f"{boxx:10.5f}{boxy:10.5f}{boxz:10.5f}\n")
+    elif model in ['SW', 'SW-WBHAM', 'SW-WBHAM-GAUSSIAN']:
+        coefficient = 0.11726588
+        with open(grofile, 'w') as gro:
+            gro.write("PLACEHOLDER\n")
+            gro.write(f"{5*molecule_number:5d}\n")
+            for i in range(molecule_number):
+                OW  = coordinates[i+1]['OW']
+                HW1 = coordinates[i+1]['HW1']
+                HW2 = coordinates[i+1]['HW2']
+                EW  = OW + coefficient*(HW1-OW) + coefficient*(HW2-OW)
+                gro.write(f"{i+1:5d}HOH      O{i*5+1:5d}{ OW[0]:8.3f}{ OW[1]:8.3f}{ OW[2]:8.3f}\n")
+                gro.write(f"{i+1:5d}HOH     H1{i*5+2:5d}{HW1[0]:8.3f}{HW1[1]:8.3f}{HW1[2]:8.3f}\n")
+                gro.write(f"{i+1:5d}HOH     H2{i*5+3:5d}{HW2[0]:8.3f}{HW2[1]:8.3f}{HW2[2]:8.3f}\n")
+                gro.write(f"{i+1:5d}HOH      D{i*5+5:5d}{ EW[0]:8.3f}{ EW[1]:8.3f}{ EW[2]:8.3f}\n")
+                gro.write(f"{i+1:5d}HOH      S{i*5+4:5d}{ EW[0]:8.3f}{ EW[1]:8.3f}{ EW[2]:8.3f}\n")
+            gro.write(f"{boxx:10.5f}{boxy:10.5f}{boxz:10.5f}\n")
+
+    # TODO! Adapt to WBH?
+    with open(topfile, 'a') as top:
+        with open(f'{base}/gmx/{model}.top', 'r') as template:
+            top.writelines(template.readlines())
+        top.write(f'\n\n[ molecules ]\nHOH  {molecule_number}\n')
+
+
+
+def get_num_waiting_jobs(partition):
+
+    command = f"squeue -o '%.18P %.2t' --me | grep '{partition}' | grep ' PD'"
     with subprocess.Popen(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8", shell=True) as process:
         out, _ = process.communicate()
     return len(out.splitlines())
@@ -232,6 +296,35 @@ def burn_in_geweke(chain, window_fraction_sliding=0.1, window_fraction_reference
 
     # not converged
     return m
+
+
+
+def mardia_test(X, alpha=0.05):
+    """
+    X: array (M, N) with M samples, N variables
+    Returns: dict with p-values and a boolean for MVN
+    """
+    X = np.asarray(X)
+    M, N = X.shape
+    Xc = X - X.mean(axis=0, keepdims=True)
+    S = np.cov(Xc, rowvar=False, bias=False)
+    S_inv = np.linalg.pinv(S)
+    # Mahalanobis terms
+    D = Xc @ S_inv @ Xc.T
+    # Skewness (b1,p)
+    b1p = np.sum(D**3) / (M**2)
+    df_skew = N*(N+1)*(N+2)//6
+    chi_skew = M * b1p / 6.0
+    p_skew = 1.0 - chi2.cdf(chi_skew, df_skew)
+    # Kurtosis (b2,p)
+    b2p = np.sum(np.diag(D)**2) / M
+    mean_kurt = N*(N+2)
+    var_kurt = (8*N*(N+2))/M
+    z_kurt = (b2p - mean_kurt) / np.sqrt(var_kurt)
+    p_kurt = 2*(1 - norm.cdf(abs(z_kurt)))
+    # Decision: reject if either component rejects
+    mvn_ok = (p_skew > alpha) and (p_kurt > alpha)
+    return {"p_skew": p_skew, "p_kurt": p_kurt, "mvn_ok": mvn_ok, "b1p": b1p, "b2p": b2p}
 
 
 
@@ -440,7 +533,7 @@ class Overhead:
 
             # summarize parameters
             parameters = []
-            for parameter in ['epsilon', 'sigma', 'charge', 'vsite']:
+            for parameter in ['epsilon', 'sigma', 'gamma', 'charge', 'vsite']:
                 if args[parameter]:
                     parameters += [parameter]
                 del args[parameter]
@@ -538,11 +631,18 @@ class Overhead:
 
         # check for particletype
         data = xml2dict(args['forcefield'])
-        if not args['particletype'] in [particle['@identifier'] for particle in data['alexandria_chemistry']['particletypes']['particletype']]:
+        if not args['particletype'] in [[property['@value'] for property in particle['option'] if property['@key'] == 'vdwtype'][0] for particle in data['alexandria_chemistry']['particletypes']['particletype']]:
             sys.exit(f'Did not find particletype {args["particletype"]} in .xml file. Exiting...')
 
+        # get the van der Waals type
+        vdw_list = [interaction['@function'] for interaction in data['alexandria_chemistry']['interaction'] if interaction['@type'] == 'VANDERWAALS']
+        if len(vdw_list) == 0:
+            args['vanderwaals'] = 'LJ12_6'
+        else:
+            args['vanderwaals'] = vdw_list[0]
+
         # append experimental data file
-        args['experiment'] = os.path.join(submit_directory, 'expdata.csv')
+        args['experiment'] = os.path.join(submit_directory, '../Simulations/expdata.csv')
 
         # save args for later
         pkl = os.path.join(args['output'], 'args.pkl')
@@ -639,9 +739,10 @@ class Overhead:
                 # store all particles
                 self.particletypes = {}
                 for particle in data['alexandria_chemistry']['particletypes']['particletype']:
-                    self.particletypes[particle['@identifier']] = {}
+                    vdwtype = [property['@value'] for property in particle['option'] if property['@key'] == 'vdwtype'][0]
+                    self.particletypes[vdwtype] = {}
                     for option in particle['option']:
-                        self.particletypes[particle['@identifier']][option['@key']] = option['@value']
+                        self.particletypes[vdwtype][option['@key']] = option['@value']
                 if self.settings['particletype'] not in self.particletypes:
                     sys.exit(f'Did not find particletype {self.settings["particletype"]} in .xml file. Could only find {", ".join([particle for particle in self.particletypes.keys()])}. Exiting...')
                 linestyle = '-'
@@ -655,7 +756,7 @@ class Overhead:
 
             # start searching!
             for p, parameter in enumerate(self.settings['parameters']):
-                if parameter in ['epsilon', 'sigma']:
+                if parameter in ['epsilon', 'sigma', 'gamma']:
                     # epsilon and sigma can be found under the Van der Waals section
                     for interaction in data['alexandria_chemistry']['interaction']:
                         if interaction['@type'] == 'VANDERWAALS':
@@ -695,7 +796,7 @@ class Overhead:
 
         # update ACT forcefield file
         for p, parameter in enumerate(self.settings['parameters']):
-            if parameter in ['epsilon', 'sigma']:
+            if parameter in ['epsilon', 'sigma', 'gamma']:
                 command = [
                     'alexandria', 'edit_ff', '-force',
                     '-ff',  'act.xml',
@@ -727,6 +828,11 @@ class Overhead:
             else:
                 sys.exit(f'Do not know how to modify {parameter}. Exiting...')
 
+            # (forcefully) remove old edit_ff.log to prevent too many files
+            command = ['rm', '-f', 'edit_ff.log']
+            with subprocess.Popen(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8") as process:
+                _, _ = process.communicate()
+
         # (forcefully) remove old sim.dat to prevent too many files
         command = ['rm', '-f', 'sim.dat']
         with subprocess.Popen(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8") as process:
@@ -737,13 +843,19 @@ class Overhead:
             'alexandria', 'gentop',
             '-ff',	'act.xml',
             '-db',	molecule,
-            '-charges', f'{base}/MolProps/mp2-aug-cc-pvtz.xml',
-            '-openmm', 'openmm.xml'
+            '-charges', f'{base}/../../MolProps/mp2-aug-cc-pvtz.xml',
+            '-openmm', 'openmm.xml',
+            '-mDrude', '0.4'
         ]
         with subprocess.Popen(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8") as process:
             stdout, stderr = process.communicate()
             if process.returncode != 0:
                 print(f'ALEXANDRIA ERROR: {stderr}\n')
+
+        # (forcefully) remove old gentop.log to prevent too many files
+        command = ['rm', '-f', 'gentop.log']
+        with subprocess.Popen(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8") as process:
+            _, _ = process.communicate()
 
 
     def compute_sigma_points(self, mu, Sigma, alpha=0.9, kappa=0, beta=2):
@@ -781,10 +893,8 @@ class Overhead:
 
     def submit(self):
 
-        # enter directory
-        os.chdir(self.settings['output'])
-
         # get arguments to pass on to SLURM script
+        output        = self.settings['output']
         action        = self.settings['action']
         molecule      = self.settings['molecule']
         particletype  = self.settings['particletype']
@@ -795,13 +905,20 @@ class Overhead:
         simulation    = self.settings['simulation']
         system        = self.settings['system']
         distributions = self.settings['distributions']
+        vanderwaals   = self.settings['vanderwaals']
         coverage      = self.settings['coverage']
         samples       = self.settings['samples']
         parameters    = self.settings['parameters']
         observables   = self.settings['observables']
 
+        # enter directory
+        os.chdir(output)
+
         # actual element
         element = ''.join([i for i in self.settings['particletype'] if not i.isdigit()]).upper()
+
+        # forcefield name
+        forcefield_name = os.path.splitext(os.path.basename(forcefield))[0]
 
         # get output name to give a proper name to SLURM job
         name = self.settings['name']
@@ -833,35 +950,57 @@ class Overhead:
                 os.makedirs(directory)
                 os.chdir(directory)
                 # output directories
-                if molecule in ['water']:
-                    os.system(f'printf "2\n1\n" | gmx pdb2gmx -f {system} -o structure.gro -p topology.top -ignh > /dev/null 2>&1')
-                    os.system(f'echo -e "integrator = md\ndt = 0.001\nnsteps = 100000" > dummy.mdp')
-                    os.system(f'gmx grompp -f dummy.mdp -c structure.gro -p topology.top -o topology.tpr > /dev/null 2>&1')
-                    os.system(f'printf "a OW\nname 3 {element}\na HW1 | a HW2\nname 4 H\nq\n" | gmx make_ndx -f structure.gro -o index.ndx > /dev/null 2>&1')
+                if (molecule == 'water') and (forcefield_name in ['TIP3P', 'SWM4-NDP', 'SWM4-NDP-WBHAM', 'SWM4-NDP-WBHAM-GAUSSIAN', 'SW', 'SW-WBHAM', 'SW-WBHAM-GAUSSIAN']):
+                    if forcefield_name == 'TIP3P':
+                        os.system(f'printf "2\n1\n" | gmx pdb2gmx -f {system} -o structure.gro -p topology.top -ignh > /dev/null 2>&1')
+                        os.system(f'echo -e "integrator = md\ndt = 0.001\nnsteps = 100000\nnstcalcenergy = 100" > dummy.mdp')
+                        os.system(f'gmx grompp -f dummy.mdp -c structure.gro -p topology.top -o topology.tpr > /dev/null 2>&1')
+                        os.system(f'printf "a OW\nname 3 {element}\na HW1 | a HW2\nname 4 H\nq\n" | gmx make_ndx -f structure.gro -o index.ndx > /dev/null 2>&1')
+                    elif forcefield_name in ['SWM4-NDP', 'SWM4-NDP-WBHAM', 'SWM4-NDP-WBHAM-GAUSSIAN', 'SW', 'SW-WBHAM', 'SW-WBHAM-GAUSSIAN']:
+                        pdb2gmx(base, system, model=forcefield_name)
+                        os.system(f'echo -e "integrator = md\ndt = 0.0002\nnsteps = 500000\nnstcalcenergy = 1\ntcoupl = no\ngen_vel = yes\ngen_temp = 298.15\ncutoff-scheme = Verlet\ncoulombtype = PME\nrcoulomb = 0.8\nvdwtype = Cut-off\nrvdw = 0.8\nnstlist = 20\nverlet-buffer-tolerance = -1\nrlist = 0.95" > dummy.mdp')
+                        os.system(f'gmx grompp -f dummy.mdp -c structure.gro -p topology.top -o topology.tpr > /dev/null 2>&1')
+                        os.system(f'printf "a O\nname 3 {element}\na H1 | a H2\nname 4 H\nq\n" | gmx make_ndx -f structure.gro -o index.ndx > /dev/null 2>&1')
                 else:
                     os.system(f'printf "a {element}\nname 3 {element}\nq\n" | gmx make_ndx -f {self.settings["system"]} -o index.ndx > /dev/null 2>&1')
             else:
                 os.chdir(directory)
 
-            pf = self.settings['platform']
-            if samples == 0:
-                duartion = '24:00:00'
-            else:
-                duration = '24:00:00'
-            if pf == 'csb':
-                command = f'sbatch -t {duration} --gres=gpu:1 -p CLUSTER-AMD --nodelist=compute-0-[32-36] --nodes=1 -J "{name}-{directory}" '
-                related_jobs = [job.split() for job in os.popen(f"squeue --format='%.10i %100j' --me | grep '{name}-{directory}'").read().split('\n')[:-1]]
-                if len(related_jobs) > 0:
-                    last_job = sorted(related_jobs, key=lambda x: int(x[0]))[-1][0]
-                    command += f'--dependency=afterany:{last_job} '
-            elif pf == 'dardel':
-                command = f'sbatch -A naiss2023-5-531 --nodes=1 -t {duration} -p gpu -J "{name}-{directory}" '
-                related_jobs = [job.split() for job in os.popen(f"squeue --format='%.10i %100j' --me | grep '{name}-{directory}'").read().split('\n')[:-1]]
-                if len(related_jobs) > 0:
-                    last_job = sorted(related_jobs, key=lambda x: int(x[0]))[-1][0]
-                    command += f'--dependency=afterany:{last_job} '
-            elif pf == 'davinci':
-                command = f'sbatch -n 1 -t {duration} --gres=gpu:1 -p regular -C RTX2080Ti -J "{name}-{directory}" --exclude=a002 '
+            # assemble sbatch command
+            platform = self.settings['platform']
+            if platform != 'local':
+                if platform == 'csb':
+                    partitions = {
+                        'CLUSTER-AMD': f'--gres=gpu:1 --nodelist=compute-0-[32-36] --nodes=1',
+                        'GPU':         f'--gres=gpu:1 --nodelist=compute-0-[30-31] --nodes=1'
+                    }
+                elif platform == 'dardel':
+                    partitions = {
+                        'gpu': f'-A naiss2023-5-531 --nodes=1'
+                    }
+                elif platform == 'davinci':
+                    partitions = {
+                        'regular': f'-n 1 --gres=gpu:1 -C RTX2080Ti --exclude=a[002,029]'
+                    }
+                else:
+                    sys.exit('PLATFORM ERROR: platform {platform} not implemented!')
+                # check for partition with less than 10 jobs
+                partition_found = False
+                for partition in partitions:
+                    num_lines = get_num_waiting_jobs(partition)
+                    if num_lines < 1:
+                        partition_found = True
+                        break
+                while not partition_found:
+                    sleep(30.0)
+                    for partition in partitions:
+                        num_lines = get_num_waiting_jobs(partition)
+                        if num_lines < 1:
+                            partition_found = True
+                            break
+                # add correct partition
+                command = f'sbatch -t 24:00:00 {partitions[partition]} -p {partition} -J "{name}-{directory}" '
+                # check for same job, and add dependency
                 related_jobs = [job.split() for job in os.popen(f"squeue --format='%.10i %100j' --me | grep '{name}-{directory}'").read().split('\n')[:-1]]
                 if len(related_jobs) > 0:
                     last_job = sorted(related_jobs, key=lambda x: int(x[0]))[-1][0]
@@ -869,6 +1008,8 @@ class Overhead:
             else:
                 command = ''
             command += (f'{base}/metropolis_hastings.py '
+                      + f'-nm {name} '
+                      + f'-platform {platform} '
                       + f'-mol {molecule} '
                       + f'-pt {particletype} '
                       + f'-b {base} '
@@ -878,6 +1019,7 @@ class Overhead:
                       + f'-sim {simulation} '
                       + f'-pdb {system} '
                       + f'-d {distributions} '
+                      + f'-vdw {vanderwaals} '
                       + f'-c {coverage} '
                       + f'-m {samples} '
                       + f'-n {" ".join([str(point) for point in points])} '
@@ -887,10 +1029,6 @@ class Overhead:
             for flag in ['initial', 'verbose', 'resume']:
                 if self.settings[flag]:
                       command += f' --{flag}'
-            num_lines = get_num_jobs(pf)
-            while num_lines > 90:
-                sleep(60.0)
-                num_lines = get_num_jobs(pf)
             os.system(command)
             os.chdir('..')
 
@@ -942,7 +1080,7 @@ class Overhead:
         indices             = range(m)
         combinations        = {}
         likelihoods         = {}
-        shapiro_wilks       = {}
+        normality_tests     = {}
         for i in range(1, m+1):
             os.makedirs(f'PDF/{i}D', exist_ok=True)
             os.makedirs(f'PNG/{i}D', exist_ok=True)
@@ -951,7 +1089,7 @@ class Overhead:
                 combined = "-".join([observables[c] for c in combination])
                 combinations[i][combined]     = list(combination)
                 likelihoods[combined]         = np.empty((0,))
-                shapiro_wilks[combined]       = np.empty((0,), dtype=bool)
+                normality_tests[combined]     = np.empty((0,), dtype=bool)
                 if i == m:
                     full_combined = combined
 
@@ -989,12 +1127,15 @@ class Overhead:
                             likelihood = multivariate_normal.pdf(experiment[combination], mean=mu[combination], cov=Sigma[combination][:,combination], allow_singular=True)
                         except:
                             likelihood = 0.0
-                        shapiro_wilk	   = np.all([shapiro(measurements[index])[1]            > 0.05 for index in combination])
+                        if len(combination) < 2:
+                            normality_test = np.all([shapiro(measurements[index])[1] > 0.05 for index in combination])
+                        else:
+                            normality_test = mardia_test(measurements[combination].T, alpha=0.05)["mvn_ok"]
                     else:
-                        likelihood         = 0.0
-                        shapiro_wilk       = False
-                    likelihoods[combined]         = np.append(likelihoods[combined],         likelihood)
-                    shapiro_wilks[combined]       = np.append(shapiro_wilks[combined],       shapiro_wilk)
+                        likelihood     = 0.0
+                        normality_test = False
+                    likelihoods[combined]     = np.append(likelihoods[combined],     likelihood)
+                    normality_tests[combined] = np.append(normality_tests[combined], normality_test)
 
             if successful:
                 observable_mean = np.zeros((1,m))
@@ -1096,7 +1237,8 @@ class Overhead:
                         grid_y = griddata((slice_i, slice_j), likelihood_axis_sum, (grid_ii, grid_jj), method='nearest')
                         ax[p//2,p%2].set_facecolor([0.2, 0.0, 0.4])
                         ax[p//2,p%2].contourf(grid_ii, grid_jj, grid_y, levels=levels, cmap='rainbow')
-                        #ax[p//2,p%2].scatter(points_i[shapiro_wilks[combined]],   points_j[shapiro_wilks[combined]],   c='w',                       marker='+',                        s=3)
+                        print(combined, np.sum(normality_tests[combined])/len(normality_tests[combined]))
+                        ax[p//2,p%2].scatter(points_i[normality_tests[combined]], points_j[normality_tests[combined]], c='w',                       marker='+',                        s=3)
                         ax[p//2,p%2].scatter(points_i[pois['original']['index']], points_j[pois['original']['index']], c=pois['original']['color'], marker=pois['original']['marker'], s=30, edgecolors='w', linewidth=1)
                         ax[p//2,p%2].annotate(chr(65+p), xy=(0.95, 0.95), xycoords="axes fraction", fontsize=20, fontweight="bold", ha="right", va="top", color="k", path_effects=[pe.withStroke(linewidth=5, foreground="white")])
                     norm = mcolors.BoundaryNorm(boundaries=levels_values, ncolors=256)
@@ -1175,7 +1317,7 @@ class Overhead:
                         sm.set_array([])
                         cbar = fig.colorbar(sm, ax=ax, ticks=levels_values)
                         cbar.set_label(f"posterior density")
-                        #ax.scatter(points_i[shapiro_wilks[combined]],       points_j[shapiro_wilks[combined]],       c='w', marker='+', s=int(15000/(points[i]*points[j])))
+                        ax.scatter(points_i[normality_tests[combined]], points_j[normality_tests[combined]], c='w', marker='+', s=int(15000/(points[i]*points[j])))
                         ax.scatter(points_i[pois['original']['index']], points_j[pois['original']['index']], c=pois['original']['color'], marker=pois['original']['marker'], s=100, edgecolors='w', linewidth=1, label=pois['original']['label'])
                         ax.set_xlabel(f'{converter[parameter_i]["name"]} ({converter[parameter_i]["unit"]})', fontsize=11)
                         ax.set_ylabel(f'{converter[parameter_j]["name"]} ({converter[parameter_j]["unit"]})', fontsize=11)
@@ -1207,7 +1349,7 @@ class Overhead:
                         cbar = fig.colorbar(sm, ax=ax, ticks=levels_values)
                         cbar.set_label(f"posterior density")
                         ax.contourf(grid_ii, grid_jj, grid_y, levels=levels, cmap='rainbow')
-                        #ax.scatter(points_i[shapiro_wilks[combined]],       points_j[shapiro_wilks[combined]],       c='w', marker='+', s=int(15000/(points[i]*points[j])))
+                        ax.scatter(points_i[normality_tests[combined]], points_j[normality_tests[combined]], c='w', marker='+', s=int(15000/(points[i]*points[j])))
                         ax.scatter(points_i[pois['original']['index']], points_j[pois['original']['index']], c=pois['original']['color'], marker=pois['original']['marker'], s=100, edgecolors='w', linewidth=1, label=pois['original']['label'])
                         ax.set_xlabel(f'{converter[parameter_i]["name"]} ({converter[parameter_i]["unit"]})', fontsize=11)
                         ax.set_ylabel(f'{converter[parameter_j]["name"]} ({converter[parameter_j]["unit"]})', fontsize=11)
@@ -1318,6 +1460,12 @@ class Overhead:
         # enter directory
         os.chdir(self.settings['output'])
 
+        # base directory
+        base = self.settings["base"]
+
+        # forcefield name
+        forcefield_name = os.path.splitext(os.path.basename(self.settings['forcefield']))[0]
+
         # observables and parameters
         observables = self.settings['observables']
         parameters  = self.settings['parameters']
@@ -1378,7 +1526,7 @@ class Overhead:
                     print(f'* {directory}: removed {burn_in_period}/{subsamples.shape[0]} ({reason})')
                     # no point creating it now if we throw away all other data anyway...
                     if burn_in_period < subsamples.shape[0]:
-                        samples      = np.append(samples,      subsamples[burn_in_period:],      axis=0)
+                        samples      = np.append(samples,      subsamples[burn_in_period:],        axis=0)
                         measurements = np.append(measurements, blockmeasurements[burn_in_period:], axis=0)
                 except:
                     print(f'WARNING! No samples found for run {directory}! (file exists but is empty)')
@@ -1453,31 +1601,21 @@ class Overhead:
                     description = 'mode'
                 print(f'Point #{d}: {extra_points[d]} ({description})')
                 self.set_parameters(extra_points[d], molecule, self.settings['base'])
-                if molecule in ['water']:
-                    os.system(f'printf "2\n1\n" | gmx pdb2gmx -f {system} -o structure.gro -p topology.top -ignh > /dev/null 2>&1')
-                    os.system(f'{self.settings["base"]}/openmm2gromacs.py openmm.xml topology.top')
-                    #os.system(f'echo -e "integrator = md\ndt = 0.001\nnsteps = 100000" > dummy.mdp')
-                    #os.system(f'gmx grompp -f dummy.mdp -c structure.gro -p topology.top -o topology.tpr > /dev/null 2>&1')
-                    os.system(f'printf "a OW\nname 3 {element}\na HW1 | a HW2\nname 4 H\nq\n" | gmx make_ndx -f structure.gro -o index.ndx > /dev/null 2>&1')
+                if (molecule == 'water') and (forcefield_name in ['TIP3P', 'SWM4-NDP', 'SWM4-NDP-WBHAM', 'SWM4-NDP-WBHAM-GAUSSIAN', 'SW', 'SW-WBHAM', 'SW-WBHAM-GAUSSIAN']):
+                    if forcefield_name == 'TIP3P':
+                        os.system(f'printf "2\n1\n" | gmx pdb2gmx -f {system} -o structure.gro -p topology.top -ignh > /dev/null 2>&1')
+                        os.system(f'{self.settings["base"]}/openmm2gromacs.py openmm.xml topology.top')
+                        #os.system(f'echo -e "integrator = md\ndt = 0.001\nnsteps = 100000" > dummy.mdp')
+                        #os.system(f'gmx grompp -f dummy.mdp -c structure.gro -p topology.top -o topology.tpr > /dev/null 2>&1')
+                        os.system(f'printf "a OW\nname 3 {element}\na HW1 | a HW2\nname 4 H\nq\n" | gmx make_ndx -f structure.gro -o index.ndx > /dev/null 2>&1')
+                    elif forcefield_name in ['SWM4-NDP', 'SWM4-NDP-WBHAM', 'SWM4-NDP-WBHAM-GAUSSIAN', 'SW', 'SW-WBHAM', 'SW-WBHAM-GAUSSIAN']:
+                        pdb2gmx(base, system, model=forcefield_name)
+                        print('Need to implement how to generate custom GROMACS topologies!') # TODO!
+                        #os.system(f'echo -e "integrator = md\ndt = 0.0002\nnsteps = 500000" > dummy.mdp')
+                        #os.system(f'gmx grompp -f dummy.mdp -c structure.gro -p topology.top -o topology.tpr > /dev/null 2>&1')
+                        os.system(f'printf "a OW1\nname 3 {element}\na HW2 | a HW3\nname 4 H\nq\n" | gmx make_ndx -f structure.gro -o index.ndx > /dev/null 2>&1')
                 else:
                     os.system(f'printf "a {element}\nname 3 {element}\nq\n" | gmx make_ndx -f {self.settings["system"]} -o index.ndx > /dev/null 2>&1')
-                # launch job
-                #pf = self.settings['platform']
-                #if pf == 'csb':
-                #    command = f'sbatch -t 24:00:00 --gres=gpu:1 -p CLUSTER-AMD --nodelist=compute-0-[32-36] --nodes=1 -J "{directory}" '
-                #elif pf == 'dardel':
-                #    command = f'sbatch -A naiss2023-5-531 --nodes=1 -t 24:00:00 -p gpu -J "{directory}" '
-                #elif pf == 'davinci':
-                #    command = f'sbatch -n 1 -t 24:00:00 --gres=gpu:1 -p regular -C RTX2080Ti -J "{directory}" '
-                #else:
-                #    command = ''
-                #command += (f'{self.settings["base"]}/post-production.py '
-                #          + f'-d   {self.settings["post"]} '
-                #          + f'-s   {self.settings["system"]} '
-                #          + f'-t   {self.get_temperature()} '
-                #          + f'-mol {self.settings["molecule"]} '
-                #          + f'-pt  {self.settings["particletype"]}')
-                #os.system(command)
                 os.chdir('..')
             os.chdir('..')
 
@@ -1511,7 +1649,7 @@ class Overhead:
         # iterate over parameters
         for i in range(n):
             parameter_i = parameters[i]
-            print(f'* {parameter_i}')
+            print(f'* {parameter_i} (3 sigmas: [{(delta_mu[0,i]+self.parameters[i]-3*np.sqrt(Sigma[i,i]))/self.parameters[i]},{(delta_mu[0,i]+self.parameters[i]+3*np.sqrt(Sigma[i,i]))/self.parameters[i]}])')
             # get the correct statistics
             keeps_i      = np.zeros(delta_mu.shape, dtype=bool)
             keeps_i[0,i] = True
@@ -1588,7 +1726,7 @@ class Overhead:
                 ax_ij.scatter(mu_ij[:,1], mu_ij[:,0], c='w', s=30, zorder=2)
                 # 2D points
                 ax_ji = ax_param[j,i]
-                ax_ji.scatter(delta_samples[:, i], delta_samples[:, j], c='r', alpha=0.010)
+                ax_ji.scatter(delta_samples[::50, i], delta_samples[::50, j], c='r', alpha=0.2)
                 ax_ji.scatter(mu_ij[:,0], mu_ij[:,1], c='k', s=30, zorder=2)
                 # ellipse
                 for confidence_level in confidence_levels:
@@ -1723,7 +1861,7 @@ class Overhead:
                 ax_ij.scatter(mu_ij[:,1], mu_ij[:,0], c='w', s=30, zorder=2)
                 # 2D points
                 ax_ji = ax_obs[j,i]
-                ax_ji.scatter(delta_measurements[:, i], delta_measurements[:, j], c='r', alpha=0.010)
+                ax_ji.scatter(delta_measurements[::50, i], delta_measurements[::50, j], c='r', alpha=0.2)
                 ax_ji.scatter(mu_ij[:,0], mu_ij[:,1], c='k', s=30, zorder=2)
                 # ellipse
                 for confidence_level in confidence_levels:
